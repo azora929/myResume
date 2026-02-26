@@ -1,0 +1,184 @@
+// ——— 404: весёлая страница с SVG и анимациями ———
+
+.not-found {
+  min-height: 100vh;
+  background: linear-gradient(165deg, #f4fbfa 0%, #e8f4f2 35%, #f0f9f7 70%, #fafdfc 100%);
+  background-color: #f6fbf9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+
+  // Лёгкий точечный узор в стилистике — не перебивает кляксу и текст
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(32, 178, 170, 0.06) 1px, transparent 0);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+.not-found__content {
+  text-align: center;
+  max-width: 42rem;
+  position: relative;
+  z-index: 1;
+}
+
+// —— Клякса: фиксированный слой по центру, чуть меньше и чуть ниже ——
+.not-found__blob-wrap {
+  position: fixed;
+  left: 49%;
+  top: 54%;
+  transform: translate(-50%, -50%);
+  width: 98vmin;
+  height: 98vmin;
+  max-width: 90vw;
+  max-height: 90vw;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.not-found__blob-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+// —— SVG-блок с цифрами 404 (в потоке) ——
+.not-found__graphic {
+  transform: rotate(-4deg);
+  margin-bottom: 1.5rem;
+  animation: notFoundGraphicIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.not-found__svg {
+  width: 100%;
+  max-width: 34rem;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.06));
+}
+
+// Блоб: лёгкое «дыхание» и покачивание
+.not-found__blob {
+  transform-origin: 50% 50%;
+  animation: notFoundBlob 4s ease-in-out infinite;
+}
+
+// Цифры: лёгкое появление с задержкой
+.not-found__digit {
+  transform-origin: center center;
+
+  &--first {
+    animation: notFoundDigitIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s both;
+  }
+
+  &--zero {
+    animation: notFoundDigitIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s both;
+  }
+
+  &--second {
+    animation: notFoundDigitIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s both;
+  }
+}
+
+// —— Текст ——
+.not-found__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+  animation: notFoundTextIn 0.5s ease-out 0.4s both;
+}
+
+.not-found__subtitle {
+  margin: 0 0 1.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #555;
+  animation: notFoundTextIn 0.5s ease-out 0.5s both;
+}
+
+// —— Кнопка ——
+.not-found__cta {
+  display: inline-block;
+  padding: 0.85rem 1.75rem;
+  background: linear-gradient(180deg, #ff8c42 0%, #e86b2a 100%);
+  color: #fff !important;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 999px;
+  border: none;
+  box-shadow:
+    0 4px 14px rgba(232, 107, 42, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: notFoundTextIn 0.5s ease-out 0.6s both;
+
+  &:hover {
+    transform: scale(1.04);
+    box-shadow:
+      0 6px 20px rgba(232, 107, 42, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// ——— Ключевые кадры ———
+
+@keyframes notFoundGraphicIn {
+  from {
+    opacity: 0;
+    transform: rotate(-4deg) scale(0.85) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-4deg) scale(1) translateY(0);
+  }
+}
+
+@keyframes notFoundBlob {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.95;
+  }
+  50% {
+    transform: scale(1.03) rotate(1deg);
+    opacity: 1;
+  }
+}
+
+@keyframes notFoundDigitIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes notFoundTextIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
