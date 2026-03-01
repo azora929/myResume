@@ -104,6 +104,7 @@
   display: flex;
   align-items: center;
   padding: clamp(56px, 7vw, 96px) 0;
+  touch-action: pan-y;
   background:
     radial-gradient(900px 520px at 12% 18%, rgba(103, 232, 249, 0.1), transparent 58%),
     radial-gradient(900px 520px at 88% 22%, rgba(165, 140, 255, 0.1), transparent 60%),
@@ -1055,6 +1056,158 @@
 .pList--cols {
   columns: 2;
   column-gap: 28px;
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 3rem 1.25rem;
+  }
+
+  .section__inner {
+    max-width: 100%;
+  }
+
+  .hero__subtitle {
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+  }
+
+  .skillsPro {
+    padding: 44px 0;
+  }
+
+  .skillsPro__inner {
+    width: min(92vw, 980px);
+  }
+
+  .sCard {
+    padding: 16px;
+  }
+
+  .sCard__head {
+    grid-template-columns: 40px 1fr;
+  }
+
+  .sIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+
+  .chips .chip {
+    font-size: 12px;
+    padding: 6px 9px;
+  }
+
+  .projectsPro {
+    padding: 40px 0;
+  }
+
+  .projectsPro__header {
+    width: min(92vw, 980px);
+  }
+
+  .pSlide__top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pSlide__tags {
+    gap: 6px;
+  }
+
+  .tag {
+    font-size: 12px;
+    padding: 6px 9px;
+  }
+
+  .pCard {
+    padding: 16px;
+  }
+
+  .pCard__head {
+    grid-template-columns: 36px 1fr;
+  }
+
+  .pIcon {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+  }
+
+  .pIcon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .pMedia__img {
+    height: min(40vh, 360px);
+  }
+
+  .pList {
+    padding-left: 16px;
+    font-size: 0.96rem;
+  }
+
+  .section-aurora-divider__band {
+    top: -220px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 2.5rem 1rem;
+  }
+
+  .hero__title {
+    font-size: clamp(1.6rem, 8vw, 2.4rem);
+  }
+
+  .hero__subtitle {
+    font-size: 1rem;
+  }
+
+  .hero__cta {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .projectsPro__title {
+    font-size: clamp(1.4rem, 5vw, 2rem);
+  }
+
+  .pSlide {
+    padding-bottom: 48px;
+  }
+
+  .pMedia__img {
+    height: min(34vh, 300px);
+  }
+
+  .pSlide__logo {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+  }
+
+  .pSlide__logo--ghost svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .pCard,
+  .sCard {
+    border-radius: 18px;
+  }
+
+  .skillsPro__bg {
+    opacity: 0.75;
+  }
+
+  .section-aurora-divider__band {
+    top: -190px;
+    height: 280px;
+  }
 }
 
 /* === FIX: CRM+NBKI layout === */

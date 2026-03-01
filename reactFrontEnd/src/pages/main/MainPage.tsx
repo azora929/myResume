@@ -16,6 +16,8 @@ export function MainPage() {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const NS = "http://www.w3.org/2000/svg";
     const make = (t: string) => document.createElementNS(NS, t);
+    const supportsPointer = "PointerEvent" in window;
+    const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
 
     let rect: DOMRect;
     let w = 0;
@@ -33,6 +35,8 @@ export function MainPage() {
       impulse: 26,
       curve: 1.2,
       drift: 0.24,
+      nodeStep: 12,
+      nodeRadius: 10,
     };
 
     const state = {
@@ -46,10 +50,26 @@ export function MainPage() {
       }>,
     };
 
+    const applyCfg = () => {
+      const mobile = isMobile();
+      cfg.strings = mobile ? 14 : 20;
+      cfg.points = mobile ? 22 : 28;
+      cfg.stiffness = mobile ? 0.045 : 0.05;
+      cfg.coupling = mobile ? 0.1 : 0.12;
+      cfg.damping = mobile ? 0.93 : 0.92;
+      cfg.mouseRadius = mobile ? 90 : 120;
+      cfg.impulse = mobile ? 20 : 26;
+      cfg.curve = mobile ? 1.0 : 1.2;
+      cfg.drift = mobile ? 0.18 : 0.24;
+      cfg.nodeStep = mobile ? 14 : 12;
+      cfg.nodeRadius = mobile ? 8 : 10;
+    };
+
     const setSize = () => {
+      const mobile = isMobile();
       rect = root.getBoundingClientRect();
-      w = Math.max(700, Math.floor(rect.width));
-      h = Math.max(560, Math.floor(rect.height));
+      w = Math.max(mobile ? 360 : 700, Math.floor(rect.width));
+      h = Math.max(mobile ? 420 : 560, Math.floor(rect.height));
       svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
       svg.setAttribute("preserveAspectRatio", "none");
     };
@@ -112,6 +132,7 @@ export function MainPage() {
     };
 
     const rebuild = () => {
+      applyCfg();
       setSize();
       buildDefs();
       state.strings = [];
@@ -120,7 +141,8 @@ export function MainPage() {
       const rightPad = w * 0.94;
 
       for (let s = 0; s < cfg.strings; s += 1) {
-        const xBase = leftPad + (s / (cfg.strings - 1)) * (rightPad - leftPad);
+        const denom = Math.max(1, cfg.strings - 1);
+        const xBase = leftPad + (s / denom) * (rightPad - leftPad);
         const tilt = (Math.random() * 0.14 - 0.07) * w;
         const amp = 0.8 + Math.random() * 1.45;
 
@@ -150,10 +172,10 @@ export function MainPage() {
         svg.appendChild(nodesG);
 
         const nodes = [];
-        const step = 12;
+        const step = cfg.nodeStep;
         for (let i = 0; i < cfg.points; i += step) {
           const c = make("circle") as SVGCircleElement;
-          c.setAttribute("r", "10");
+          c.setAttribute("r", cfg.nodeRadius.toString());
           c.setAttribute("fill", "url(#strNode)");
           c.setAttribute("filter", "url(#strGlow)");
           nodesG.appendChild(c);
@@ -168,17 +190,31 @@ export function MainPage() {
       }
     };
 
-    const onMove = (e: MouseEvent) => {
+    const updatePointer = (x: number, y: number) => {
       rect = root.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+      const px = x - rect.left;
+      const py = y - rect.top;
 
-      state.mouse.vx = x - state.mouse.px;
-      state.mouse.vy = y - state.mouse.py;
-      state.mouse.px = x;
-      state.mouse.py = y;
-      state.mouse.x = x;
-      state.mouse.y = y;
+      state.mouse.vx = px - state.mouse.px;
+      state.mouse.vy = py - state.mouse.py;
+      state.mouse.px = px;
+      state.mouse.py = py;
+      state.mouse.x = px;
+      state.mouse.y = py;
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      updatePointer(e.clientX, e.clientY);
+    };
+
+    const onMouseMove = (e: MouseEvent) => {
+      updatePointer(e.clientX, e.clientY);
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (!e.touches.length) return;
+      const t = e.touches[0];
+      updatePointer(t.clientX, t.clientY);
     };
 
     const onLeave = () => {
@@ -282,13 +318,29 @@ export function MainPage() {
     observer.observe(root);
 
     window.addEventListener("resize", rebuild, { passive: true });
-    root.addEventListener("mousemove", onMove, { passive: true });
-    root.addEventListener("mouseleave", onLeave, { passive: true });
+    if (supportsPointer) {
+      root.addEventListener("pointermove", onPointerMove, { passive: true });
+      root.addEventListener("pointerleave", onLeave, { passive: true });
+    } else {
+      root.addEventListener("mousemove", onMouseMove, { passive: true });
+      root.addEventListener("mouseleave", onLeave, { passive: true });
+    }
+    root.addEventListener("touchmove", onTouchMove, { passive: true });
+    root.addEventListener("touchend", onLeave, { passive: true });
+    root.addEventListener("touchcancel", onLeave, { passive: true });
 
     return () => {
       window.removeEventListener("resize", rebuild);
-      root.removeEventListener("mousemove", onMove);
-      root.removeEventListener("mouseleave", onLeave);
+      if (supportsPointer) {
+        root.removeEventListener("pointermove", onPointerMove);
+        root.removeEventListener("pointerleave", onLeave);
+      } else {
+        root.removeEventListener("mousemove", onMouseMove);
+        root.removeEventListener("mouseleave", onLeave);
+      }
+      root.removeEventListener("touchmove", onTouchMove);
+      root.removeEventListener("touchend", onLeave);
+      root.removeEventListener("touchcancel", onLeave);
       if (rafId) cancelAnimationFrame(rafId);
       observer.disconnect();
     };
