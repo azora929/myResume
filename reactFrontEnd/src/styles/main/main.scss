@@ -498,36 +498,6 @@
   border-color: rgba(255, 255, 255, 0.35);
 }
 
-.hero__btn--theme {
-  width: 46px;
-  height: 46px;
-  padding: 0;
-}
-
-.hero__btn-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero__btn-icon svg {
-  width: 20px;
-  height: 20px;
-}
-
-.hero__btn-icon--sun {
-  display: none;
-}
-
-@media (prefers-color-scheme: light) {
-  .hero__btn-icon--moon {
-    display: none;
-  }
-
-  .hero__btn-icon--sun {
-    display: inline-flex;
-  }
-}
 
 // —— Плавное появление ключевых блоков внутри секций ——
 .section__inner > * {

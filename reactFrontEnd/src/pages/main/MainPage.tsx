@@ -371,14 +371,6 @@ export function MainPage() {
               <button className="hero__btn hero__btn--pdf" type="button">
                 Выгрузить в PDF резюме
               </button>
-              <button className="hero__btn hero__btn--theme" type="button" aria-label="Сменить тему">
-                <span className="hero__btn-icon hero__btn-icon--moon" aria-hidden="true">
-                  <PIcon name="moon" />
-                </span>
-                <span className="hero__btn-icon hero__btn-icon--sun" aria-hidden="true">
-                  <PIcon name="sun" />
-                </span>
-              </button>
             </div>
           </div>
         </div>
