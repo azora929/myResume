@@ -1,9 +1,10 @@
 import { type ReactNode } from "react";
 import { useInView } from "@/hooks/useInView/useInView";
 
-type SectionVariant =
+export type SectionVariant =
   | "hero"
   | "skills"
+  | "projects"
   | "project-teal"
   | "project-blue"
   | "project-dark"
@@ -13,7 +14,7 @@ type SectionVariant =
   | "education"
   | "languages";
 
-interface SectionProps {
+export interface SectionProps {
   id?: string;
   variant: SectionVariant;
   children: ReactNode;
