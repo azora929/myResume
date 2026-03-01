@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { Section } from "@/components/section/Section";
 import { ProjectsSection } from "@/components/projects/ProjectsSection";
 import { PIcon } from "@/components/icons/PIcon";
+import { FooterPro } from "@/components/footer/FooterPro";
 import "@/styles/main/main.scss";
 
 export function MainPage() {
@@ -32,7 +33,7 @@ export function MainPage() {
       coupling: 0.12,
       damping: 0.92,
       mouseRadius: 120,
-      impulse: 26,
+      impulse: 52,
       curve: 1.2,
       drift: 0.24,
       nodeStep: 12,
@@ -58,7 +59,7 @@ export function MainPage() {
       cfg.coupling = mobile ? 0.1 : 0.12;
       cfg.damping = mobile ? 0.93 : 0.92;
       cfg.mouseRadius = mobile ? 90 : 120;
-      cfg.impulse = mobile ? 20 : 26;
+      cfg.impulse = mobile ? 40 : 52;
       cfg.curve = mobile ? 1.0 : 1.2;
       cfg.drift = mobile ? 0.18 : 0.24;
       cfg.nodeStep = mobile ? 14 : 12;
@@ -358,9 +359,28 @@ export function MainPage() {
           <p className="hero__subtitle">
             Backend, API, стриминг, OpenAI и живой UX в продуктах
           </p>
-          <a href="#skills" className="hero__cta">
-            Смотреть навыки
-          </a>
+          <div className="hero__actions">
+            <a href="#skills" className="hero__cta">
+              <span>Смотреть</span>
+              <span className="hero__cta-icon" aria-hidden="true">
+                <PIcon name="arrow-down" />
+              </span>
+            </a>
+
+            <div className="hero__actions-right">
+              <button className="hero__btn hero__btn--pdf" type="button">
+                Выгрузить в PDF резюме
+              </button>
+              <button className="hero__btn hero__btn--theme" type="button" aria-label="Сменить тему">
+                <span className="hero__btn-icon hero__btn-icon--moon" aria-hidden="true">
+                  <PIcon name="moon" />
+                </span>
+                <span className="hero__btn-icon hero__btn-icon--sun" aria-hidden="true">
+                  <PIcon name="sun" />
+                </span>
+              </button>
+            </div>
+          </div>
         </div>
       </Section>
 
@@ -378,7 +398,7 @@ export function MainPage() {
                 <span className="dot" aria-hidden="true"></span>
                 Skills
               </p>
-              <h2 className="content-section__title skillsPro__title">Навыки и сильные стороны</h2>
+              <h2 className="content-section__title skillsPro__title">Skills & Strengths</h2>
               <p className="skillsPro__subtitle">
                 Backend, API, стриминг (WS/SSE), OpenAI и “живой” UX в продуктах.
               </p>
@@ -390,7 +410,7 @@ export function MainPage() {
                   <PIcon name="spark" />
                 </span>
                 <div>
-                  <h3 className="sCard__title">Про подход</h3>
+                  <h3 className="sCard__title">Approach</h3>
                   <p className="sCard__desc">Надёжный backend + аккуратный продуктовый UX</p>
                 </div>
               </div>
@@ -538,7 +558,7 @@ export function MainPage() {
                     <PIcon name="education" />
                   </span>
                   <div>
-                    <h3 className="sCard__title">Образование</h3>
+                    <h3 className="sCard__title">Education</h3>
                     <p className="sCard__desc">База + продолжаю учиться</p>
                   </div>
                 </div>
@@ -555,7 +575,7 @@ export function MainPage() {
                     <PIcon name="globe" />
                   </span>
                   <div>
-                    <h3 className="sCard__title">Языки</h3>
+                    <h3 className="sCard__title">Languages</h3>
                     <p className="sCard__desc">Коммуникация</p>
                   </div>
                 </div>
@@ -575,6 +595,12 @@ export function MainPage() {
       </div>
 
       <ProjectsSection />
+
+      <div className="section-aurora-divider" aria-hidden="true">
+        <div className="section-aurora-divider__band"></div>
+      </div>
+
+      <FooterPro />
     </main>
   );
 }

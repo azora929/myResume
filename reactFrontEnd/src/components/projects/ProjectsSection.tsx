@@ -37,6 +37,12 @@ export function ProjectsSection() {
             <LunaSlide />
             <CrmNbkiSlide />
           </div>
+          <button className="projectsPro__nav projectsPro__nav--prev" type="button" aria-label="Предыдущий слайд">
+            <span className="projectsPro__arrow" aria-hidden="true">‹</span>
+          </button>
+          <button className="projectsPro__nav projectsPro__nav--next" type="button" aria-label="Следующий слайд">
+            <span className="projectsPro__arrow" aria-hidden="true">›</span>
+          </button>
         </div>
       </div>
     </Section>

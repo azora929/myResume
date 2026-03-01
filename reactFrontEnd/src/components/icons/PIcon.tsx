@@ -14,7 +14,13 @@ type PIconName =
   | "rocket"
   | "moon"
   | "doc"
-  | "grid";
+  | "grid"
+  | "mail"
+  | "telegram"
+  | "arrow"
+  | "shield"
+  | "arrow-down"
+  | "sun";
 
 interface PIconProps {
   name: PIconName;
@@ -140,9 +146,10 @@ export function PIcon({ name }: PIconProps) {
       return (
         <svg {...common}>
           <path
-            d="M21 14.5A7.5 7.5 0 0 1 9.5 3 6.5 6.5 0 1 0 21 14.5z"
+            d="M16.5 3.5a8.5 8.5 0 1 0 4 13.3A7 7 0 1 1 16.5 3.5z"
             stroke="currentColor"
             strokeWidth="2"
+            strokeLinecap="round"
             strokeLinejoin="round"
           />
         </svg>
@@ -162,6 +169,57 @@ export function PIcon({ name }: PIconProps) {
           <path d="M13 4h7v7h-7V4z" stroke="currentColor" strokeWidth="2" />
           <path d="M4 13h7v7H4v-7z" stroke="currentColor" strokeWidth="2" />
           <path d="M13 13h7v7h-7v-7z" stroke="currentColor" strokeWidth="2" />
+        </svg>
+      );
+    case "mail":
+      return (
+        <svg {...common}>
+          <path d="M4 6h16v12H4V6z" stroke="currentColor" strokeWidth="2" />
+          <path d="M4 7l8 6 8-6" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+        </svg>
+      );
+    case "telegram":
+      return (
+        <svg {...common}>
+          <path
+            d="M4 12l16-7-4 14-5-4-3 3 1-5 7-5-9 4z"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "arrow":
+      return (
+        <svg {...common}>
+          <path d="M5 12h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <path d="M13 7l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+        </svg>
+      );
+    case "arrow-down":
+      return (
+        <svg {...common}>
+          <path d="M12 5v12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <path d="M7 13l5 5 5-5" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+        </svg>
+      );
+    case "shield":
+      return (
+        <svg {...common}>
+          <path
+            d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinejoin="round"
+          />
+          <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      );
+    case "sun":
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2" />
+          <path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         </svg>
       );
     default:
