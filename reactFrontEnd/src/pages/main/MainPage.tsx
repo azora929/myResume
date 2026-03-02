@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Section } from "@/components/section/Section";
 import { ProjectsSection } from "@/components/projects/ProjectsSection";
 import { PIcon } from "@/components/icons/PIcon";
@@ -8,6 +8,8 @@ import "@/styles/main/main.scss";
 export function MainPage() {
   const skillsRef = useRef<HTMLDivElement>(null);
   const skillsSvgRef = useRef<SVGSVGElement>(null);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [downloadError, setDownloadError] = useState("");
 
   useEffect(() => {
     const root = skillsRef.current;
@@ -347,6 +349,32 @@ export function MainPage() {
     };
   }, []);
 
+  const handlePdfDownload = async () => {
+    if (isDownloading) return;
+    setDownloadError("");
+    setIsDownloading(true);
+
+    try {
+      const response = await fetch("/api/pdf");
+      if (!response.ok) {
+        throw new Error("PDF generation failed");
+      }
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "resume.pdf";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    } catch {
+      setDownloadError("Не удалось создать PDF. Попробуйте ещё раз.");
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+
   return (
     <main className="main-page">
       <Section id="hero" variant="hero">
@@ -368,9 +396,16 @@ export function MainPage() {
             </a>
 
             <div className="hero__actions-right">
-              <button className="hero__btn hero__btn--pdf" type="button">
-                Выгрузить в PDF резюме
+              <button
+                className="hero__btn hero__btn--pdf"
+                type="button"
+                onClick={handlePdfDownload}
+                disabled={isDownloading}
+                aria-busy={isDownloading}
+              >
+                {isDownloading ? "Готовим PDF..." : "Выгрузить в PDF резюме"}
               </button>
+              {downloadError ? <p className="hero__download-error">{downloadError}</p> : null}
             </div>
           </div>
         </div>

@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume — Template C</title>
+  <style>
+    @page { size: A4; margin: 15mm; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #fff; color: #0b1220; font: 12px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+
+    .i { width: 14px; height: 14px; vertical-align: -2px; }
+    .i-lg { width: 16px; height: 16px; vertical-align: -3px; }
+
+    .sheet { border: 1px solid #e5e7eb; padding: 14px 14px 12px; }
+
+    .head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: start;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #0b1220;
+    }
+    .head h1 { margin: 0; font-size: 20px; font-weight: 900; letter-spacing: -0.02em; }
+    .head .pos { margin: 4px 0 0; color: #374151; font-size: 12px; }
+    .head .right { text-align: right; font-size: 11.5px; color: #111827; }
+    .head a { color: inherit; text-decoration: none; border-bottom: 1px solid #9ca3af; }
+
+    .sec { margin-top: 12px; break-inside: avoid; page-break-inside: avoid; }
+    .sec-h {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 12px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+      margin-bottom: 10px;
+    }
+    .label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #374151;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+    }
+    .desc { margin: 0; color: #111827; font-weight: 750; letter-spacing: -0.01em; }
+
+    .text p { margin: 0 0 10px; }
+    .text p:last-child { margin-bottom: 0; }
+
+    .row { border: 1px solid #e5e7eb; padding: 10px 10px 8px; }
+    .row + .row { margin-top: 10px; }
+
+    .row-top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: start;
+      margin-bottom: 6px;
+    }
+    .row h3 { margin: 0; font-size: 13px; font-weight: 900; letter-spacing: -0.01em; }
+    .url { font-size: 11px; white-space: nowrap; color: #111827; text-decoration: none; border-bottom: 1px solid #9ca3af; }
+    .meta { margin: 0 0 8px; color: #374151; font-size: 11px; }
+    .meta b { color: #0b1220; }
+
+    ul { margin: 0; padding-left: 0; list-style: none; }
+    li { position: relative; padding-left: 16px; margin: 0 0 6px; color: #111827; }
+    li::before { content: ""; position: absolute; left: 0; top: 0.58em; width: 8px; height: 2px; background: #0b1220; }
+
+    .cols { columns: 2; column-gap: 18px; }
+    .cols li { break-inside: avoid; }
+
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .small { font-size: 11px; color: #374151; }
+
+    .hire {
+      border: 2px solid #0b1220;
+      padding: 10px 10px 8px;
+      margin-top: 10px;
+    }
+    .hire h4 { margin: 0 0 6px; font-size: 12.5px; font-weight: 900; display:flex; gap:8px; align-items:center; }
+    .hire p { margin: 0; color: #111827; }
+
+    .foot { margin-top: 12px; padding-top: 8px; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; font-size: 10.5px; color: #4b5563; }
+  </style>
+</head>
+
+<body>
+  <svg width="0" height="0" style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true" focusable="false">
+    <symbol id="i-mail" viewBox="0 0 24 24">
+      <path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2"/>
+    </symbol>
+    <symbol id="i-tg" viewBox="0 0 24 24">
+      <path d="M21 5L3.8 11.6c-.6.2-.6 1 0 1.2l4.2 1.3 1.6 4.9c.2.6 1 .6 1.2 0l2.2-3.2 4.4 3.2c.4.3 1 .1 1.1-.4L22 5.9c.1-.6-.5-1.1-1-.9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M8 14l12-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24">
+      <path d="M12 3l8 4v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24">
+      <path d="M14 3c4 1 7 4 7 8-2 1-5 1-8-1L6 17l-3 1 1-3 7-7C9 5 10 2 14 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M9 15l-2 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-stack" viewBox="0 0 24 24">
+      <path d="M12 3l9 5-9 5-9-5 9-5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M3 12l9 5 9-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M3 16l9 5 9-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <div class="sheet">
+    <header class="head">
+      <div>
+        <h1>Дремин Александр</h1>
+        <p class="pos">Middle Python Developer (Backend-first) — AI/LLM Integrations</p>
+      </div>
+      <div class="right">
+        <div><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg> <a href="mailto:dreminaleksandr06@gmail.com">dreminaleksandr06@gmail.com</a></div>
+        <div><svg class="i" aria-hidden="true"><use href="#i-tg"/></svg> <a href="https://t.me/azora929">t.me/azora929</a> <span class="small">(@azora929)</span></div>
+      </div>
+    </header>
+
+    <section class="sec">
+      <div class="sec-h">
+        <p class="label"><svg class="i-lg" aria-hidden="true"><use href="#i-shield"/></svg> Summary</p>
+        <p class="desc">Инженерный backend, streaming-UX и LLM-интеграции без сюрпризов на проде</p>
+      </div>
+
+      <div class="text">
+        <p>
+          Я backend-ориентированный Python-разработчик с опытом продуктовой стартапной разработки “под заказчика”. Быстро довожу MVP до продового качества:
+          <b>контракты, валидация, ошибки, ретраи, логи</b> — чтобы система работала предсказуемо и переживала реальные условия.
+        </p>
+        <p>
+          Сильная сторона — задачи на стыке <b>backend + AI/LLM</b>, где важны скорость и стабильность. Я умею делать <b>streaming-ответы (WS/SSE)</b> так,
+          чтобы пользователь видел результат постепенно, а не ждал “в тишине”. Это сразу повышает конверсию и ощущение качества продукта.
+        </p>
+      </div>
+
+      <div class="hire">
+        <h4><svg class="i-lg" aria-hidden="true"><use href="#i-rocket"/></svg> Почему со мной проще и быстрее</h4>
+        <p>
+          Я закрываю “болевые” зоны: интеграции, платежи, LLM-потоки, крайние случаи, стабильность под нагрузкой.
+          В итоге команда меньше тушит пожары и больше делает фичи.
+        </p>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="sec-h">
+        <p class="label"><svg class="i-lg" aria-hidden="true"><use href="#i-stack"/></svg> Stack</p>
+        <p class="desc">Технологии и практики</p>
+      </div>
+
+      <div class="split">
+        <div class="row">
+          <h3 style="margin:0 0 8px;">Backend & Data</h3>
+          <ul class="cols">
+            <li>Python (async/await)</li>
+            <li>FastAPI / Django</li>
+            <li>REST API, контракты, валидация</li>
+            <li>PostgreSQL (индексы/оптимизация)</li>
+            <li>Redis</li>
+            <li>SQLAlchemy</li>
+            <li>gRPC, микросервисы</li>
+            <li>Ретраи, ошибки, логирование</li>
+          </ul>
+        </div>
+
+        <div class="row">
+          <h3 style="margin:0 0 8px;">AI / Streaming / Delivery</h3>
+          <ul class="cols">
+            <li>OpenAI Assistants API</li>
+            <li>threads/runs, context mgmt</li>
+            <li>Custom tools для ассистентов</li>
+            <li>WebSocket / SSE</li>
+            <li>Background jobs / scheduler</li>
+            <li>Playwright: HTML→PDF</li>
+            <li>React/Vite (интеграция, UI-состояния)</li>
+            <li>Docker, CI/CD, Kubernetes (base)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="sec-h">
+        <p class="label"><svg class="i-lg" aria-hidden="true"><use href="#i-brief"/></svg> Projects</p>
+        <p class="desc">Кейсы и эффект</p>
+      </div>
+
+      <article class="row">
+        <div class="row-top">
+          <h3>EvoSpeak / Yespeak — платформа обучения языкам</h3>
+          <a class="url" href="https://yespeak.ru">yespeak.ru</a>
+        </div>
+        <p class="meta"><b>Роль:</b> Fullstack Developer · <b>Стек:</b> Django, PostgreSQL, Assistants API, WebSocket, Redis, React/Vite</p>
+        <ul class="cols">
+          <li>API-контракты и интеграции</li>
+          <li>Streaming через WebSocket</li>
+          <li>Assistants API + tools</li>
+          <li>Два ассистента: диалог + параллельная генерация</li>
+          <li>YooKassa + webhooks</li>
+          <li>Подписка + разовая покупка</li>
+        </ul>
+      </article>
+
+      <article class="row">
+        <div class="row-top">
+          <h3>ИИ Препод — AI-платформа обучения</h3>
+          <a class="url" href="https://iiprepod.ru">iiprepod.ru</a>
+        </div>
+        <p class="meta"><b>Стек:</b> Django, PostgreSQL, OpenAI API, SSE, YooKassa, курс ЦБ РФ</p>
+        <ul class="cols">
+          <li>Streaming через SSE</li>
+          <li>Токен-биллинг USD→RUB + наценка по курсу ЦБ</li>
+          <li>Баланс + овердрафт</li>
+          <li>~300–400 ₽ за урок; пики до ~1000 пользователей</li>
+          <li>Публикации в СМИ</li>
+        </ul>
+      </article>
+
+      <article class="row">
+        <div class="row-top">
+          <h3>Луна Знает — Telegram-бот с LLM + монетизация</h3>
+          <a class="url" href="https://t.me/Luna_knowbot">t.me/Luna_knowbot</a>
+        </div>
+        <p class="meta"><b>Стек:</b> async/await, Assistants API, FastAPI, Redis, Playwright, YooKassa</p>
+        <ul class="cols">
+          <li>Асинхронная архитектура</li>
+          <li>PDF через Playwright (HTML→PDF)</li>
+          <li>Оплата: YooKassa + Telegram invoices</li>
+          <li>Timezone-aware подписки</li>
+        </ul>
+      </article>
+
+      <article class="row">
+        <div class="row-top">
+          <h3>CRM + НБКИ (PDF→JSON)</h3>
+          <span class="small">cases</span>
+        </div>
+        <p class="meta"><b>Стек:</b> FastAPI, PostgreSQL, SQLAlchemy, gRPC, React/Vite · Telegram-бот, regex</p>
+        <ul class="cols">
+          <li>CRM: сервисы + gRPC, UI-состояния</li>
+          <li>НБКИ: PDF → JSON + сводка</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="sec">
+      <div class="sec-h">
+        <p class="label">Education & Languages</p>
+        <p class="desc">База и коммуникация</p>
+      </div>
+
+      <div class="split">
+        <div class="row">
+          <h3 style="margin:0 0 8px;">Образование</h3>
+          <ul>
+            <li>СПО: 09.02.07 «Информационные системы и программирование» — красный диплом</li>
+            <li>Высшее образование: в процессе (не IT-направление)</li>
+          </ul>
+        </div>
+
+        <div class="row">
+          <h3 style="margin:0 0 8px;">Языки</h3>
+          <ul>
+            <li>Русский — родной</li>
+            <li>Английский — B1</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="foot">
+      <div>© Дремин Александр</div>
+      <div>PDF template C</div>
+    </div>
+  </div>
+</body>
+</html>

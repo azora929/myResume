@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume — Template B</title>
+  <style>
+    @page { size: A4; margin: 16mm; }
+    * { box-sizing: border-box; }
+    body { margin:0; color:#111827; font:12px/1.55 ui-serif, Georgia, "Times New Roman", Times, serif; background:#fff; }
+
+    .i { width: 14px; height: 14px; vertical-align: -2px; }
+    .i-lg { width: 16px; height: 16px; vertical-align: -3px; }
+
+    .header {
+      border-bottom: 2px solid #111827;
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: end;
+    }
+    .h-name {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 750;
+      letter-spacing: -0.02em;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    .h-role {
+      margin: 4px 0 0;
+      font-size: 12px;
+      color: #374151;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    .contacts {
+      text-align: right;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 11px;
+      color: #111827;
+    }
+    .contacts a { color: inherit; text-decoration: none; border-bottom: 1px solid #9ca3af; }
+    .contacts .muted { color: #4b5563; }
+
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap:14px 16px; align-items:start; }
+    .panel { border:1px solid #e5e7eb; padding:12px 12px 10px; }
+    .sec-h {
+      margin: 0 0 8px;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #374151;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #e5e7eb;
+      display:flex; gap:8px; align-items:center;
+    }
+
+    .p { margin:0 0 10px; }
+    ul { margin:0; padding-left:16px; }
+    li { margin:0 0 6px; }
+
+    .proj { break-inside: avoid; page-break-inside: avoid; margin-top:10px; padding-top:10px; border-top:1px solid #e5e7eb; }
+    .proj:first-child { margin-top:0; padding-top:0; border-top:none; }
+    .proj-title {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .proj-meta {
+      margin: 4px 0 8px;
+      font-size: 11px;
+      color: #374151;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    .proj-meta b { color:#111827; }
+    .link { color: inherit; text-decoration: none; border-bottom: 1px solid #9ca3af; }
+
+    .full { grid-column: 1 / -1; }
+
+    .callout {
+      border: 1px solid #e5e7eb;
+      padding: 10px;
+      margin-top: 10px;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      color:#111827;
+    }
+    .callout b { font-weight: 800; }
+
+    .foot {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 10.5px;
+      color: #4b5563;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- sprite (тот же набор, минимально нужное) -->
+  <svg width="0" height="0" style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true" focusable="false">
+    <symbol id="i-mail" viewBox="0 0 24 24">
+      <path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2"/>
+    </symbol>
+    <symbol id="i-tg" viewBox="0 0 24 24">
+      <path d="M21 5L3.8 11.6c-.6.2-.6 1 0 1.2l4.2 1.3 1.6 4.9c.2.6 1 .6 1.2 0l2.2-3.2 4.4 3.2c.4.3 1 .1 1.1-.4L22 5.9c.1-.6-.5-1.1-1-.9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M8 14l12-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24">
+      <path d="M12 3l8 4v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-stack" viewBox="0 0 24 24">
+      <path d="M12 3l9 5-9 5-9-5 9-5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M3 12l9 5 9-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M3 16l9 5 9-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-brief" viewBox="0 0 24 24">
+      <path d="M8 7V5h8v2" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M4 7h16v13H4z" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M4 12h16" fill="none" stroke="currentColor" stroke-width="2"/>
+    </symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24">
+      <path d="M12 3l10 5-10 5L2 8l10-5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M6 10v6c0 1 3 3 6 3s6-2 6-3v-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24">
+      <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M3 12h18" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 3c3 3 3 15 0 18" fill="none" stroke="currentColor" stroke-width="2"/>
+    </symbol>
+  </svg>
+
+  <header class="header">
+    <div>
+      <h1 class="h-name">Дремин Александр</h1>
+      <p class="h-role">Middle Python Developer (Backend-first) — AI/LLM Integrations</p>
+    </div>
+    <div class="contacts">
+      <div><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg> <a href="mailto:dreminaleksandr06@gmail.com">dreminaleksandr06@gmail.com</a></div>
+      <div><svg class="i" aria-hidden="true"><use href="#i-tg"/></svg> <a href="https://t.me/azora929">t.me/azora929</a> <span class="muted">(@azora929)</span></div>
+    </div>
+  </header>
+
+  <div class="grid">
+    <section class="panel">
+      <h2 class="sec-h"><svg class="i-lg" aria-hidden="true"><use href="#i-shield"/></svg> Профиль</h2>
+      <p class="p">
+        Я backend-ориентированный Python-разработчик. Делаю так, чтобы серверная часть была <b>надёжной</b>, интеграции — <b>предсказуемыми</b>, а продуктовые AI-фичи — <b>быстрыми</b> и “живыми” для пользователя.
+      </p>
+      <p class="p">
+        Особенно силён в задачах, где важны <b>streaming-ответы</b> (WebSocket/SSE), корректные состояния ошибок/ретраев и отсутствие “тихих” падений. Люблю, когда система выдерживает реальную нагрузку и не разваливается на краях.
+      </p>
+
+      <div class="callout">
+        <b>Ценность для команды:</b> быстрее выпускать фичи без накопления техдолга, снижать риски на проде и улучшать UX за счёт правильных API и streaming-механик.
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2 class="sec-h"><svg class="i-lg" aria-hidden="true"><use href="#i-stack"/></svg> Стек и практики</h2>
+      <ul>
+        <li>Python (async/await), FastAPI, Django, aiohttp</li>
+        <li>REST API: контракты, валидация, интеграции, устойчивость</li>
+        <li>Streaming: WebSocket, SSE</li>
+        <li>PostgreSQL, Redis, SQLAlchemy, индексы/оптимизация</li>
+        <li>OpenAI Assistants API: threads/runs, context mgmt, custom tools</li>
+        <li>Background jobs / scheduler (timezone-aware)</li>
+        <li>gRPC, микросервисы; Playwright: HTML→PDF</li>
+        <li>Docker, Kubernetes (base), CI/CD, pytest</li>
+      </ul>
+    </section>
+
+    <section class="panel full">
+      <h2 class="sec-h"><svg class="i-lg" aria-hidden="true"><use href="#i-brief"/></svg> Проекты</h2>
+
+      <div class="proj">
+        <p class="proj-title">EvoSpeak / Yespeak — платформа обучения языкам с помощью нейросети</p>
+        <p class="proj-meta">
+          <b>Ссылка:</b> <a class="link" href="https://yespeak.ru">yespeak.ru</a> ·
+          <b>Роль:</b> Fullstack Developer ·
+          <b>Стек:</b> Django, PostgreSQL, Assistants API, WebSocket, Redis, React/Vite
+        </p>
+        <ul>
+          <li>API-контракты и интеграции backend ↔ frontend</li>
+          <li>Streaming через WebSocket: результат “здесь и сейчас”</li>
+          <li>Assistants API + tools: контекст, жизненный цикл run</li>
+          <li>Два ассистента: диалог + параллельная генерация упражнений → ускорение выдачи</li>
+          <li>YooKassa + webhooks; подписка + разовая покупка блока уроков</li>
+        </ul>
+      </div>
+
+      <div class="proj">
+        <p class="proj-title">ИИ Препод — образовательная платформа с AI-функциями</p>
+        <p class="proj-meta">
+          <b>Ссылка:</b> <a class="link" href="https://iiprepod.ru">iiprepod.ru</a> ·
+          <b>Роль:</b> Fullstack Developer ·
+          <b>Стек:</b> Django, PostgreSQL, OpenAI API, SSE, YooKassa, курс ЦБ РФ, React/Vite
+        </p>
+        <ul>
+          <li>Streaming через SSE</li>
+          <li>Токен-биллинг: USD→RUB + наценка по курсу ЦБ РФ, расчёт on-the-fly</li>
+          <li>Баланс + овердрафт и ограничения доступа</li>
+          <li>YooKassa + webhooks; пики до ~1000 пользователей; ~300–400 ₽ за урок</li>
+          <li>Публикации: CNews, Hi-Tech Mail.ru, 3DNews</li>
+        </ul>
+      </div>
+
+      <div class="proj">
+        <p class="proj-title">Луна Знает — Telegram-бот с LLM + монетизация</p>
+        <p class="proj-meta"><b>Ссылка:</b> <a class="link" href="https://t.me/Luna_knowbot">t.me/Luna_knowbot</a> · <b>Стек:</b> async/await, Assistants API, FastAPI, Redis, Playwright, YooKassa</p>
+        <ul>
+          <li>Асинхронная архитектура, быстрые ответы</li>
+          <li>Tools + PDF (Playwright HTML→PDF), платежи (Telegram invoices)</li>
+          <li>Timezone-aware подписки и расписание</li>
+        </ul>
+      </div>
+
+      <div class="proj">
+        <p class="proj-title">CRM / статистика + НБКИ PDF→JSON</p>
+        <p class="proj-meta"><b>Стек:</b> FastAPI, PostgreSQL, SQLAlchemy, gRPC, React/Vite · Telegram-бот, PDF-парсинг, regex</p>
+        <ul>
+          <li>CRM: сервисы + gRPC, UI на React/Vite</li>
+          <li>НБКИ: PDF → структурированный JSON + короткая сводка</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2 class="sec-h"><svg class="i-lg" aria-hidden="true"><use href="#i-cap"/></svg> Образование</h2>
+      <ul>
+        <li>СПО: 09.02.07 «Информационные системы и программирование» — красный диплом</li>
+        <li>Высшее образование: в процессе (не IT-направление)</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2 class="sec-h"><svg class="i-lg" aria-hidden="true"><use href="#i-globe"/></svg> Языки</h2>
+      <ul>
+        <li>Русский — родной</li>
+        <li>Английский — B1</li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="foot">
+    <div>© Дремин Александр</div>
+    <div>PDF template B</div>
+  </div>
+</body>
+</html>

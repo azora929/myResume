@@ -467,11 +467,9 @@
 }
 
 .hero__actions-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
 }
 
 .hero__btn {
@@ -493,6 +491,17 @@
 .hero__btn:hover {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.35);
+}
+
+.hero__btn:disabled {
+  opacity: 0.65;
+  cursor: progress;
+}
+
+.hero__download-error {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #fbbf24;
 }
 
 
