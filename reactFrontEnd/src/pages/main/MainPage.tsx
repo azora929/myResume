@@ -3,6 +3,7 @@ import { Section } from "@/components/section/Section";
 import { ProjectsSection } from "@/components/projects/ProjectsSection";
 import { PIcon } from "@/components/icons/PIcon";
 import { FooterPro } from "@/components/footer/FooterPro";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 import "@/styles/main/main.scss";
 
 export function MainPage() {
@@ -628,6 +629,7 @@ export function MainPage() {
       </div>
 
       <FooterPro />
+      <ChatWidget />
     </main>
   );
 }
