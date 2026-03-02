@@ -1,3 +1,5 @@
+import sys
+from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -8,7 +10,29 @@ from starlette.responses import FileResponse, Response
 
 from router import ApiRouter
 
-app = FastAPI(title="myResume API")
+
+def _check_grpc_on_startup():
+    """Пинг gRPC-сервера бота. Без ответа FastAPI не запускается."""
+    try:
+        webapp_root = Path(__file__).resolve().parent
+        if str(webapp_root) not in sys.path:
+            sys.path.insert(0, str(webapp_root))
+        from grpc_offer.client import ping
+        if not ping():
+            print("Ошибка: gRPC-сервер бота не ответил на Ping. Запустите бота (bot/bot.py) и повторите.")
+            sys.exit(1)
+    except Exception as e:
+        print(f"Ошибка при проверке gRPC: {e}. Запустите бота (bot/bot.py) и повторите.")
+        sys.exit(1)
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    _check_grpc_on_startup()
+    yield
+
+
+app = FastAPI(title="myResume API", lifespan=lifespan)
 app.include_router(ApiRouter().router)
 
 # Корень проекта и папка со сборкой фронта

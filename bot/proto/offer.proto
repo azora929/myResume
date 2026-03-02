@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package offer;
+
+// Сервис уведомления об оффере с сайта-резюме.
+service OfferNotify {
+  rpc Ping(PingRequest) returns (PingResponse);
+  rpc NotifyOffer(OfferRequest) returns (OfferResponse);
+}
+
+message PingRequest {}
+
+message PingResponse {
+  bool ok = 1;
+}
+
+message OfferRequest {
+  string salary_range = 1;  // зарплатная вилка
+  string contacts = 2;      // куда писать
+  string company = 3;        // компания
+  string comment = 4;        // необязательный комментарий
+}
+
+message OfferResponse {
+  bool success = 1;
+  string message = 2;
+}

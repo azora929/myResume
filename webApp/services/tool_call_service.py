@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import logging
+import sys
 from pathlib import Path
 
 REQUIRED_OFFER_FIELDS = {
@@ -46,13 +48,27 @@ def handle_offer_tool(arguments: str) -> str:
     if comment:
         offer["comment"] = comment
 
+    # Всегда сохраняем в JSON (на всякий случай)
     try:
         offers_dir = Path(__file__).resolve().parent.parent / "data" / "offers"
         offers_dir.mkdir(parents=True, exist_ok=True)
         offer_file = offers_dir / "offers.jsonl"
         with open(offer_file, "a", encoding="utf-8") as f:
             f.write(json.dumps(offer, ensure_ascii=False) + "\n")
-    except Exception:
-        return "Не удалось сохранить оффер. Попросите работодателя повторить позже."
+    except Exception as e:
+        logging.warning("Failed to save offer to JSON: %s", e)
+
+    # Отправка оффера в бот по gRPC (бот шлёт сообщение в Telegram)
+    try:
+        _webapp_root = Path(__file__).resolve().parent.parent
+        if str(_webapp_root) not in sys.path:
+            sys.path.insert(0, str(_webapp_root))
+        from grpc_offer.client import notify_offer
+
+        ok, msg = notify_offer(salary, contacts, company, comment)
+        if not ok:
+            logging.warning("gRPC notify_offer failed: %s", msg)
+    except Exception as e:
+        logging.warning("gRPC offer notify error: %s", e)
 
     return "Оффер принят и отправлен кандидату. Кандидат получит его и свяжется по указанным контактам."
