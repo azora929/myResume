@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PIcon } from "@/components/icons/PIcon";
 
 type ChatRole = "user" | "assistant";
@@ -12,12 +12,31 @@ interface ChatApiResponse {
   reply: string;
 }
 
-export function ChatWidget() {
-  const [isOpen, setIsOpen] = useState(false);
+interface ChatWidgetProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
+  const loadingPhrases: string[] = [
+    "Думаю, как лучше рассказать о кандидате…",
+    "Собираю факты по резюме Александра…",
+    "Проверяю проекты и стек, чтобы ответ был по делу…",
+    "Смотрю, чем можно зацепить тимлида…",
+    "Подбираю формулировки без лишней воды…",
+    "Сравниваю опыт с типичными задачами в продакшене…",
+    "Аккуратно формирую ответ для работодателя…",
+    "Собираю краткое, но ёмкое описание…",
+    "Сфокусировался на сильных сторонах и кейсах…",
+    "Думаю, как ответить так, чтобы захотелось созвониться…",
+  ];
+
   const [history, setHistory] = useState<ChatTurn[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [loadingIndex, setLoadingIndex] = useState(0);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!isOpen) {
@@ -29,6 +48,26 @@ export function ChatWidget() {
       document.body.classList.remove("chat-open");
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setLoadingIndex(0);
+      return;
+    }
+
+    const id = window.setInterval(() => {
+      setLoadingIndex((prev) => (prev + 1) % loadingPhrases.length);
+    }, 1400);
+
+    return () => {
+      window.clearInterval(id);
+    };
+  }, [isLoading, loadingPhrases.length]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [history.length, isLoading, isOpen]);
 
   const handleSend = async (event?: React.FormEvent) => {
     event?.preventDefault();
@@ -60,8 +99,8 @@ export function ChatWidget() {
         return;
       }
 
-      setHistory((prev) => {
-        const updated = [...prev, { role: "assistant", content: reply }];
+      setHistory((prev: ChatTurn[]) => {
+        const updated: ChatTurn[] = [...prev, { role: "assistant", content: reply }];
         return updated.slice(-40);
       });
     } catch {
@@ -71,33 +110,31 @@ export function ChatWidget() {
     }
   };
 
-  return (
-    <>
-      <button className="chat-fab" type="button" onClick={() => setIsOpen(true)} aria-label="Открыть чат">
-        <PIcon name="chat" />
-      </button>
-
-      {isOpen ? (
-        <div className="chat-modal" role="dialog" aria-modal="true" aria-label="Чат с нейросетью">
-          <div className="chat-modal__overlay" onClick={() => setIsOpen(false)}></div>
-          <div className="chat-modal__panel">
-            <div className="chat-modal__header">
-              <div className="chat-modal__title">
-                <PIcon name="chat" />
-                <span>Чат с нейросетью</span>
-              </div>
-              <button className="chat-modal__close" type="button" onClick={() => setIsOpen(false)}>
-                Закрыть
-              </button>
-            </div>
+  return isOpen ? (
+    <div className="chat-modal" role="dialog" aria-modal="true" aria-label="Чат с нейросетью">
+      <div className="chat-modal__overlay" onClick={onClose}></div>
+      <div className="chat-modal__panel">
+        <div className="chat-modal__header">
+          <div className="chat-modal__title">
+            <PIcon name="chat" />
+            <span>Чат с нейросетью</span>
+          </div>
+          <button className="chat-modal__close" type="button" onClick={onClose}>
+            Закрыть
+          </button>
+        </div>
 
             <div className="chat-modal__body">
               <div className="chat-modal__messages">
                 {history.length === 0 ? (
-                  <p className="chat-modal__note">
-                    Здесь можно задать вопрос про резюме Александра. Чат использует историю диалога и продаёт кандидата
-                    работодателю.
-                  </p>
+                  <div className="chat-placeholder">
+                    <div className="chat-placeholder__icon">
+                      <PIcon name="chat" />
+                    </div>
+                    <p className="chat-placeholder__text">
+                      Здесь можно задать вопрос про резюме Александра: опыт, проекты, стек или сильные стороны.
+                    </p>
+                  </div>
                 ) : (
                   history.map((turn, idx) => (
                     <div key={idx} className={`chat-message chat-message--${turn.role}`}>
@@ -105,7 +142,18 @@ export function ChatWidget() {
                     </div>
                   ))
                 )}
+                {isLoading ? (
+                  <div className="chat-loading">
+                    <div className="chat-loading__typing" aria-hidden="true">
+                      <span className="chat-placeholder__dot"></span>
+                      <span className="chat-placeholder__dot"></span>
+                      <span className="chat-placeholder__dot"></span>
+                    </div>
+                    <p className="chat-loading__text">{loadingPhrases[loadingIndex]}</p>
+                  </div>
+                ) : null}
                 {error ? <p className="chat-modal__error">{error}</p> : null}
+                <div ref={messagesEndRef} aria-hidden="true" />
               </div>
             </div>
 
@@ -124,8 +172,6 @@ export function ChatWidget() {
             </form>
           </div>
         </div>
-      ) : null}
-    </>
-  );
+  ) : null;
 }
 

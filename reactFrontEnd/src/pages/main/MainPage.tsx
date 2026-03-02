@@ -11,6 +11,7 @@ export function MainPage() {
   const skillsSvgRef = useRef<SVGSVGElement>(null);
   const [isDownloading, setIsDownloading] = useState(false);
   const [downloadError, setDownloadError] = useState("");
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   useEffect(() => {
     const root = skillsRef.current;
@@ -406,6 +407,14 @@ export function MainPage() {
               >
                 {isDownloading ? "Готовим PDF..." : "Выгрузить в PDF резюме"}
               </button>
+              <button
+                className="hero__btn hero__btn--chat"
+                type="button"
+                onClick={() => setIsChatOpen(true)}
+                aria-label="Открыть чат с нейросетью"
+              >
+                <PIcon name="chat" />
+              </button>
               {downloadError ? <p className="hero__download-error">{downloadError}</p> : null}
             </div>
           </div>
@@ -629,7 +638,7 @@ export function MainPage() {
       </div>
 
       <FooterPro />
-      <ChatWidget />
+      <ChatWidget isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
     </main>
   );
 }
