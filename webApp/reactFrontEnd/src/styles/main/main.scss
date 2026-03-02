@@ -748,6 +748,30 @@ body.chat-open {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom-left-radius: 6px;
+
+  p {
+    margin: 0 0 0.5em;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  ul, ol {
+    margin: 0.35em 0;
+    padding-left: 1.25em;
+  }
+  li {
+    margin-bottom: 0.2em;
+  }
+  strong, b {
+    font-weight: 600;
+  }
+  a {
+    color: rgba(103, 232, 249, 0.95);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .chat-modal__error {

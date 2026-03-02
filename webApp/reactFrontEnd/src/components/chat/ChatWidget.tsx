@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { PIcon } from "@/components/icons/PIcon";
+import { sanitizeChatHtml } from "@/utils/sanitizeChatHtml";
 
 type ChatRole = "user" | "assistant";
 
@@ -138,7 +139,16 @@ export function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
                 ) : (
                   history.map((turn, idx) => (
                     <div key={idx} className={`chat-message chat-message--${turn.role}`}>
-                      <div className="chat-message__bubble">{turn.content}</div>
+                      {turn.role === "assistant" ? (
+                        <div
+                          className="chat-message__bubble"
+                          dangerouslySetInnerHTML={{
+                            __html: sanitizeChatHtml(turn.content),
+                          }}
+                        />
+                      ) : (
+                        <div className="chat-message__bubble">{turn.content}</div>
+                      )}
                     </div>
                   ))
                 )}
