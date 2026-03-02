@@ -418,6 +418,9 @@ export function MainPage() {
               {downloadError ? <p className="hero__download-error">{downloadError}</p> : null}
             </div>
           </div>
+          <p className="hero__hint">
+            Хотите пообщаться с нейросетью и отправить оффер? Откройте чат и напишите.
+          </p>
         </div>
       </Section>
 

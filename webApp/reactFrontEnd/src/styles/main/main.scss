@@ -516,6 +516,16 @@
   color: #fbbf24;
 }
 
+.hero__hint {
+  margin: 1.25rem 0 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  text-align: center;
+  max-width: 22rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* ===== Chat modal (redesign) ===== */
 body.chat-open {
   overflow: hidden;
