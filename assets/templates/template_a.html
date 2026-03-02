@@ -2,331 +2,478 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Resume — Template A</title>
+  <title>Resume — Teal Executive</title>
   <style>
     @page { size: A4; margin: 14mm; }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      color: #0f172a;
-      font: 12px/1.45 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      background: #ffffff;
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font:12px/1.52 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      color:#0b1220;
+      background:#ffffff;
     }
-    .frame { display: grid; grid-template-columns: 250px 1fr; gap: 16px; }
+
+    :root{
+      --ink:#0b1220;
+      --muted:#42536a;
+      --line:#cdd6e1;
+
+      --paper:#fbf7ef;      /* тёплый */
+      --panel:#ffffff;
+      --accent:#0ea5a4;     /* premium teal */
+      --accent2:#1e3a8a;    /* глубокий синий */
+      --tagbg:#eef7f6;
+      --tagline:#b9c7d6;
+    }
 
     /* icons */
-    .i { width: 14px; height: 14px; vertical-align: -2px; }
-    .i-lg { width: 18px; height: 18px; vertical-align: -4px; }
-    .i-box { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid #cbd5e1; border-radius: 10px; background: #f8fafc; }
-
-    /* sidebar */
-    .side { border: 1px solid #e2e8f0; padding: 14px 14px 12px; }
-    .name { font-size: 18px; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 4px; }
-    .role { font-size: 12px; margin: 0 0 10px; color: #334155; }
-
-    .badge {
-      display: inline-block; border: 1px solid #cbd5e1; padding: 3px 8px; border-radius: 999px;
-      font-size: 11px; margin: 0 6px 6px 0; color: #0f172a; background: #f8fafc; white-space: nowrap;
+    .i{ width:14px; height:14px; vertical-align:-2px; }
+    .i-lg{ width:16px; height:16px; vertical-align:-3px; }
+    .ico{
+      width:30px;height:30px;border:1px solid var(--line);
+      border-radius:10px;background:var(--paper);
+      display:grid;place-items:center;color:var(--accent);
+      flex:0 0 auto;
     }
 
-    .block { margin-top: 12px; }
-    .h {
-      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #334155;
-      margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #e2e8f0;
+    /* page frame */
+    .page{
+      border:2px solid var(--ink);
+      background:var(--paper);
+      padding:12px;
     }
 
-    .kv { display: grid; gap: 8px; }
-    .kv-row { display: grid; grid-template-columns: 18px 1fr; gap: 8px; align-items: start; }
-    .kv a { color: inherit; text-decoration: none; border-bottom: 1px solid #cbd5e1; }
-    .kv a:hover { border-bottom-color: #0f172a; }
-    .k { color: #475569; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; margin: 0; }
-    .v { margin: 2px 0 0; }
-
-    .list { margin: 0; padding: 0 0 0 14px; }
-    .list li { margin: 0 0 6px; }
-
-    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-    .chip { border: 1px solid #cbd5e1; padding: 4px 8px; border-radius: 999px; font-size: 11px; white-space: nowrap; background: #fff; }
-
-    /* main */
-    .main { border: 1px solid #e2e8f0; padding: 14px 14px 12px; }
-    .topline { border-bottom: 2px solid #0f172a; padding-bottom: 8px; margin-bottom: 12px; }
-    .title { margin: 0; font-size: 16px; font-weight: 850; letter-spacing: -0.02em; }
-    .subtitle { margin: 6px 0 0; color: #334155; font-size: 12px; }
-
-    .section { margin-top: 12px; }
-    .sec-h { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #e2e8f0; }
-    .sec-h .t { font-size: 12px; font-weight: 850; letter-spacing: 0.1em; text-transform: uppercase; margin: 0; display:flex; gap:8px; align-items:center; }
-    .sec-h .hint { font-size: 11px; color: #475569; margin: 0; }
-
-    .p { margin: 0 0 8px; }
-    .p strong { font-weight: 800; }
-
-    .highlight {
-      border: 1px solid #e2e8f0;
-      padding: 10px 10px 8px;
-      margin: 10px 0 0;
-      background: #ffffff;
+    .top{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding:10px;
+      border:1px solid var(--ink);
+      background:var(--panel);
     }
-    .highlight h3 { margin: 0 0 6px; font-size: 12.5px; font-weight: 850; letter-spacing: -0.01em; display:flex; gap:8px; align-items:center; }
-    .highlight ul { margin: 0; padding-left: 16px; }
-    .highlight li { margin: 0 0 6px; }
+    .name{ margin:0; font-size:22px; font-weight:900; letter-spacing:-0.02em; }
+    .title{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:650;
+    }
+    .kicker{
+      margin:6px 0 0;
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+    }
+    .tag{
+      font-size:11px;
+      padding:4px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:var(--tagbg);
+      color:var(--ink);
+      white-space:nowrap;
+    }
 
-    .project { border: 1px solid #e2e8f0; padding: 10px 10px 8px; margin: 10px 0 0; }
-    .proj-top { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: start; margin-bottom: 6px; }
-    .proj-name { margin: 0; font-weight: 900; letter-spacing: -0.01em; font-size: 13px; }
-    .proj-link { font-size: 11px; color: #0f172a; text-decoration: none; border-bottom: 1px solid #cbd5e1; white-space: nowrap; }
-    .proj-meta { margin: 0 0 8px; color: #334155; font-size: 11px; }
-    .proj-meta b { color: #0f172a; }
+    .contacts{
+      min-width:240px;
+      border-left:2px solid var(--ink);
+      padding-left:12px;
+    }
+    .c-row{
+      display:flex; gap:8px; align-items:flex-start;
+      margin-bottom:8px;
+      color:var(--ink);
+      font-size:11.5px;
+    }
+    .c-row a{ color:inherit; text-decoration:none; border-bottom:1px solid var(--tagline); }
+    .c-label{
+      font-size:10px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin:0 0 2px;
+    }
 
-    .cols2 { columns: 2; column-gap: 18px; }
-    .cols2 li { break-inside: avoid; }
+    /* section strips */
+    .strip{
+      margin-top:10px;
+      border:1px solid var(--line);
+      background:var(--panel);
+      padding:10px;
+    }
+    .strip-h{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding-bottom:8px;
+      border-bottom:1px solid var(--line);
+      margin-bottom:10px;
+    }
+    .strip-h .left{
+      display:flex; gap:10px; align-items:center;
+    }
+    .strip-title{
+      margin:0;
+      font-size:12px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-weight:900;
+      color:var(--ink);
+    }
+    .strip-note{
+      margin:0;
+      color:var(--muted);
+      font-size:11px;
+    }
 
-    .avoid-break { break-inside: avoid; page-break-inside: avoid; }
-    .footer-note { margin-top: 10px; padding-top: 8px; border-top: 1px solid #e2e8f0; color: #475569; font-size: 10.5px; }
+    /* horizontal cards row */
+    .row{
+      display:flex;
+      gap:10px;
+      align-items:stretch;
+      flex-wrap:wrap;
+    }
+    .card{
+      border:1px solid var(--line);
+      background:var(--panel);
+      padding:10px;
+      min-width: 0;
+      flex: 1 1 220px;
+    }
+    .card-h{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      margin-bottom:8px;
+    }
+    .card h3{
+      margin:0;
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:-0.01em;
+    }
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:11px;
+    }
+    .card .body{ margin-top:8px; color:var(--ink); }
+    .card .body p{ color:var(--ink); font-size:12px; margin:0 0 8px; }
+    .card .body p:last-child{ margin:0; }
+
+    .bul{
+      list-style:none;
+      padding:0; margin:0;
+      display:grid; gap:7px;
+    }
+    .bul li{
+      position:relative;
+      padding-left:14px;
+      color:var(--ink);
+    }
+    .bul li::before{
+      content:"";
+      position:absolute; left:0; top:.62em;
+      width:8px; height:2px;
+      background:var(--accent);
+    }
+
+    /* project cards (stacked) */
+    .projects{
+      display:grid;
+      gap:10px;
+    }
+    .proj{
+      border:1px solid var(--line);
+      background:var(--panel);
+      padding:10px;
+      break-inside:avoid;
+      page-break-inside:avoid;
+    }
+    .proj-top{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:flex-start;
+      border-bottom:1px solid var(--line);
+      padding-bottom:8px;
+      margin-bottom:8px;
+    }
+    .proj-name{
+      margin:0;
+      font-size:14px;
+      font-weight:950;
+      letter-spacing:-0.01em;
+    }
+    .proj-link{
+      font-size:11px;
+      color:var(--ink);
+      text-decoration:none;
+      border-bottom:1px solid var(--tagline);
+      white-space:nowrap;
+    }
+    .meta{
+      margin:0 0 8px;
+      color:var(--muted);
+      font-size:11px;
+    }
+    .meta b{ color:var(--ink); }
+    .chips{
+      display:flex; flex-wrap:wrap; gap:6px;
+      margin:8px 0 0;
+    }
+    .chip{
+      font-size:10.5px;
+      padding:4px 8px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:#fff;
+      color:var(--ink);
+      white-space:nowrap;
+    }
+
+    .footer{
+      margin-top:10px;
+      border:1px solid var(--ink);
+      background:var(--panel);
+      padding:10px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      font-size:10.5px;
+      color:var(--muted);
+    }
+
+    /* helper */
+    .tight{ margin-top:8px; }
   </style>
 </head>
-
 <body>
-  <!-- SVG sprite -->
-  <svg width="0" height="0" style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true" focusable="false">
-    <symbol id="i-mail" viewBox="0 0 24 24">
+  <!-- svg sprite -->
+  <svg width="0" height="0" style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
+    <symbol id="m-mail" viewBox="0 0 24 24">
       <path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="2"/>
       <path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2"/>
     </symbol>
-    <symbol id="i-tg" viewBox="0 0 24 24">
+    <symbol id="m-tg" viewBox="0 0 24 24">
       <path d="M21 5L3.8 11.6c-.6.2-.6 1 0 1.2l4.2 1.3 1.6 4.9c.2.6 1 .6 1.2 0l2.2-3.2 4.4 3.2c.4.3 1 .1 1.1-.4L22 5.9c.1-.6-.5-1.1-1-.9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
       <path d="M8 14l12-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
     </symbol>
-    <symbol id="i-spark" viewBox="0 0 24 24">
-      <path d="M12 2l1.5 6.5L20 10l-6.5 1.5L12 18l-1.5-6.5L4 10l6.5-1.5L12 2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-    </symbol>
-    <symbol id="i-shield" viewBox="0 0 24 24">
+    <symbol id="m-shield" viewBox="0 0 24 24">
       <path d="M12 3l8 4v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
     </symbol>
-    <symbol id="i-rocket" viewBox="0 0 24 24">
+    <symbol id="m-stream" viewBox="0 0 24 24">
+      <path d="M4 8h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M14 5l6 3-6 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M4 16h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M14 13l6 3-6 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="m-stack" viewBox="0 0 24 24">
+      <path d="M12 3l9 5-9 5-9-5 9-5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M3 12l9 5 9-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="m-rocket" viewBox="0 0 24 24">
       <path d="M14 3c4 1 7 4 7 8-2 1-5 1-8-1L6 17l-3 1 1-3 7-7C9 5 10 2 14 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
       <path d="M9 15l-2 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
     </symbol>
-    <symbol id="i-stack" viewBox="0 0 24 24">
-      <path d="M12 3l9 5-9 5-9-5 9-5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-      <path d="M3 12l9 5 9-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-      <path d="M3 16l9 5 9-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-    </symbol>
-    <symbol id="i-brief" viewBox="0 0 24 24">
-      <path d="M8 7V5h8v2" fill="none" stroke="currentColor" stroke-width="2"/>
-      <path d="M4 7h16v13H4z" fill="none" stroke="currentColor" stroke-width="2"/>
-      <path d="M4 12h16" fill="none" stroke="currentColor" stroke-width="2"/>
-    </symbol>
-    <symbol id="i-cap" viewBox="0 0 24 24">
-      <path d="M12 3l10 5-10 5L2 8l10-5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-      <path d="M6 10v6c0 1 3 3 6 3s6-2 6-3v-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-    </symbol>
-    <symbol id="i-globe" viewBox="0 0 24 24">
-      <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z" fill="none" stroke="currentColor" stroke-width="2"/>
-      <path d="M3 12h18" fill="none" stroke="currentColor" stroke-width="2"/>
-      <path d="M12 3c3 3 3 15 0 18" fill="none" stroke="currentColor" stroke-width="2"/>
-    </symbol>
   </svg>
 
-  <div class="frame">
-    <!-- SIDEBAR -->
-    <aside class="side">
-      <h1 class="name">Дремин Александр</h1>
-      <p class="role">Middle Python Developer (Backend-first) — AI/LLM Integrations</p>
-
+  <div class="page">
+    <!-- TOP -->
+    <section class="top">
       <div>
-        <span class="badge">Python</span>
-        <span class="badge">Backend</span>
-        <span class="badge">AI/LLM</span>
-        <span class="badge">WS/SSE</span>
-        <span class="badge">REST API</span>
+        <h1 class="name">Дремин Александр</h1>
+        <p class="title">Middle Python Developer (Backend-first) — AI/LLM Integrations</p>
+
+        <div class="kicker">
+          <span class="tag">REST API</span>
+          <span class="tag">Streaming WS/SSE</span>
+          <span class="tag">OpenAI Assistants</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Reliability</span>
+        </div>
       </div>
 
-      <div class="block">
-        <p class="h">Контакты</p>
-        <div class="kv">
-          <div class="kv-row">
-            <svg class="i" role="img" aria-label="Email"><use href="#i-mail"/></svg>
-            <div>
-              <p class="k">Email</p>
-              <p class="v"><a href="mailto:dreminaleksandr06@gmail.com">dreminaleksandr06@gmail.com</a></p>
-            </div>
-          </div>
-          <div class="kv-row">
-            <svg class="i" role="img" aria-label="Telegram"><use href="#i-tg"/></svg>
-            <div>
-              <p class="k">Telegram</p>
-              <p class="v"><a href="https://t.me/azora929">t.me/azora929</a> <span style="color:#64748b;">· @azora929</span></p>
-            </div>
+      <div class="contacts">
+        <div class="c-row">
+          <span class="ico"><svg class="i-lg"><use href="#m-mail"/></svg></span>
+          <div>
+            <div class="c-label">Email</div>
+            <a href="mailto:dreminaleksandr06@gmail.com">dreminaleksandr06@gmail.com</a>
           </div>
         </div>
-      </div>
 
-      <div class="block">
-        <p class="h">Ключевой фокус</p>
-        <ul class="list">
-          <li>Предсказуемый backend под нагрузкой</li>
-          <li>Streaming-UX (WS/SSE) без “тишины”</li>
-          <li>LLM-интеграции: контекст, tools, стабильность</li>
-          <li>Чёткие API-контракты и аккуратные интеграции</li>
-        </ul>
-      </div>
-
-      <div class="block">
-        <p class="h">Стек</p>
-        <div class="chips">
-          <span class="chip">Python (async/await)</span>
-          <span class="chip">FastAPI</span>
-          <span class="chip">Django</span>
-          <span class="chip">PostgreSQL</span>
-          <span class="chip">Redis</span>
-          <span class="chip">WS / SSE</span>
-          <span class="chip">OpenAI Assistants API</span>
-          <span class="chip">SQLAlchemy</span>
-          <span class="chip">gRPC</span>
-          <span class="chip">Playwright → PDF</span>
-          <span class="chip">Docker</span>
-          <span class="chip">CI/CD</span>
+        <div class="c-row" style="margin-bottom:0;">
+          <span class="ico"><svg class="i-lg"><use href="#m-tg"/></svg></span>
+          <div>
+            <div class="c-label">Telegram</div>
+            <a href="https://t.me/azora929">t.me/azora929</a>
+            <div style="color:var(--muted); font-size:11px; margin-top:2px;">@azora929</div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="block">
-        <p class="h">Образование</p>
-        <div class="kv-row" style="grid-template-columns:18px 1fr;">
-          <svg class="i" aria-hidden="true"><use href="#i-cap"/></svg>
-          <ul class="list" style="margin:0;">
-            <li>СПО: 09.02.07 «Информационные системы и программирование» — красный диплом</li>
-            <li>Высшее образование: в процессе (не IT-направление)</li>
+    <!-- VALUE / SUMMARY -->
+    <section class="strip">
+      <div class="strip-h">
+        <div class="left">
+          <span class="ico"><svg class="i-lg"><use href="#m-shield"/></svg></span>
+          <h2 class="strip-title">Профиль и ценность</h2>
+        </div>
+        <p class="strip-note">про качество, скорость и предсказуемость</p>
+      </div>
+
+      <div class="row">
+        <div class="card">
+          <div class="card-h">
+            <span class="ico" style="color:var(--accent2)"><svg class="i-lg"><use href="#m-rocket"/></svg></span>
+            <div>
+              <h3>Я делаю “продукт”, а не “набор фич”</h3>
+              <p>ощущение качества видно пользователю</p>
+            </div>
+          </div>
+          <div class="body">
+            <p>
+              Я backend-ориентированный Python-разработчик с опытом стартапной продуктовой разработки “под заказчика”.
+              Моя сильная сторона — доводить серверную часть до состояния, когда она ведёт себя <b>стабильно</b> и <b>понятно</b>
+              даже в краевых сценариях.
+            </p>
+            <p>
+              Умею держать баланс “скорость релиза ↔ качество”: выпускать быстро, но без мины замедленного действия в виде техдолга.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-h">
+            <span class="ico"><svg class="i-lg"><use href="#m-stream"/></svg></span>
+            <div>
+              <h3>Streaming-UX как конкурентное преимущество</h3>
+              <p>WS/SSE без “тишины” и дерганых состояний</p>
+            </div>
+          </div>
+          <div class="body">
+            <p>
+              В AI/LLM-фичах важна не только модель — важна <b>подача результата</b>.
+              Я умею строить стриминг (WebSocket/SSE) так, чтобы интерфейс показывал ценность постепенно:
+              пользователь не ждёт минуту — он видит прогресс сразу.
+            </p>
+            <p>
+              Это улучшает UX, снижает ощущение задержек и реально повышает доверие к продукту.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-h">
+            <span class="ico" style="color:var(--accent2)"><svg class="i-lg"><use href="#m-stack"/></svg></span>
+            <div>
+              <h3>Надёжность и интеграции</h3>
+              <p>контракты, валидация, ретраи, логи</p>
+            </div>
+          </div>
+          <ul class="bul">
+            <li>Проектирование REST API: схемы, контракты, версии</li>
+            <li>Устойчивость: ретраи, таймауты, обработка ошибок</li>
+            <li>PostgreSQL: индексы, транзакции, оптимизация</li>
+            <li>Redis: кеширование и ускорение горячих операций</li>
+            <li>OpenAI Assistants: context, threads/runs, tools</li>
           </ul>
         </div>
       </div>
+    </section>
 
-      <div class="block">
-        <p class="h">Языки</p>
-        <div class="kv-row" style="grid-template-columns:18px 1fr;">
-          <svg class="i" aria-hidden="true"><use href="#i-globe"/></svg>
-          <ul class="list" style="margin:0;">
-            <li>Русский — родной</li>
-            <li>Английский — B1</li>
-          </ul>
+    <!-- PROJECTS -->
+    <section class="strip">
+      <div class="strip-h">
+        <div class="left">
+          <span class="ico"><svg class="i-lg"><use href="#m-rocket"/></svg></span>
+          <h2 class="strip-title">Проекты</h2>
         </div>
-      </div>
-    </aside>
-
-    <!-- MAIN -->
-    <main class="main">
-      <div class="topline">
-        <h2 class="title">Профиль</h2>
-        <p class="subtitle">Если нужно “сделать и чтобы работало стабильно” — это моя зона ответственности.</p>
+        <p class="strip-note">кейсы, которые показывают результат</p>
       </div>
 
-      <section class="section">
-        <div class="sec-h">
-          <p class="t"><svg class="i-lg" aria-hidden="true"><use href="#i-shield"/></svg> Навыки и экспертиза</p>
-          <p class="hint">надежность · интеграции · streaming · LLM</p>
-        </div>
-
-        <p class="p">
-          Я backend-ориентированный Python-разработчик с ~2 годами коммерческого опыта в продуктовой стартапной разработке “под заказчика”.
-          Моя сильная сторона — <strong>строить устойчивую серверную часть</strong> и доводить интеграции до состояния, когда система ведёт себя
-          <strong>предсказуемо</strong> в краевых сценариях: ошибки, ретраи, таймауты, сетевые задержки, нагрузка.
-        </p>
-        <p class="p">
-          Отдельная экспертиза — <strong>streaming-ответы (WebSocket/SSE)</strong>: умею организовать выдачу так, чтобы пользователь видел ценность сразу,
-          а интерфейс не “молчал минуту”. Для AI/LLM-функций это критично: скорость + правильные состояния UI = ощущение “продукта”, а не “демки”.
-        </p>
-        <p class="p" style="margin-bottom:0;">
-          Я люблю инженерную аккуратность: чёткие API-контракты, валидация, логи, понятные сценарии ошибок. Это экономит время команды,
-          снижает количество инцидентов и ускоряет развитие продукта.
-        </p>
-
-        <div class="highlight avoid-break">
-          <h3><span class="i-box"><svg class="i-lg" aria-hidden="true"><use href="#i-spark"/></svg></span> Что вы получите, если наймёте меня</h3>
-          <ul>
-            <li><strong>Стабильный backend</strong>, который не разваливается при росте нагрузки.</li>
-            <li><strong>Аккуратные интеграции</strong> (сервисы, платежи, LLM) без “хрупких” мест.</li>
-            <li><strong>Streaming-UX</strong>: пользователь получает результат по мере готовности, а не ждёт.</li>
-            <li><strong>Предсказуемость</strong>: нормальные ошибки, ретраи, логирование и понятные edge-cases.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="sec-h">
-          <p class="t"><svg class="i-lg" aria-hidden="true"><use href="#i-brief"/></svg> Проекты</p>
-          <p class="hint">кейсы и эффект</p>
-        </div>
-
-        <article class="project avoid-break">
+      <div class="projects">
+        <article class="proj">
           <div class="proj-top">
-            <p class="proj-name">EvoSpeak / Yespeak — обучение языкам с AI</p>
+            <div>
+              <p class="proj-name">EvoSpeak / Yespeak — платформа обучения языкам с AI</p>
+              <p class="meta"><b>Роль:</b> Fullstack (Python backend + React) · <b>Стек:</b> Django, PostgreSQL, Assistants API, WebSocket, Redis, React/Vite</p>
+            </div>
             <a class="proj-link" href="https://yespeak.ru">yespeak.ru</a>
           </div>
-          <p class="proj-meta"><b>Роль:</b> Fullstack Developer (Python backend + React frontend) · <b>Стек:</b> Django, PostgreSQL, Assistants API, WebSocket, Redis, React/Vite</p>
-          <ul class="list cols2">
-            <li>Backend Django + PostgreSQL, API-контракты и интеграции.</li>
-            <li>Streaming LLM через WebSocket → “здесь и сейчас”.</li>
-            <li>Assistants API: контекст, lifecycle run, кастомные tools.</li>
-            <li>Два ассистента: диалог + параллельная генерация упражнений.</li>
-            <li>JSON-упражнения для предсказуемой подачи в UI.</li>
-            <li>YooKassa + webhooks, управление доступами/статусами.</li>
-            <li>Подписка + разовая покупка блока уроков.</li>
-            <li>Ускорение ожидания: первые результаты вместо ~1 минуты — за секунды.</li>
+
+          <ul class="bul">
+            <li>Backend Django + PostgreSQL, аккуратные API-контракты и интеграции.</li>
+            <li>Streaming LLM через WebSocket — результат “здесь и сейчас”.</li>
+            <li>Assistants API: управление контекстом, lifecycle run, custom tools.</li>
+            <li>Два ассистента: основной диалог + параллельная генерация упражнений → ускорение выдачи.</li>
+            <li>YooKassa + webhooks: платежи, статусы, доступы; подписка + разовая покупка.</li>
           </ul>
+
+          <div class="chips">
+            <span class="chip">WebSocket</span><span class="chip">Assistants API</span><span class="chip">Django</span><span class="chip">PostgreSQL</span><span class="chip">Payments</span>
+          </div>
         </article>
 
-        <article class="project avoid-break">
+        <article class="proj">
           <div class="proj-top">
-            <p class="proj-name">ИИ Препод — AI-платформа обучения</p>
+            <div>
+              <p class="proj-name">ИИ Препод — AI-платформа обучения</p>
+              <p class="meta"><b>Роль:</b> Fullstack (backend + frontend интеграция) · <b>Стек:</b> Django, PostgreSQL, OpenAI API, SSE, YooKassa, курс ЦБ РФ</p>
+            </div>
             <a class="proj-link" href="https://iiprepod.ru">iiprepod.ru</a>
           </div>
-          <p class="proj-meta"><b>Роль:</b> Fullstack Developer · <b>Стек:</b> Django, PostgreSQL, OpenAI API, SSE, YooKassa, курс ЦБ РФ, React/Vite</p>
-          <ul class="list cols2">
-            <li>Streaming через SSE: поток ответа в реальном времени.</li>
-            <li>Динамический токен-биллинг (USD→RUB + наценка) по курсу ЦБ.</li>
-            <li>Баланс + овердрафт, ограничение доступа при превышении лимита.</li>
-            <li>YooKassa + webhooks: платежи, статусы, доступы в БД.</li>
-            <li>Экономика: ~300–400 ₽ за урок; пики до ~1000 пользователей.</li>
-            <li>Публикации в СМИ: CNews, Hi-Tech Mail.ru, 3DNews.</li>
+
+          <ul class="bul">
+            <li>Streaming через SSE — пользователь видит “поток” ответа.</li>
+            <li>Динамический биллинг по токенам: USD→RUB по курсу ЦБ РФ + наценка, расчёт on-the-fly.</li>
+            <li>Баланс + лимитированный овердрафт, ограничения доступа при превышении лимита.</li>
+            <li>YooKassa + webhooks; пики до ~1000 пользователей, экономика урока ~300–400 ₽.</li>
           </ul>
+
+          <div class="chips">
+            <span class="chip">SSE</span><span class="chip">Billing</span><span class="chip">YooKassa</span><span class="chip">OpenAI</span>
+          </div>
         </article>
 
-        <article class="project avoid-break">
+        <article class="proj">
           <div class="proj-top">
-            <p class="proj-name">Луна Знает — Telegram-бот с LLM + монетизация</p>
+            <div>
+              <p class="proj-name">Луна Знает — Telegram-бот с LLM + монетизация</p>
+              <p class="meta"><b>Стек:</b> async/await, Assistants API, FastAPI, Redis, Playwright, YooKassa, Telegram invoices</p>
+            </div>
             <a class="proj-link" href="https://t.me/Luna_knowbot">t.me/Luna_knowbot</a>
           </div>
-          <p class="proj-meta"><b>Стек:</b> async/await, Assistants API, FastAPI, Redis, Playwright, YooKassa, Telegram invoices</p>
-          <ul class="list cols2">
-            <li>Асинхронная архитектура для быстрых ответов и масштабирования.</li>
-            <li>Tools: PDF, профили, уроки/тесты, задачи; генерация PDF через Playwright.</li>
-            <li>Платежи и доступы: YooKassa + Telegram invoices.</li>
-            <li>Timezone-aware подписка: периодические проверки и отправка в окно времени.</li>
-            <li>Redis кеширование горячих операций.</li>
+          <ul class="bul">
+            <li>Полностью асинхронная архитектура → быстрые ответы и масштабирование.</li>
+            <li>Tools + Playwright (HTML→PDF) для “готовых к отправке” материалов.</li>
+            <li>Timezone-aware подписки: расписание, окна времени, периодические проверки.</li>
           </ul>
         </article>
 
-        <article class="project avoid-break">
+        <article class="proj">
           <div class="proj-top">
-            <p class="proj-name">CRM / панель статистики + НБКИ PDF→JSON</p>
-            <span class="proj-link" style="border-bottom:none;">cases</span>
+            <div>
+              <p class="proj-name">CRM + НБКИ (PDF→JSON)</p>
+              <p class="meta"><b>Стек:</b> FastAPI, PostgreSQL, SQLAlchemy, gRPC, React/Vite · Telegram-бот, regex, парсинг PDF</p>
+            </div>
+            <span style="color:var(--muted); font-size:11px;">case pack</span>
           </div>
-          <p class="proj-meta"><b>Стек:</b> FastAPI, PostgreSQL, SQLAlchemy, gRPC, React/Vite · Telegram-бот, парсинг PDF, regex</p>
-          <ul class="list cols2">
-            <li>CRM: статистика на PostgreSQL, FastAPI + сервис SQLAlchemy.</li>
-            <li>gRPC обмен между сервисами, React/Vite (фильтры/таблицы + UI-состояния).</li>
-            <li>НБКИ: приём PDF → JSON + короткая текстовая сводка.</li>
-            <li>Парсер таблиц/секций + обработка крайних случаев.</li>
+          <ul class="bul">
+            <li>CRM: сервисы + gRPC, UI на React/Vite (фильтры/таблицы + UI-состояния).</li>
+            <li>НБКИ: PDF → структурированный JSON + понятная текстовая сводка.</li>
           </ul>
         </article>
+      </div>
+    </section>
 
-        <p class="footer-note">
-          Готов быстро входить в контекст, фиксить продовые баги, усиливать устойчивость и доводить интеграции до “железного” состояния.
-        </p>
-      </section>
-    </main>
+    <div class="footer">
+      <div>© Дремин Александр</div>
+      <div>PDF template — Teal Executive</div>
+    </div>
   </div>
 </body>
 </html>
