@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { PIcon } from "@/components/icons/PIcon";
 import { sanitizeChatHtml } from "@/utils/sanitizeChatHtml";
+import "./ChatWidget.scss";
 
 type ChatRole = "user" | "assistant";
 

@@ -1,5 +1,6 @@
 import { type ReactNode } from "react";
 import { useInView } from "@/hooks/useInView/useInView";
+import "./Section.scss";
 
 export type SectionVariant =
   | "hero"

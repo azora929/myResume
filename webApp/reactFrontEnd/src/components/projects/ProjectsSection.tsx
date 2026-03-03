@@ -3,6 +3,7 @@ import { PIcon } from "@/components/icons/PIcon";
 import { usePIcon } from "@/hooks/usePIcon/usePIcon";
 import { useProjectsScroller } from "@/hooks/useProjectsScroller/useProjectsScroller";
 import { Section } from "@/components/section/Section";
+import "./ProjectsSection.scss";
 
 export function ProjectsSection() {
   const stageRef = useRef<HTMLDivElement>(null);

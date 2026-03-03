@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { PIcon } from "@/components/icons/PIcon";
+import "./FooterPro.scss";
 
 export function FooterPro() {
   const canvasRef = useRef<HTMLCanvasElement>(null);

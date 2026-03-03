@@ -1,0 +1,298 @@
+/* Стили футера (FooterPro) */
+
+.footerPro {
+  position: relative;
+  padding: clamp(64px, 8vw, 110px) 0;
+  background: radial-gradient(900px 520px at 10% 15%, rgba(103, 232, 249, 0.08), transparent 60%),
+  radial-gradient(900px 520px at 90% 70%, rgba(165, 140, 255, 0.08), transparent 60%),
+  linear-gradient(180deg, #0b0f1a 0%, #0b1224 60%, #0b0f1a 100%);
+  color: rgba(255, 255, 255, 0.92);
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.footerPro__fx {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.footerPro__inner {
+  position: relative;
+  z-index: 2;
+  width: min(1200px, 92vw);
+  margin: 0 auto;
+}
+
+.footerPro__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px 36px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(28px, 5vw, 42px);
+}
+
+.footerPro__brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footerPro__mark {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.footerPro__mark svg {
+  width: 22px;
+  height: 22px;
+}
+
+.footerPro__name {
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.footerPro__tagline {
+  margin: 4px 0 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+}
+
+.footerPro__cta {
+  display: grid;
+  gap: 12px;
+  min-width: min(520px, 92vw);
+}
+
+.fBtn {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: inherit;
+  text-decoration: none;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.fBtn__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.fBtn__icon svg,
+.fBtn__arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+.fBtn__text {
+  display: grid;
+  gap: 2px;
+}
+
+.fBtn__label {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.fBtn__value {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.fBtn__hint {
+  margin-top: 2px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.fBtn__arrow {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.fBtn:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.fBtn:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.footerPro__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.fCard {
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+  padding: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.fCard--wide {
+  grid-column: 1 / -1;
+}
+
+.fCard__head {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.fIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.fIcon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.fCard__title {
+  margin: 0;
+  font-size: 16px;
+}
+
+.fCard__desc {
+  margin: 4px 0 0;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 13px;
+}
+
+.fCard__text {
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.fList {
+  margin: 12px 0 0;
+  padding: 0 0 0 18px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.fPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.fPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  font-size: 13px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.fPill__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.fPill:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.fPill:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.footerPro__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 860px) {
+  .footerPro__top {
+    align-items: flex-start;
+  }
+
+  .footerPro__cta {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .footerPro__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .footerPro__cta {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .fBtn {
+    grid-template-columns: auto 1fr;
+    padding: 12px 14px;
+  }
+
+  .fBtn__arrow {
+    display: none;
+  }
+
+  .fBtn__value,
+  .fBtn__hint {
+    word-break: break-word;
+  }
+}
