@@ -50,6 +50,7 @@ export function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
   const [reconnectAttempt, setReconnectAttempt] = useState(0);
   const [roomId, setRoomId] = useState<string | null>(null);
   const [loadingIndex, setLoadingIndex] = useState(0);
+  const [limitReached, setLimitReached] = useState(false);
   const wsRef = useRef<WebSocket | null>(null);
   const reconnectTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -136,6 +137,11 @@ export function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
           });
           setError("Не удалось получить ответ. Повторите попытку, пожалуйста.");
           setIsLoading(false);
+        } else if (type === "limit_reached") {
+          const limitText = data.text ?? "Достигнут лимит сообщений за сутки (40). Попробуйте завтра.";
+          setHistory((prev) => [...prev, { role: "assistant", content: limitText }]);
+          setLimitReached(true);
+          setIsLoading(false);
         }
       } catch {
         setError("Ошибка формата ответа");
@@ -159,6 +165,7 @@ export function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
       setConnectionStatus("idle");
       setReconnectAttempt(0);
       reconnectAttemptRef.current = 0;
+      setLimitReached(false);
       return;
     }
     chatOpenRef.current = true;
@@ -198,6 +205,7 @@ export function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
     event?.preventDefault();
     const text = input.trim();
     if (!text || isLoading) return;
+    if (limitReached) return;
     if (connectionStatus !== "connected" || !wsRef.current || wsRef.current.readyState !== WebSocket.OPEN) {
       setError("Нет соединения. Подождите переподключения.");
       return;
@@ -222,7 +230,8 @@ export function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
   const isBlocked =
     connectionStatus === "connecting" ||
     connectionStatus === "reconnecting" ||
-    connectionStatus === "failed";
+    connectionStatus === "failed" ||
+    limitReached;
 
   return isOpen ? (
     <div className="chat-modal" role="dialog" aria-modal="true" aria-label="Чат с нейросетью">
@@ -256,6 +265,12 @@ export function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
               <div className="chat-reconnect chat-reconnect--failed">
                 <p className="chat-reconnect__text">Не удалось подключиться</p>
                 <p className="chat-reconnect__hint">Закройте чат и откройте снова или обновите страницу.</p>
+              </div>
+            ) : null}
+            {limitReached ? (
+              <div className="chat-reconnect chat-reconnect--limit">
+                <p className="chat-reconnect__text">Лимит сообщений за сутки</p>
+                <p className="chat-reconnect__hint">Использовано 40 из 40 сообщений. Лимит обновится через 24 часа.</p>
               </div>
             ) : null}
             {!isBlocked && history.length === 0 ? (
@@ -308,7 +323,7 @@ export function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
             className="chat-modal__input"
             type="text"
             placeholder={
-              isBlocked ? "Подключение…" : "Написать сообщение..."
+              limitReached ? "Лимит исчерпан" : isBlocked ? "Подключение…" : "Написать сообщение..."
             }
             value={input}
             onChange={(e) => setInput(e.target.value)}

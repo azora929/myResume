@@ -12,6 +12,7 @@ from typing import Any
 from starlette.websockets import WebSocket
 
 from services.openai_service import OpenAIService
+from services.rate_limit_service import check_and_incr
 
 
 def _client_ip(websocket: WebSocket) -> str:
@@ -101,6 +102,17 @@ class ChatConnectionManager:
                     await self.send_to_room(room_id, {"type": "error", "text": "Пустое сообщение."})
                     continue
                 history = list(history[-40:]) + [{"role": "user", "content": text}]
+
+                allowed = await check_and_incr(room_id)
+                if not allowed:
+                    await self.send_to_room(
+                        room_id,
+                        {
+                            "type": "limit_reached",
+                            "text": "Достигнут лимит сообщений за сутки (40). Попробуйте завтра.",
+                        },
+                    )
+                    continue
 
                 try:
                     service = OpenAIService()

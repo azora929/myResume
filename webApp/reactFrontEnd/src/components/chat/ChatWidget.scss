@@ -243,6 +243,14 @@ body.chat-open {
   color: #f87171;
 }
 
+.chat-reconnect--limit {
+  border-color: rgba(251, 191, 36, 0.4);
+}
+
+.chat-reconnect--limit .chat-reconnect__text {
+  color: #f59e0b;
+}
+
 @keyframes chatReconnectSpin {
   to {
     transform: rotate(360deg);
