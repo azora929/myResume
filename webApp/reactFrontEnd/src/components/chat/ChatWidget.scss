@@ -200,6 +200,55 @@ body.chat-open {
   }
 }
 
+/* Баннер переподключения */
+.chat-reconnect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(103, 232, 249, 0.25);
+}
+
+.chat-reconnect__spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(103, 232, 249, 0.2);
+  border-top-color: rgba(103, 232, 249, 0.9);
+  border-radius: 50%;
+  animation: chatReconnectSpin 0.9s linear infinite;
+}
+
+.chat-reconnect__text {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: rgba(226, 232, 240, 0.95);
+}
+
+.chat-reconnect__hint {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(148, 163, 184, 0.85);
+}
+
+.chat-reconnect--failed {
+  border-color: rgba(248, 113, 113, 0.35);
+}
+
+.chat-reconnect--failed .chat-reconnect__text {
+  color: #f87171;
+}
+
+@keyframes chatReconnectSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .chat-message {
   display: flex;
 }
