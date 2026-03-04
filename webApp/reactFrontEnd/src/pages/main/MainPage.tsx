@@ -387,7 +387,7 @@ export function MainPage() {
             <span className="hero__title-accent"> — AI/LLM Integrations</span>
           </h1>
           <p className="hero__subtitle">
-            Backend, API, стриминг, OpenAI и живой UX в продуктах
+            Backend, API, стриминг ответов нейросети и живой UX в продуктах
           </p>
           <div className="hero__actions">
             <a href="#skills" className="hero__cta">
@@ -419,7 +419,7 @@ export function MainPage() {
             </div>
           </div>
           <p className="hero__hint">
-            Хотите пообщаться с нейросетью и отправить оффер? Откройте чат и напишите.
+            Пообщайтесь с нейросетью по резюме или отправьте оффер — откройте чат и напишите.
           </p>
         </div>
       </Section>
@@ -440,7 +440,7 @@ export function MainPage() {
               </p>
               <h2 className="content-section__title skillsPro__title">Skills & Strengths</h2>
               <p className="skillsPro__subtitle">
-                Backend, API, стриминг (WS/SSE), OpenAI и “живой” UX в продуктах.
+                Python backend (Django, FastAPI), AI/LLM (OpenAI Assistants, Realtime API), стриминг (WebSocket/SSE), платежи, Telegram-боты, gRPC, React — из реальных продуктов.
               </p>
             </header>
 
@@ -450,23 +450,20 @@ export function MainPage() {
                   <PIcon name="spark" />
                 </span>
                 <div>
-                  <h3 className="sCard__title">Approach</h3>
-                  <p className="sCard__desc">Надёжный backend + аккуратный продуктовый UX</p>
+                  <h3 className="sCard__title">Подход и опыт</h3>
+                  <p className="sCard__desc">Backend-first fullstack, продукты с AI и монетизацией</p>
                 </div>
               </div>
 
               <div className="sCard__body prose">
                 <p>
-                  Я fullstack‑разработчик с фокусом на Python‑backend и ~2 годами коммерческого опыта в стартапной продуктовой разработке для заказчика: от первых MVP и быстрых итераций до продовых фич, которые выдерживают реальную нагрузку и остаются устойчивыми в долгосрочной перспективе. Моя сильная сторона — строить надёжную серверную часть и доводить пользовательский опыт на фронтенде до «чувства продукта», особенно когда в продукте есть AI/LLM‑функциональность (OpenAI) и важно, чтобы всё работало быстро, стабильно и предсказуемо.
-                  Умею держать баланс между скоростью выпуска и качеством, чтобы продукт рос без «технического долга», который потом тормозит развитие.
+                  Я — Middle Python-разработчик, 22 года; в разработке с 19 лет, коммерческий опыт около 3 лет. Фокус на backend и на то, чтобы продукт ощущался живым: нейросети в интерфейсе отвечают быстро и предсказуемо, а монетизация — платежи, подписки, боты — не преподносит сюрпризов на проде. За плечами уже платформы с AI-тьютором (EvoSpeak, ИИ Препод), Telegram-боты с оплатой и сценариями (Luna, НБКИ), CRM с gRPC и аналитикой, парсинг PDF и генерация отчётов. Фичи веду от идеи до продовой нагрузки: продуманные контракты API, валидация, обработка ошибок и поведение в краевых случаях — так, чтобы и пользователю, и команде было спокойно.
                 </p>
                 <p>
-                  С backend‑стороны уверенно проектирую и реализую REST API, продумываю контракты и валидацию, организую интеграции между сервисами, отвечаю за корректную обработку ошибок и устойчивость в нештатных ситуациях. Отдельное внимание уделяю стриминг‑ответам (WebSocket/SSE): умею делать так, чтобы интерфейс получал данные постепенно и сразу показывал ценность, а не «ждал минуту в тишине».
-                  Люблю, когда система ведёт себя предсказуемо в краевых сценариях — это видно и пользователю, и команде поддержки.
+                  В бэкенде уверенно собираю и поддерживаю REST (FastAPI, Django, DRF) и gRPC (Protocol Buffers, кодогенерация), поднимаю WebSocket и SSE под стриминг ответов нейросети. Интегрирую платежи (YooKassa, Telegram Payments, webhooks), SMS и Telegram-ботов, планировщики с учётом таймзоны пользователя — так, чтобы сервисы держали нагрузку и не подводили в нештатных ситуациях. С БД работаю аккуратно: PostgreSQL и Redis (кеш, rate limit, channel layers), миграции, транзакции, атомарные обновления, в том числе для очередей покупок и статусов подписок.
                 </p>
                 <p>
-                  С frontend‑стороны участвую в разработке интерфейсов (React/Vite): собираю страницы и компоненты, аккуратно стыкуюсь с API, довожу UX до «живого» ощущения (например, отображение стриминга, состояния загрузки, ошибки, пустые состояния), чтобы пользователь чувствовал качество продукта, а не «набор экранов».
-                  В итоге интерфейс выглядит цельно и уверенно — без ощущения «сырых» экранов и случайных решений.
+                  В AI/LLM-слое опираюсь на OpenAI Assistants API (threads, runs, стриминг), кастомные tools и динамические промпты под этап пользователя; для голоса — Realtime API, Whisper и TTS (VoiceKit, SpeechKit). Реализовывал сценарии с двумя потоками: диалог в реальном времени плюс фоновая генерация заданий, чтобы интерфейс не замирал в ожидании. На фронте собираю страницы на React, TypeScript и Vite, стыкую со стримингом и довожу состояния — лоадеры, ошибки, пустые экраны — до ощущения цельного продукта, а не набора экранов.
                 </p>
               </div>
             </article>
@@ -479,27 +476,31 @@ export function MainPage() {
                   </span>
                   <div>
                     <h3 className="sCard__title">Backend</h3>
-                    <p className="sCard__desc">Контракты, валидация, устойчивость, БД</p>
+                    <p className="sCard__desc">REST, gRPC, БД, платежи, Telegram</p>
                   </div>
                 </div>
 
                 <ul className="chips">
-                  <li className="chip">Python (async/await)</li>
+                  <li className="chip">Python (async)</li>
                   <li className="chip">FastAPI</li>
-                  <li className="chip">Django</li>
+                  <li className="chip">Django / DRF</li>
+                  <li className="chip">Daphne, Channels</li>
                   <li className="chip">PostgreSQL</li>
                   <li className="chip">Redis</li>
                   <li className="chip">SQLAlchemy</li>
+                  <li className="chip">gRPC</li>
+                  <li className="chip">python-telegram-bot</li>
                   <li className="chip">aiohttp</li>
                 </ul>
 
                 <div className="sDivider"></div>
 
                 <ul className="sList">
-                  <li>REST API: проектирование, схемы/валидация, интеграции</li>
-                  <li>Надёжность: ретраи, обработка ошибок, логирование, персонализация</li>
-                  <li>БД: миграции, транзакции, индексы, оптимизация, pooling</li>
-                  <li>Интеграции сервисов без «хрупких» связей и неожиданностей на проде</li>
+                  <li>REST API: контракты, валидация (Pydantic), интеграции</li>
+                  <li>gRPC: proto, кодогенерация, реестр таблиц, единая точка доступа к БД</li>
+                  <li>Платежи: YooKassa, Telegram Payments, webhooks, баланс, подписки</li>
+                  <li>БД: миграции, транзакции, индексы, оптимизация, pooling; кэш в Redis (контекст, rate limit, channel layers)</li>
+                  <li>Надёжность: ретраи, обработка ошибок, логирование; интеграции без «хрупких» связей на проде</li>
                 </ul>
               </article>
 
@@ -510,25 +511,25 @@ export function MainPage() {
                   </span>
                   <div>
                     <h3 className="sCard__title">Streaming & UX</h3>
-                    <p className="sCard__desc">WS/SSE и “живые” состояния интерфейса</p>
+                    <p className="sCard__desc">WebSocket, SSE, два потока, живые состояния</p>
                   </div>
                 </div>
 
                 <ul className="chips">
                   <li className="chip">WebSocket</li>
                   <li className="chip">SSE</li>
-                  <li className="chip">UI states</li>
-                  <li className="chip">Errors/Empty</li>
-                  <li className="chip">Latency-friendly UX</li>
+                  <li className="chip">Realtime API</li>
+                  <li className="chip">Два потока</li>
+                  <li className="chip">Loading/Error/Empty</li>
                 </ul>
 
                 <div className="sDivider"></div>
 
                 <ul className="sList">
-                  <li>Постепенная отдача данных: интерфейс показывает ценность сразу</li>
-                  <li>Аккуратные лоадеры/ошибки/пустые состояния — ощущение продукта</li>
-                  <li>Стыковка фронт/бек для предсказуемого стрима</li>
-                  <li>Поведение UI остаётся понятным даже при сетевых задержках</li>
+                  <li>Стриминг ответов нейросети: интерфейс получает данные по мере готовности</li>
+                  <li>Два потока: диалог в реальном времени + фоновая генерация заданий в отдельном thread</li>
+                  <li>Лоадеры, ошибки, пустые состояния — чтобы продукт ощущался цельным</li>
+                  <li>Стыковка React с WebSocket/SSE и предсказуемое поведение при задержках</li>
                 </ul>
               </article>
 
@@ -538,28 +539,30 @@ export function MainPage() {
                     <PIcon name="cube" />
                   </span>
                   <div>
-                    <h3 className="sCard__title">Infra & Delivery</h3>
-                    <p className="sCard__desc">Запуск, деплой, задачи по расписанию</p>
+                    <h3 className="sCard__title">Инфра и отчёты</h3>
+                    <p className="sCard__desc">Планировщики, PDF, WebApp, тесты</p>
                   </div>
                 </div>
 
                 <ul className="chips">
                   <li className="chip">Docker / compose</li>
+                  <li className="chip">Kubernetes</li>
                   <li className="chip">CI/CD</li>
-                  <li className="chip">Kubernetes (base)</li>
-                  <li className="chip">Background jobs</li>
-                  <li className="chip">Scheduler</li>
-                  <li className="chip">pytest</li>
                   <li className="chip">Playwright → PDF</li>
+                  <li className="chip">Jinja2</li>
+                  <li className="chip">Планировщики</li>
+                  <li className="chip">Timezone-aware</li>
+                  <li className="chip">WebApp (HTTPS/ngrok)</li>
+                  <li className="chip">pytest</li>
                 </ul>
 
                 <div className="sDivider"></div>
 
                 <ul className="sList">
-                  <li>Timezone-aware логика и периодические задачи</li>
-                  <li>Понимание этапов build/test/deploy</li>
-                  <li>Очереди/брокеры (Kafka/RQ): теория</li>
-                  <li>Планирование фоновых задач без «разъезда» по времени</li>
+                  <li>Docker, Docker Compose; Kubernetes (базовое понимание); CI/CD, этапы build/test/deploy</li>
+                  <li>Генерация PDF: Playwright, Jinja2-шаблоны; натальные/ведические карты (Matplotlib и др.)</li>
+                  <li>Планировщики с привязкой к таймзоне: расклады, вечерние вопросы, истечение подписки; фоновые задачи</li>
+                  <li>WebApp в Telegram: HTTPS (ngrok в dev, свой домен в prod). Тесты (pytest)</li>
                 </ul>
               </article>
 
@@ -570,23 +573,25 @@ export function MainPage() {
                   </span>
                   <div>
                     <h3 className="sCard__title">AI/LLM</h3>
-                    <p className="sCard__desc">Интеграция и устойчивые диалоги</p>
+                    <p className="sCard__desc">Assistants API, Realtime, tools, голос</p>
                   </div>
                 </div>
 
                 <ul className="chips">
-                  <li className="chip">OpenAI (Assistants API)</li>
-                  <li className="chip">threads/runs</li>
-                  <li className="chip">Context mgmt</li>
+                  <li className="chip">Assistants API</li>
+                  <li className="chip">Realtime API</li>
                   <li className="chip">Custom tools</li>
+                  <li className="chip">tiktoken</li>
+                  <li className="chip">Whisper / TTS</li>
                 </ul>
 
                 <div className="sDivider"></div>
 
                 <ul className="sList">
-                  <li>Управление контекстом, устойчивые диалоги</li>
-                  <li>Проектирование tools и подключение к run</li>
-                  <li>Детальная настройка поведения ассистента под сценарии продукта</li>
+                  <li>OpenAI Assistants: threads, runs, стриминг; кастомные tools (request_task_generation, check_task_status и др.)</li>
+                  <li>Динамические промпты и набор tools по этапу пользователя; миграция истории диалога</li>
+                  <li>Realtime API для голоса в реальном времени; Whisper (транскрипция), TTS (VoiceKit gRPC, SpeechKit)</li>
+                  <li>Учёт токенов (tiktoken), стоимость USD→RUB по курсу ЦБ; кэш контекста в Redis с инвалидацией</li>
                 </ul>
               </article>
             </div>
