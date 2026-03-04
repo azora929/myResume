@@ -1,0 +1,17 @@
+.venv
+venv
+__pycache__
+*.pyc
+.pytest_cache
+.coverage
+htmlcov
+node_modules
+reactFrontEnd/node_modules
+reactFrontEnd/dist
+.env
+.env.*
+*.log
+tmp
+.git
+.gitignore
+README.md

@@ -45,6 +45,9 @@ reactFrontEnd/dist/
 # Local data (офферы из чата)
 data/
 
+# Kubernetes secrets (не коммитить с реальными значениями)
+k8s/secrets/*-secrets.yaml
+
 # Environment & local configs
 *.env
 *.env.local

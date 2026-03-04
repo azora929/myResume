@@ -1,0 +1,29 @@
+# Замените resume.example.com на свой домен после покупки.
+# Для выдачи TLS-сертификата нужен ingress-контроллер с поддержкой Ingress
+# (например nginx-ingress или traefik) и, при необходимости, cert-manager.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: resume-ingress
+  annotations:
+    # Пример для nginx-ingress: раскомментируйте и подставьте свой домен
+    # nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    # cert-manager.io/cluster-issuer: "letsencrypt-prod"  # если используете cert-manager
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: resume.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: webapp
+                port:
+                  number: 8000
+  # Раскомментируйте tls после настройки cert-manager или ручного добавления сертификата
+  # tls:
+  #   - hosts:
+  #       - resume.example.com
+  #     secretName: resume-tls

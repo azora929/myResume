@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+  labels:
+    app: resume-webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resume-webapp
+  template:
+    metadata:
+      labels:
+        app: resume-webapp
+    spec:
+      containers:
+        - name: webapp
+          # Registry в Docker на хосте (порт 5001 — на Mac 5000 занят AirPlay); Linux: IP хоста:5001
+          image: host.docker.internal:5001/myresume-webapp:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+              name: http
+          env:
+            - name: OFFER_GRPC_HOST
+              value: "bot"
+            - name: OFFER_GRPC_PORT
+              value: "50051"
+            # Redis на хосте (вне пода): подставляем IP ноды, чтобы под ходил в Redis на сервере
+            - name: REDIS_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+            - name: REDIS_PORT
+              value: "6379"
+          envFrom:
+            - secretRef:
+                name: webapp-secrets
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
