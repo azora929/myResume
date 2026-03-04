@@ -75,6 +75,7 @@ function YespeakSlide() {
             <span className="tag">React/Vite</span>
             <span className="tag">OpenAI</span>
             <span className="tag">WebSocket</span>
+            <span className="tag">Realtime API</span>
           </div>
         </header>
 
@@ -84,7 +85,7 @@ function YespeakSlide() {
               <span className="pIcon" aria-hidden="true">{monitorIcon}</span>
               <div>
                 <h3 className="pCard__title">Продукт</h3>
-                <p className="pCard__desc">Скрин + ключевой UX</p>
+                <p className="pCard__desc">Платформа изучения языка с AI: чат, тест уровня, уроки, экзамены</p>
               </div>
             </div>
             <div className="pMedia">
@@ -102,11 +103,10 @@ function YespeakSlide() {
             </div>
             <div className="pCard__body">
               <p><b>Роль:</b> Fullstack Developer (Python backend + React frontend)</p>
-              <p><b>Стек:</b> Django, PostgreSQL, OpenAI Assistants API, WebSocket, Redis (точечно), React/Vite</p>
-              <p><b>Фокус:</b> устойчивый backend, стриминг‑UX и предсказуемые API‑контракты.</p>
+              <p><b>Стек:</b> Django 5, Channels, WebSocket, PostgreSQL, Redis, Assistants API + Realtime API, React 18, TypeScript, Vite, Three.js, MobX</p>
+              <p><b>Фокус:</b> устойчивый backend, стриминг‑UX, два потока (диалог + фоновая генерация заданий), голос (TTS, Realtime).</p>
               <p>
-                Делал так, чтобы продукт ощущался «живым»: быстрый ответ, понятные состояния и аккуратная логика,
-                которая держит нагрузку и не ломается в крайних случаях.
+                Чат-уроки, тест уровня, разговорные уроки и экзамен говорения (Realtime API), экзамены по этапам; 3D-аватар с липсинком; монетизация ЮKassa.
               </p>
             </div>
           </article>
@@ -121,16 +121,14 @@ function YespeakSlide() {
             </div>
             <div className="pCard__body">
               <ul className="pList pList--cols">
-                <li>Backend Django + PostgreSQL, интеграция через аккуратные API‑контракты.</li>
-                <li>React/Vite: страницы/компоненты, состояния, ошибки, интеграция со стримингом.</li>
-                <li>OpenAI Assistants API: управление контекстом, lifecycle run, кастомные tools.</li>
-                <li>Стриминг LLM через WebSocket — результат «здесь и сейчас».</li>
-                <li>Механика «двух потоков»: диалог + параллельная генерация упражнений.</li>
-                <li>Монетизация: YooKassa + webhooks, управление доступами/статусами.</li>
-                <li>Структурированные JSON‑объекты упражнений для предсказуемой подачи в UI.</li>
-                <li>Сокращение ожидания генерации: первые результаты за секунды, не минуты.</li>
-                <li>Гибкая модель оплаты: подписка + разовая покупка блока уроков.</li>
-                <li>Фокус на удержании: понятный прогресс, быстрые ответы и уверенный UX.</li>
+                <li>Два потока: стриминг диалога по WebSocket + фоновая генерация заданий в отдельном OpenAI thread (tools)</li>
+                <li>OpenAI Assistants API: контекст, lifecycle, кастомные tools (request_task_generation, check_task_status и др.)</li>
+                <li>Realtime API: разговорные уроки и экзамен говорения через прокси (голос в реальном времени)</li>
+                <li>3D-аватар (Three.js) с липсинком под озвучку сообщений</li>
+                <li>TTS по HTTP, озвучка по частям с кешем; голосовой ввод (транскрипция), анализ произношения</li>
+                <li>Тест уровня языка (WebSocket), экзамены по этапам (грамматика, чтение, аудирование, письмо, говорение)</li>
+                <li>ЮKassa: пополнение баланса, безлимит, проверка доступа к уроку, покупка с баланса</li>
+                <li>Django Channels, Redis (channel layers), светлая/тёмная тема, code-splitting (Vite)</li>
               </ul>
             </div>
           </article>
@@ -161,10 +159,12 @@ function IiprepodSlide() {
 
           <div className="pSlide__tags">
             <span className="tag">Django</span>
+            <span className="tag">DRF</span>
             <span className="tag">SSE</span>
             <span className="tag">Billing</span>
             <span className="tag">YooKassa</span>
             <span className="tag">OpenAI</span>
+            <span className="tag">Telegram</span>
           </div>
         </header>
 
@@ -174,7 +174,7 @@ function IiprepodSlide() {
               <span className="pIcon" aria-hidden="true">{monitorIcon}</span>
               <div>
                 <h3 className="pCard__title">Продукт</h3>
-                <p className="pCard__desc">Скрин</p>
+                <p className="pCard__desc">EdTech для школьников: AI-тьютор, роли, сессии, чат, оплата</p>
               </div>
             </div>
             <div className="pMedia">
@@ -187,19 +187,16 @@ function IiprepodSlide() {
               <span className="pIcon" aria-hidden="true">{brainIcon}</span>
               <div>
                 <h3 className="pCard__title">Ключевые штуки</h3>
-                <p className="pCard__desc">AI + экономика</p>
+                <p className="pCard__desc">AI, роли, платежи, SMS и Telegram</p>
               </div>
             </div>
             <div className="pCard__body">
               <ul className="pList">
-                <li>Стриминг ответов через SSE</li>
-                <li>Динамический биллинг по токенам (USD→RUB + наценка)</li>
-                <li>Баланс + лимитированный овердрафт</li>
-                <li>YooKassa + webhooks</li>
-                <li>Стабильность под пиковыми нагрузками</li>
-                <li>Интеграция курса ЦБ РФ для корректных расчётов</li>
-                <li>Корректные UX‑состояния в интерфейсе (loading/error/empty)</li>
-                <li>Прозрачная экономика и понятная ценность урока для пользователя</li>
+                <li>Роли: ученик, родитель, учитель, партнёр; кастомная модель пользователя</li>
+                <li>Сессии по предметам/классам, чат с GPT, стриминг ответов (SSE), онлайн-уроки, подготовка к ОГЭ, психотесты с GPT</li>
+                <li>Токен-биллинг USD→RUB (курс ЦБ, tiktoken), баланс + овердрафт, YooKassa + webhooks</li>
+                <li>Авторизация: SMS (Exolve), Telegram-бот (привязка по коду из ЛК, уведомления, альтернативный вход)</li>
+                <li>TTS: Tinkoff VoiceKit (gRPC), Yandex SpeechKit; пробные уроки с лимитом по IP, ЛК родителя, награды и баллы</li>
               </ul>
             </div>
           </article>
@@ -214,26 +211,14 @@ function IiprepodSlide() {
             </div>
             <div className="pCard__body">
               <ul className="pList pList--cols">
-                <li>Backend на Django + PostgreSQL под пиковые нагрузки</li>
-                <li>UX: streaming + корректные состояния</li>
-                <li>Средняя стоимость урока ~300–400 ₽</li>
-                <li>Пики до ~1000 пользователей</li>
-                <li>
-                  Публикации:{" "}
-                  <a href="https://www.cnews.ru/news/line/2025-01-28_v_rossii_zapustili_innovatsionnuyu" target="_blank" rel="noopener noreferrer">
-                    CNews
-                  </a>
-                  ,{" "}
-                  <a href="https://hi-tech.mail.ru/news/122609-v-rossii-sozdali-iskusstvennyj-intellekt-s-myshleniem-rebenka/" target="_blank" rel="noopener noreferrer">
-                    Hi‑Tech Mail.ru
-                  </a>
-                  ,{" "}
-                  <a href="https://3dnews.ru/1118243/v-rossii-sozdali-perviy-ii-s-mishleniem-rebyonka" target="_blank" rel="noopener noreferrer">
-                    3DNews
-                  </a>
+                <li>Django 5, DRF, Daphne (ASGI), Channels, PostgreSQL; пики до ~1000 пользователей</li>
+                <li>OpenAI API (GPT), tiktoken, стриминг SSE; YooKassa, вебхуки, баланс</li>
+                <li>Exolve (SMS), Telegram-бот (привязка/уведомления/альт-авторизация), TTS (VoiceKit gRPC, SpeechKit)</li>
+                <li>~300–400 ₽ за урок; публикации:{" "}
+                  <a href="https://www.cnews.ru/news/line/2025-01-28_v_rossii_zapustili_innovatsionnuyu" target="_blank" rel="noopener noreferrer">CNews</a>,{" "}
+                  <a href="https://hi-tech.mail.ru/news/122609-v-rossii-sozdali-iskusstvennyj-intellekt-s-myshleniem-rebenka/" target="_blank" rel="noopener noreferrer">Hi‑Tech Mail.ru</a>,{" "}
+                  <a href="https://3dnews.ru/1118243/v-rossii-sozdali-perviy-ii-s-mishleniem-rebyonka" target="_blank" rel="noopener noreferrer">3DNews</a>
                 </li>
-                <li>Управление доступами/статусами через webhooks оплаты</li>
-                <li>Продукт ощущается цельно: от AI‑ответов до оплаты и доступа</li>
               </ul>
             </div>
           </article>
@@ -268,7 +253,8 @@ function LunaSlide() {
             <span className="tag">FastAPI</span>
             <span className="tag">Assistants API</span>
             <span className="tag">Redis</span>
-            <span className="tag">Playwright→PDF</span>
+            <span className="tag">Playwright</span>
+            <span className="tag">WebApp</span>
             <span className="tag">Payments</span>
           </div>
         </header>
@@ -278,12 +264,12 @@ function LunaSlide() {
             <div className="pCard__head">
               <span className="pIcon" aria-hidden="true">{monitorIcon}</span>
               <div>
-                <h3 className="pCard__title">Витрина</h3>
-                <p className="pCard__desc">Скрин</p>
+                <h3 className="pCard__title">Продукт</h3>
+                <p className="pCard__desc">Астрологический AI-помощник «Луна»: портрет, отчёты, подписка</p>
               </div>
             </div>
             <div className="pMedia">
-              <img className="pMedia__img" src="/assets/photos/luna.png" alt="Луна Знает — Telegram‑бот" />
+              <img className="pMedia__img" src="/assets/photos/luna.png" alt="Luna — астрологический бот в Telegram" />
             </div>
           </article>
 
@@ -291,20 +277,17 @@ function LunaSlide() {
             <div className="pCard__head">
               <span className="pIcon" aria-hidden="true">{codeIcon}</span>
               <div>
-                <h3 className="pCard__title">Сделано</h3>
-                <p className="pCard__desc">Архитектура и UX</p>
+                <h3 className="pCard__title">Механики</h3>
+                <p className="pCard__desc">Этапы, подписка, магазин</p>
               </div>
             </div>
             <div className="pCard__body">
               <ul className="pList">
-                <li>Асинхронный Python (async/await)</li>
-                <li>Assistants API + кастомные tools</li>
-                <li>PDF через Playwright (HTML → PDF)</li>
-                <li>Оплата: YooKassa + Telegram invoices</li>
-                <li>Подписка с таймзонами и расписанием</li>
-                <li>Redis для кеша и ускорения горячих операций</li>
-                <li>Сценарии сообщений и ошибок, чтобы бот ощущался как продукт</li>
-                <li>Быстрые ответы и аккуратная подача — без «технического» ощущения</li>
+                <li>Поэтапный сценарий: introduction → бесплатный портрет (PDF) → продажа подписки/магазин отчётов</li>
+                <li>Динамические tools и промпты по этапу; миграция истории диалога; кэш контекста в Redis</li>
+                <li>Подписка: ежедневные расклады и вечерние вопросы по таймзоне пользователя; истечение и продление</li>
+                <li>Магазин в WebApp (HTTPS: ngrok в dev, свой домен в prod); очередь покупок, атомарное сохранение отчётов</li>
+                <li>Голос: Whisper (транскрипция), TTS ответов; Telegram Payments, ЮKassa</li>
               </ul>
             </div>
           </article>
@@ -313,20 +296,17 @@ function LunaSlide() {
             <div className="pCard__head">
               <span className="pIcon" aria-hidden="true">{sparkIcon}</span>
               <div>
-                <h3 className="pCard__title">Почему это круто</h3>
-                <p className="pCard__desc">Премиальный опыт в Telegram</p>
+                <h3 className="pCard__title">Стек и отчёты</h3>
+                <p className="pCard__desc">Assistants API, PDF, платёжки</p>
               </div>
             </div>
             <div className="pCard__body">
-              <p className="pText">
-                Продуманные сценарии сообщений, кнопок и состояний + быстрые ответы и готовые к отправке PDF‑материалы.
-              </p>
-              <p className="pText">
-                Плюс монетизация и расписание, которые держат регулярный сценарий использования без ручной рутины.
-              </p>
-              <p className="pText">
-                В итоге получился «премиальный» бот, который воспринимается как полноценный продукт, а не просто чат.
-              </p>
+              <ul className="pList pList--cols">
+                <li>Assistants API, кастомные tools; async FastAPI, Redis</li>
+                <li>PDF-отчёты: Jinja2, Playwright; натальные/ведические карты (Kerykeion, AstroKundali, Matplotlib)</li>
+                <li>Платные отчёты: синастрия, натал, прогнозы, выбор даты, карьера/деньги, карта ребёнка</li>
+                <li>Стоимость диалога (токены → USD → RUB по курсу ЦБ); планировщик с привязкой к таймзоне</li>
+              </ul>
             </div>
           </article>
         </div>
@@ -338,7 +318,7 @@ function LunaSlide() {
 function CrmNbkiSlide() {
   const gridIcon = usePIcon("grid");
   const docIcon = usePIcon("doc");
-  const layersIcon = usePIcon("layers");
+  const globeIcon = usePIcon("globe");
 
   return (
     <article className="pSlide pSlide--two" data-accent="violet">
@@ -349,8 +329,8 @@ function CrmNbkiSlide() {
               <PIcon name="grid" />
             </div>
             <div>
-              <p className="pSlide__kicker">CRM + НБКИ</p>
-              <span className="pSlide__link">2 кейса в одном</span>
+              <p className="pSlide__kicker">Chester Feya CRM + НБКИ</p>
+              <a className="pSlide__link" href="https://t.me/iiChesterField" target="_blank" rel="noopener noreferrer">t.me/iiChesterField</a>
             </div>
           </div>
 
@@ -368,18 +348,17 @@ function CrmNbkiSlide() {
             <div className="pCard__head">
               <span className="pIcon" aria-hidden="true">{gridIcon}</span>
               <div>
-                <h3 className="pCard__title">CRM</h3>
-                <p className="pCard__desc">Панель статистики</p>
+                <h3 className="pCard__title">Chester Feya CRM</h3>
+                <p className="pCard__desc">Инфраструктура для бота ресторана: привлечение гостей, рассылки, меню, брони, промокоды. Веб-панель: таблицы, переписка, аналитика</p>
               </div>
             </div>
             <div className="pCard__body">
               <ul className="pList">
-                <li>FastAPI + PostgreSQL</li>
-                <li>Отдельный сервис SQLAlchemy</li>
-                <li>gRPC обмен между сервисами</li>
-                <li>React/Vite: фильтры/таблицы + UI‑состояния</li>
-                <li>Архитектура под быстрые запросы и прогнозируемые ответы</li>
-                <li>Удобная аналитика для управленческих решений «на цифрах»</li>
+                <li>Бот: зазывает гостей, рассылки, меню, бронирование, промокоды</li>
+                <li>PostgreSQL → gRPC databaseManager (SQLAlchemy) → FastAPI REST + React SPA; проверка gRPC при старте</li>
+                <li>Таблицы: пагинация, поиск по полям и ID, редактирование строк</li>
+                <li>Переписка с пользователями, аналитика: агрегаты и персональная по пользователю, временные ряды, графики (Recharts)</li>
+                <li>Protocol Buffers, реестр таблиц и моделей, кодогенерация стабов</li>
               </ul>
             </div>
           </article>
@@ -388,34 +367,38 @@ function CrmNbkiSlide() {
             <div className="pCard__head">
               <span className="pIcon" aria-hidden="true">{docIcon}</span>
               <div>
-                <h3 className="pCard__title">НБКИ</h3>
-                <p className="pCard__desc">PDF → JSON + сводка</p>
+                <h3 className="pCard__title">НБКИ (Credit Bot)</h3>
+                <p className="pCard__desc">Обработка кредитных отчётов БКИ из PDF: сводка в чат + JSON</p>
               </div>
             </div>
             <div className="pCard__body">
               <ul className="pList">
-                <li>Telegram‑бот: приём PDF</li>
-                <li>Парсер таблиц/секций + regex</li>
-                <li>Структурированный JSON</li>
-                <li>Понятная текстовая сводка</li>
-                <li>Формат выдачи результата для удобного чтения</li>
-                <li>Результат воспринимается как готовый отчёт, а не «сырой парсинг»</li>
+                <li>Telegram-бот: приём PDF отчёта, только PDF (проверка MIME)</li>
+                <li>Парсинг: скоринг, договоры, просрочки, заявки; валидация структуры</li>
+                <li>Краткая сводка в чат и полная выгрузка в JSON-файл</li>
+                <li>Async (python-telegram-bot, asyncio), блокировка по пользователю, ретраи при отправке</li>
+                <li>Парсер ~1400 строк, PyPDF2, pytest</li>
               </ul>
             </div>
           </article>
 
           <article className="pCard pCard--wide">
             <div className="pCard__head">
-              <span className="pIcon" aria-hidden="true">{layersIcon}</span>
+              <span className="pIcon" aria-hidden="true">{globeIcon}</span>
               <div>
-                <h3 className="pCard__title">Итог</h3>
-                <p className="pCard__desc">Два прикладных продукта</p>
+                <h3 className="pCard__title">Сайт-резюме</h3>
+                <p className="pCard__desc">На чём построен этот сайт</p>
               </div>
             </div>
             <div className="pCard__body">
-              <p className="pText">
-                Оба кейса — про прикладную инженерку, стабильность и понятный интерфейс для пользователя/бизнеса.
-              </p>
+              <ul className="pList">
+                <li>Frontend: React 18, TypeScript, Vite 6, React Router, SASS</li>
+                <li>Backend: FastAPI, Uvicorn; раздача статики из сборки React</li>
+                <li>PDF-резюме: Playwright (Chromium), выбор шаблона из нескольких HTML</li>
+                <li>Чат с AI: WebSocket, стриминг ответов OpenAI; лимит сообщений по IP (Redis)</li>
+                <li>Офферы из чата: tool calling → gRPC в Telegram-бота, уведомление мне</li>
+                <li>Адаптивная вёрстка, доступность</li>
+              </ul>
             </div>
           </article>
         </div>

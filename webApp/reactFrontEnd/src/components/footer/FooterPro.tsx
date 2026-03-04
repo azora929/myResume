@@ -1,9 +1,20 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { PIcon } from "@/components/icons/PIcon";
 import "./FooterPro.scss";
 
+const EMAIL = "dreminaleksandr06@gmail.com";
+
 export function FooterPro() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const handleEmailClick = useCallback(() => {
+    navigator.clipboard?.writeText(EMAIL).then(() => {
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 2000);
+    }).catch(() => {});
+    // mailto откроет приложение, если оно есть; если нет — адрес уже в буфере
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -170,13 +181,13 @@ export function FooterPro() {
           </div>
 
           <div className="footerPro__cta">
-            <a className="fBtn" href="mailto:dreminaleksandr06@gmail.com">
+            <a className="fBtn" href={`mailto:${EMAIL}`} onClick={handleEmailClick} title={emailCopied ? "Скопировано" : "Копировать и открыть почту"}>
               <span className="fBtn__icon" aria-hidden="true">
                 <PIcon name="mail" />
               </span>
               <span className="fBtn__text">
                 <span className="fBtn__label">Почта</span>
-                <span className="fBtn__value">dreminaleksandr06@gmail.com</span>
+                <span className="fBtn__value">{emailCopied ? "Скопировано" : EMAIL}</span>
               </span>
               <span className="fBtn__arrow" aria-hidden="true">
                 <PIcon name="arrow" />
@@ -249,8 +260,8 @@ export function FooterPro() {
             </div>
 
             <div className="fPills">
-              <a className="fPill" href="mailto:dreminaleksandr06@gmail.com">
-                <span className="fPill__dot" aria-hidden="true"></span>Email
+              <a className="fPill" href={`mailto:${EMAIL}`} onClick={handleEmailClick} title={emailCopied ? "Скопировано" : "Копировать и открыть почту"}>
+                <span className="fPill__dot" aria-hidden="true"></span>{emailCopied ? "Скопировано" : "Email"}
               </a>
               <a className="fPill" href="https://t.me/azora929" target="_blank" rel="noopener noreferrer">
                 <span className="fPill__dot" aria-hidden="true"></span>Telegram

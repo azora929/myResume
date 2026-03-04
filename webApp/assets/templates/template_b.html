@@ -294,65 +294,75 @@
         <div class="proj-top">
           <div>
             <p class="proj-name">EvoSpeak / Yespeak</p>
-            <p class="meta"><b>Ссылка:</b> <a class="proj-link" href="https://yespeak.ru">yespeak.ru</a> · <b>Стек:</b> Django, PostgreSQL, Assistants API, WebSocket, Redis, React/Vite</p>
+            <p class="meta"><b>Ссылка:</b> <a class="proj-link" href="https://yespeak.ru">yespeak.ru</a> · <b>Стек:</b> Django 5, Channels, Assistants API + Realtime API, WebSocket, Redis, React 18, Vite, Three.js</p>
           </div>
           <span class="tag" style="background:#fff; border-color:var(--accent); color:var(--accent);">LLM + Streaming</span>
         </div>
         <ul class="bul">
-          <li>Streaming LLM через WebSocket → “здесь и сейчас”.</li>
-          <li>Assistants API: context, lifecycle run, custom tools.</li>
-          <li>Механика двух ассистентов → ускорение генерации упражнений.</li>
-          <li>YooKassa + webhooks; подписка + разовая покупка.</li>
+          <li>Платформа изучения языка с AI: чат, тест уровня, разговорные уроки и экзамен говорения (Realtime API), экзамены по этапам.</li>
+          <li>Два потока: стриминг по WebSocket + фоновая генерация заданий (tools). 3D-аватар с липсинком (Three.js), TTS и голосовой ввод.</li>
+          <li>Django 5, Channels, Assistants API + Realtime API; ЮKassa: пополнение, безлимит, покупка урока.</li>
         </ul>
         <div class="chips">
-          <span class="chip">WebSocket</span><span class="chip">Tools</span><span class="chip">Payments</span>
+          <span class="chip">WebSocket</span><span class="chip">Realtime API</span><span class="chip">Three.js</span><span class="chip">Payments</span>
         </div>
       </article>
 
       <article class="proj">
         <div class="proj-top">
           <div>
-            <p class="proj-name">ИИ Препод</p>
-            <p class="meta"><b>Ссылка:</b> <a class="proj-link" href="https://iiprepod.ru">iiprepod.ru</a> · <b>Стек:</b> Django, PostgreSQL, OpenAI, SSE, YooKassa, курс ЦБ РФ</p>
+            <p class="proj-name">ИИ Препод — EdTech с AI-тьютором</p>
+            <p class="meta"><b>Ссылка:</b> <a class="proj-link" href="https://iiprepod.ru">iiprepod.ru</a> · <b>Стек:</b> Django 5, DRF, Daphne, Channels, OpenAI, SSE, YooKassa, Exolve, Telegram-бот, TTS (VoiceKit, SpeechKit)</p>
           </div>
-          <span class="tag" style="background:#fff; border-color:var(--accent2); color:var(--accent2);">Billing</span>
+          <span class="tag" style="background:#fff; border-color:var(--accent2); color:var(--accent2);">EdTech</span>
         </div>
         <ul class="bul">
-          <li>Streaming через SSE.</li>
-          <li>Токен-биллинг USD→RUB по курсу ЦБ + наценка; баланс + овердрафт.</li>
-          <li>YooKassa + webhooks; пики до ~1000 пользователей; ~300–400 ₽ за урок.</li>
+          <li>Платформа для школьников: роли (ученик, родитель, учитель, партнёр), чат с GPT, стриминг SSE, онлайн-уроки, ОГЭ, психотесты, ЛК родителя, награды. Пробные уроки с лимитом по IP.</li>
+          <li>YooKassa (вебхуки, баланс). SMS (Exolve), Telegram-бот (привязка по коду, уведомления, альт-авторизация). TTS: VoiceKit (gRPC), SpeechKit.</li>
+          <li>Токен-биллинг USD→RUB (курс ЦБ), баланс/овердрафт; пики ~1000 пользователей; ~300–400 ₽ за урок.</li>
         </ul>
         <div class="chips">
-          <span class="chip">SSE</span><span class="chip">Currency</span><span class="chip">Webhooks</span>
+          <span class="chip">SSE</span><span class="chip">DRF</span><span class="chip">Telegram</span><span class="chip">TTS</span>
         </div>
       </article>
 
       <article class="proj">
         <div class="proj-top">
           <div>
-            <p class="proj-name">Луна Знает (Telegram)</p>
-            <p class="meta"><b>Ссылка:</b> <a class="proj-link" href="https://t.me/Luna_knowbot">t.me/Luna_knowbot</a> · <b>Стек:</b> async/await, Assistants, FastAPI, Redis, Playwright, Payments</p>
+            <p class="proj-name">Luna — астрологический AI-помощник</p>
+            <p class="meta"><b>Ссылка:</b> <a class="proj-link" href="https://t.me/Luna_knowbot">t.me/Luna_knowbot</a> · <b>Стек:</b> FastAPI, Assistants API, Redis, Playwright, WebApp, Telegram Payments, ЮKassa</p>
           </div>
-          <span class="tag" style="background:#fff;">Async</span>
+          <span class="tag" style="background:#fff;">Astro</span>
         </div>
         <ul class="bul">
-          <li>Асинхронная архитектура + tools.</li>
-          <li>Playwright HTML→PDF; timezone-aware расписания.</li>
-          <li>Оплата: YooKassa + Telegram invoices.</li>
+          <li>Бесплатный портрет по дате/времени/месту; платные отчёты (синастрия, натал, прогнозы) и подписка на расклады/вечерние вопросы по таймзоне.</li>
+          <li>Поэтапный сценарий, динамические tools по этапу; кэш Redis; планировщик с таймзоной; очередь покупок. Магазин в WebApp (ngrok/домен). Whisper, TTS. PDF: Jinja2, Playwright.</li>
         </ul>
       </article>
 
       <article class="proj">
         <div class="proj-top">
           <div>
-            <p class="proj-name">CRM + НБКИ (PDF→JSON)</p>
-            <p class="meta"><b>Стек:</b> FastAPI, PostgreSQL, SQLAlchemy, gRPC, React/Vite · Telegram, regex</p>
+            <p class="proj-name">Chester Feya CRM + НБКИ (PDF→JSON)</p>
+            <p class="meta"><b>Стек:</b> FastAPI, PostgreSQL, SQLAlchemy, gRPC, React (TypeScript, Vite) · Telegram, regex</p>
           </div>
-          <span class="tag" style="background:#fff;">Case pack</span>
+          <a class="proj-link" href="https://t.me/iiChesterField">t.me/iiChesterField</a>
         </div>
         <ul class="bul">
-          <li>CRM: сервисы + gRPC, UI-состояния.</li>
-          <li>НБКИ: PDF → JSON + текстовая сводка.</li>
+          <li>CRM: инфраструктура для бота ресторана (рассылки, меню, брони, промокоды). PostgreSQL → gRPC databaseManager → FastAPI + React; таблицы, переписка, аналитика; Proto, реестр таблиц; проверка gRPC при старте.</li>
+          <li>НБКИ (Credit Bot): парсинг кредитных отчётов БКИ из PDF — сводка в чат + JSON; async, блокировки по пользователю, PyPDF2, pytest.</li>
+        </ul>
+      </article>
+
+      <article class="proj">
+        <div class="proj-top">
+          <div>
+            <p class="proj-name">Сайт-резюме (этот сайт)</p>
+            <p class="meta"><b>Стек:</b> React 18, TypeScript, Vite 6, SASS · FastAPI, Playwright, WebSocket, Redis, gRPC</p>
+          </div>
+        </div>
+        <ul class="bul">
+          <li>React 18, TypeScript, Vite 6, React Router, SASS; FastAPI, раздача статики. PDF: Playwright (Chromium), шаблоны HTML. Чат с AI: WebSocket, стриминг OpenAI; лимит по IP (Redis). Офферы → gRPC в Telegram. Адаптив.</li>
         </ul>
       </article>
     </section>
