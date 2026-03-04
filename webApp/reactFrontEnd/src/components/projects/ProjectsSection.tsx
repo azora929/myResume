@@ -397,6 +397,7 @@ function CrmNbkiSlide() {
                 <li>PDF-резюме: Playwright (Chromium), выбор шаблона из нескольких HTML</li>
                 <li>Чат с AI: WebSocket, стриминг ответов OpenAI; лимит сообщений по IP (Redis)</li>
                 <li>Офферы из чата: tool calling → gRPC в Telegram-бота, уведомление мне</li>
+                <li>Сборка и деплой: Docker, Kubernetes</li>
                 <li>Адаптивная вёрстка, доступность</li>
               </ul>
             </div>
