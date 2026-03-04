@@ -1,4 +1,4 @@
-# Замените resume.example.com на свой домен после покупки.
+# Домен: myresume-azora.ru (A-запись должна указывать на IP сервера).
 # Для выдачи TLS-сертификата нужен ingress-контроллер с поддержкой Ingress
 # (например nginx-ingress или traefik) и, при необходимости, cert-manager.
 apiVersion: networking.k8s.io/v1
@@ -12,7 +12,17 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: resume.example.com
+    - host: myresume-azora.ru
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: webapp
+                port:
+                  number: 8000
+    - host: www.myresume-azora.ru
       http:
         paths:
           - path: /
@@ -25,5 +35,6 @@ spec:
   # Раскомментируйте tls после настройки cert-manager или ручного добавления сертификата
   # tls:
   #   - hosts:
-  #       - resume.example.com
+  #       - myresume-azora.ru
+  #       - www.myresume-azora.ru
   #     secretName: resume-tls
