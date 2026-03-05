@@ -5,10 +5,11 @@ metadata:
   labels:
     app: resume-webapp
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - port: 8000
       targetPort: 8000
+      nodePort: 30080
       protocol: TCP
       name: http
   selector:

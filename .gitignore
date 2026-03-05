@@ -50,6 +50,7 @@ k8s/secrets/*-secrets.yaml
 k8s/secrets/certificate.crt
 k8s/secrets/certificate.key
 
+
 # Environment & local configs
 *.env
 *.env.local

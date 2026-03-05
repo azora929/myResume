@@ -395,6 +395,18 @@ body.chat-open {
     border-right: none;
   }
 
+  .chat-modal__header {
+    padding: 16px 12px 16px 16px;
+  }
+
+  .chat-modal__messages {
+    padding: 16px 12px 20px;
+  }
+
+  .chat-modal__footer {
+    padding: 12px 12px calc(24px + env(safe-area-inset-bottom, 0px)) 12px;
+  }
+
   .chat-placeholder__icon {
     width: 72px;
     height: 72px;
