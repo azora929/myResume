@@ -45,10 +45,11 @@ reactFrontEnd/dist/
 # Local data (офферы из чата)
 data/
 
-# Kubernetes secrets (не коммитить с реальными значениями)
+# Kubernetes secrets и сертификаты (не коммитить)
 k8s/secrets/*-secrets.yaml
-k8s/secrets/certificate.crt
-k8s/secrets/certificate.key
+nginx/secrets/certificate.crt
+nginx/secrets/certificate.key
+**/secrets/certificate.*
 
 
 # Environment & local configs
