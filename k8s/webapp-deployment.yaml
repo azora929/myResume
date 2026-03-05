@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: webapp
-          # Registry в Docker на хосте (порт 5001 — на Mac 5000 занят AirPlay); Linux: IP хоста:5001
-          image: host.docker.internal:5001/myresume-webapp:latest
+          # Registry на хосте: Linux/VPS — 127.0.0.1:5001; Mac (Docker Desktop) — host.docker.internal:5001
+          image: 127.0.0.1:5001/myresume-webapp:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000

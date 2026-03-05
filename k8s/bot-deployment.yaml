@@ -16,9 +16,8 @@ spec:
     spec:
       containers:
         - name: bot
-          # Registry в Docker на хосте: docker run -d -p 5001:5000 registry:2 (5001 — т.к. на Mac 5000 занят AirPlay)
-          # Docker Desktop: host.docker.internal:5001; Linux/VPS: IP хоста:5001
-          image: host.docker.internal:5001/myresume-bot:latest
+          # Registry на хосте: Linux/VPS — 127.0.0.1:5001; Mac (Docker Desktop) — host.docker.internal:5001
+          image: 127.0.0.1:5001/myresume-bot:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 50051

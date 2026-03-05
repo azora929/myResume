@@ -6,9 +6,7 @@ kind: Ingress
 metadata:
   name: resume-ingress
   annotations:
-    # Пример для nginx-ingress: раскомментируйте и подставьте свой домен
-    # nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    # cert-manager.io/cluster-issuer: "letsencrypt-prod"  # если используете cert-manager
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   ingressClassName: nginx
   rules:
@@ -32,9 +30,8 @@ spec:
                 name: webapp
                 port:
                   number: 8000
-  # Раскомментируйте tls после настройки cert-manager или ручного добавления сертификата
-  # tls:
-  #   - hosts:
-  #       - myresume-azora.ru
-  #       - www.myresume-azora.ru
-  #     secretName: resume-tls
+  tls:
+    - hosts:
+        - myresume-azora.ru
+        - www.myresume-azora.ru
+      secretName: resume-tls
