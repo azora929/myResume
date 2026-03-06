@@ -447,7 +447,7 @@ export function MainPage() {
             <article className="sCard sCard--wide">
               <div className="sCard__head">
                 <span className="sIcon" aria-hidden="true">
-                  <PIcon name="spark" />
+                  <PIcon name="person" />
                 </span>
                 <div>
                   <h3 className="sCard__title">Approach & Experience</h3>

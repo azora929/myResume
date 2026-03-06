@@ -172,7 +172,7 @@ export function FooterPro() {
         <div className="footerPro__top">
           <div className="footerPro__brand">
             <div className="footerPro__mark" aria-hidden="true">
-              <PIcon name="spark" />
+              <PIcon name="person" />
             </div>
             <div>
               <p className="footerPro__name">Дремин Александр</p>
