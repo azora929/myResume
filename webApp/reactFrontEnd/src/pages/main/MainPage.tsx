@@ -624,6 +624,23 @@ export function MainPage() {
                   <li>Лоадеры, ошибки, пустые экраны — до ощущения цельного продукта</li>
                 </ul>
               </article>
+
+              <article className="sCard" data-accent="neutral">
+                <div className="sCard__head">
+                  <span className="sIcon" aria-hidden="true">
+                    <PIcon name="globe" />
+                  </span>
+                  <div>
+                    <h3 className="sCard__title">Languages</h3>
+                    <p className="sCard__desc">Коммуникация</p>
+                  </div>
+                </div>
+                <ul className="sList">
+                  <li>Русский — родной</li>
+                  <li>Английский — B1</li>
+                  <li>Свободно читаю техническую документацию и спецификации</li>
+                </ul>
+              </article>
             </div>
 
             <div className="skillsPro__metaRow">
@@ -641,23 +658,6 @@ export function MainPage() {
                   <li>СПО (колледж): 09.02.07 «Информационные системы и программирование» — красный диплом</li>
                   <li>Высшее образование: в процессе (не IT‑направление)</li>
                   <li>Постоянно поддерживаю себя в форме через практику и самообучение</li>
-                </ul>
-              </article>
-
-              <article className="sCard" data-accent="neutral">
-                <div className="sCard__head">
-                  <span className="sIcon" aria-hidden="true">
-                    <PIcon name="globe" />
-                  </span>
-                  <div>
-                    <h3 className="sCard__title">Languages</h3>
-                    <p className="sCard__desc">Коммуникация</p>
-                  </div>
-                </div>
-                <ul className="sList">
-                  <li>Русский — родной</li>
-                  <li>Английский — B1</li>
-                  <li>Свободно читаю техническую документацию и спецификации</li>
                 </ul>
               </article>
             </div>
