@@ -14,16 +14,16 @@
     }
 
     :root{
-      --ink:#0b1220;
-      --muted:#3f5066;
-      --line:#cfd8e5;
+      --ink:#1e1b4b;
+      --muted:#4c4b6e;
+      --line:#c7d2e4;
 
-      --ice:#eef5ff;
+      --ice:#eef2ff;
       --panel:#ffffff;
 
-      --accent:#4f46e5;  /* indigo */
-      --accent2:#0ea5e9; /* ice blue */
-      --accent3:#0f766e; /* deep teal */
+      --accent:#6366f1;
+      --accent2:#3b82f6;
+      --accent3:#0d9488;
     }
 
     .i{ width:14px;height:14px;vertical-align:-2px; }
@@ -31,93 +31,90 @@
 
     .ico{
       width:30px;height:30px;border:1px solid var(--line);
-      border-radius:12px;background:var(--ice);
+      border-radius:8px;
+      background:var(--ice);
       display:grid;place-items:center;color:var(--accent);
       flex:0 0 auto;
     }
 
     .page{
-      border:1px solid var(--line);
+      border:2px solid var(--line);
       background:var(--ice);
       padding:12px;
     }
 
     .hero{
-      border:2px solid var(--ink);
+      border:1px solid var(--line);
       background:var(--panel);
-      padding:10px;
+      padding:12px 14px;
       display:flex;
       justify-content:space-between;
-      gap:12px;
+      gap:14px;
       align-items:flex-start;
     }
     .name{ margin:0; font-size:23px; font-weight:950; letter-spacing:-0.02em; }
     .role{ margin:4px 0 0; color:var(--muted); font-weight:700; }
-    .micro{
-      margin:8px 0 0;
-      color:var(--muted);
-      font-size:11.5px;
-      max-width:520px;
-    }
 
     .contact{
       min-width:260px;
-      border-left:2px solid var(--ink);
-      padding-left:12px;
+      border-left:3px solid var(--accent);
+      padding-left:14px;
       font-size:11.5px;
     }
     .c{ display:flex; gap:8px; align-items:flex-start; margin-bottom:8px; }
-    .lbl{ font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin:0 0 2px; }
+    .lbl{ font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin:0 0 2px; }
     .c a{ color:inherit; text-decoration:none; border-bottom:1px solid var(--line); }
 
-    .pillrow{ display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+    .pillrow{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
     .pill{
       font-size:11px;
       padding:4px 10px;
       border:1px solid var(--line);
-      border-radius:999px;
+      border-radius:6px;
       background:#fff;
       white-space:nowrap;
     }
 
-    /* bands */
     .band{
-      margin-top:10px;
+      margin-top:12px;
       background:var(--panel);
       border:1px solid var(--line);
-      padding:10px;
+      padding:12px;
+      border-radius:8px;
     }
     .band-h{
       display:flex;
       justify-content:space-between;
       gap:10px;
       align-items:center;
-      border-bottom:1px solid var(--line);
-      padding-bottom:8px;
-      margin-bottom:10px;
+      border-bottom:2px solid var(--accent);
+      padding-bottom:10px;
+      margin-bottom:12px;
     }
     .band-title{
       margin:0;
-      font-size:12px;
-      letter-spacing:.18em;
+      font-size:11px;
+      letter-spacing:.28em;
       text-transform:uppercase;
       font-weight:950;
       display:flex; gap:10px; align-items:center;
+      color:var(--ink);
     }
     .band-note{ margin:0; color:var(--muted); font-size:11px; }
 
     .row{
       display:flex;
       flex-wrap:wrap;
-      gap:10px;
+      gap:12px;
       align-items:stretch;
     }
     .card{
       background:#fff;
       border:1px solid var(--line);
-      padding:10px;
+      padding:12px;
       flex:1 1 240px;
       min-width:0;
+      border-radius:8px;
     }
     .card-h{
       display:flex; gap:10px; align-items:flex-start; margin-bottom:8px;
@@ -138,12 +135,13 @@
     .proj{
       border:1px solid var(--line);
       background:#fff;
-      padding:10px;
+      padding:12px;
+      border-radius:8px;
     }
-    .proj + .proj{ margin-top:10px; }
+    .proj + .proj{ margin-top:12px; }
     .proj-top{
       display:flex; justify-content:space-between; gap:10px; align-items:flex-start;
-      border-bottom:1px solid var(--line);
+      border-bottom:2px solid var(--line);
       padding-bottom:8px; margin-bottom:8px;
     }
     .proj-name{ margin:0; font-size:14px; font-weight:950; }
@@ -155,7 +153,7 @@
       font-size:10.5px;
       padding:4px 8px;
       border:1px solid var(--line);
-      border-radius:999px;
+      border-radius:6px;
       background:#fff;
       white-space:nowrap;
     }
@@ -164,11 +162,11 @@
     .r-blue{ border-color:var(--accent2); color:var(--accent2); }
 
     .footer{
-      margin-top:10px;
-      border:1px solid var(--line);
-      background:#fff;
-      padding:10px;
-      display:flex; justify-content:space-between; gap:10px;
+      margin-top:12px;
+      border-top:1px solid var(--line);
+      background:var(--ice);
+      padding:10px 0 0;
+      display:flex; justify-content:flex-start; gap:10px;
       font-size:10.5px; color:var(--muted);
     }
   </style>
@@ -197,6 +195,10 @@
       <path d="M3 12c2.5-4 5.5-4 8 0s5.5 4 10 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       <path d="M3 16c2.5-4 5.5-4 8 0s5.5 4 10 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
     </symbol>
+    <symbol id="p-person" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M5 20c0-3.5 3.1-6 7-6s7 2.5 7 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
   </svg>
 
   <div class="page">
@@ -204,9 +206,6 @@
       <div>
         <h1 class="name">Дремин Александр</h1>
         <p class="role">Middle Python Developer (Backend-first) — AI/LLM Integrations</p>
-        <p class="micro">
-          Middle Python-разработчик, 22 года; в разработке с 19 лет, коммерческий опыт около 3 лет. Делаю так, чтобы продукт ощущался живым: нейросети отвечают быстро и предсказуемо, монетизация не преподносит сюрпризов на проде. Фичи веду от идеи до продовой нагрузки — продуманные контракты, валидация и краевые случаи, чтобы и пользователю, и команде было спокойно.
-        </p>
 
         <div class="pillrow">
           <span class="pill">REST API</span>
@@ -238,61 +237,34 @@
 
     <section class="band">
       <div class="band-h">
-        <h2 class="band-title"><span class="ico"><svg class="i-lg"><use href="#p-target"/></svg></span> фокус</h2>
-        <p class="band-note">что для меня важно в разработке</p>
+        <h2 class="band-title"><span class="ico"><svg class="i-lg"><use href="#p-person"/></svg></span> About Me</h2>
+        <p class="band-note">Backend-first fullstack, AI/LLM, ~3 years commercial</p>
       </div>
 
       <div class="row">
-        <div class="card">
+        <div class="card" style="flex:1 1 100%;">
           <div class="card-h">
-            <span class="ico" style="color:var(--accent3)"><svg class="i-lg"><use href="#p-gear"/></svg></span>
+            <span class="ico" style="color:var(--accent)"><svg class="i-lg"><use href="#p-person"/></svg></span>
             <div>
-              <h3>Надёжность</h3>
-              <p>чтобы прод жил спокойно</p>
+              <h3>Approach & Experience</h3>
+              <p>22 года, в разработке с 19 лет, около 3 лет коммерческого опыта</p>
             </div>
           </div>
           <div class="body">
             <p>
-              Собираю и поддерживаю REST (FastAPI, Django, DRF) и gRPC, WebSocket/SSE под стриминг. Платежи (YooKassa, Telegram Payments), планировщики с учётом таймзоны — так, чтобы сервисы держали нагрузку. PostgreSQL и Redis: миграции, транзакции, кэш; надёжность через ретраи и обработку ошибок. Docker, Kubernetes, CI/CD; генерация PDF (Playwright); тесты (pytest).
+              Я — Middle Python-разработчик (backend-first fullstack), 22 года, в разработке с 19 лет, около 3 лет коммерческого опыта. Создаю продуктовые системы с AI и монетизацией: важны скорость ответа, стабильность и предсказуемость на проде. Опыт: платформы с AI-тьютором (EvoSpeak, ИИ Препод), Telegram-боты с платежами (Luna, НБКИ), CRM с gRPC и аналитикой, парсинг PDF и генерация отчётов, big data. Фичи веду от идеи до продакшена — проектирование API, обработка ошибок, валидация и поведение в краевых сценариях.
             </p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-h">
-            <span class="ico" style="color:var(--accent2)"><svg class="i-lg"><use href="#p-wave"/></svg></span>
-            <div>
-              <h3>Streaming и AI/LLM</h3>
-              <p>стриминг ответов, два потока</p>
-            </div>
-          </div>
-          <div class="body">
             <p>
-              Делаю стриминг (WebSocket/SSE) так, чтобы интерфейс не замирал в ожидании — ценность видна сразу. OpenAI Assistants (threads, runs, tools), Realtime API, Whisper и TTS. Два потока: диалог в реальном времени плюс фоновая генерация заданий. React, лоадеры и состояния довожу до ощущения цельного продукта.
+              Backend: FastAPI, Django, DRF, gRPC; WebSocket/SSE для стриминга AI; платежи (YooKassa, Telegram Payments), Telegram-боты и внешние сервисы. PostgreSQL и Redis — транзакции, кеш, очереди. AI-слой: OpenAI Assistants API, streaming, tools, голос (Whisper, TTS). Фронт: React + TypeScript + Vite, стриминг и состояния интерфейса для цельного продукта.
             </p>
           </div>
-        </div>
-
-        <div class="card">
-          <div class="card-h">
-            <span class="ico"><svg class="i-lg"><use href="#p-target"/></svg></span>
-            <div>
-              <h3>LLM и продуктовая подача</h3>
-              <p>tools, голос, UX</p>
-            </div>
-          </div>
-          <ul class="bul">
-            <li>Assistants API: threads/runs, кастомные tools, динамические промпты под этап пользователя</li>
-            <li>Realtime API, Whisper, TTS (VoiceKit, SpeechKit) — голос в продукте</li>
-            <li>Краевые случаи, таймауты, ретраи; кэш контекста в Redis с инвалидацией</li>
-          </ul>
         </div>
       </div>
     </section>
 
     <section class="band">
       <div class="band-h">
-        <h2 class="band-title"><span class="ico"><svg class="i-lg"><use href="#p-gear"/></svg></span> проекты</h2>
+        <h2 class="band-title"><span class="ico"><svg class="i-lg"><use href="#p-gear"/></svg></span> Projects</h2>
         <p class="band-note">коротко, но вкусно</p>
       </div>
 
@@ -311,7 +283,6 @@
         </ul>
         <div class="pillrow">
           <span class="pill">WebSocket</span><span class="pill">Realtime API</span><span class="pill">Three.js</span><span class="pill">Payments</span>
-        </div>
         </div>
       </article>
 
@@ -373,7 +344,6 @@
 
     <div class="footer">
       <div>© Дремин Александр</div>
-      <div>PDF template — Indigo Blueprint</div>
     </div>
   </div>
 </body>

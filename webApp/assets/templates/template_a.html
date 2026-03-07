@@ -14,16 +14,16 @@
     }
 
     :root{
-      --ink:#0b1220;
-      --muted:#42536a;
-      --line:#cdd6e1;
+      --ink:#0f2847;
+      --muted:#4a657a;
+      --line:#c5d4e0;
 
-      --paper:#fbf7ef;      /* тёплый */
+      --paper:#f8f4ec;
       --panel:#ffffff;
-      --accent:#0ea5a4;     /* premium teal */
-      --accent2:#1e3a8a;    /* глубокий синий */
-      --tagbg:#eef7f6;
-      --tagline:#b9c7d6;
+      --accent:#0d9488;
+      --accent2:#15678d;
+      --tagbg:#e6f2f1;
+      --tagline:#a8c4d4;
     }
 
     /* icons */
@@ -31,27 +31,27 @@
     .i-lg{ width:16px; height:16px; vertical-align:-3px; }
     .ico{
       width:30px;height:30px;border:1px solid var(--line);
-      border-radius:10px;background:var(--paper);
+      border-radius:12px;background:var(--paper);
       display:grid;place-items:center;color:var(--accent);
       flex:0 0 auto;
     }
 
-    /* page frame */
     .page{
-      border:2px solid var(--ink);
+      border:2px solid var(--line);
       background:var(--paper);
-      padding:12px;
+      padding:14px;
     }
 
     .top{
       display:flex;
       justify-content:space-between;
-      gap:12px;
-      padding:10px;
-      border:1px solid var(--ink);
+      gap:14px;
+      padding:12px 14px 12px 10px;
+      border:1px solid var(--line);
+      border-left:5px solid var(--accent);
       background:var(--panel);
     }
-    .name{ margin:0; font-size:22px; font-weight:900; letter-spacing:-0.02em; }
+    .name{ margin:0; font-size:22px; font-weight:900; letter-spacing:-0.02em; color:var(--ink); }
     .title{
       margin:4px 0 0;
       color:var(--muted);
@@ -59,25 +59,26 @@
       font-weight:650;
     }
     .kicker{
-      margin:6px 0 0;
+      margin:8px 0 0;
       display:flex;
       flex-wrap:wrap;
-      gap:6px;
+      gap:8px;
     }
     .tag{
       font-size:11px;
-      padding:4px 10px;
-      border:1px solid var(--line);
-      border-radius:999px;
+      padding:5px 12px;
+      border:1px solid var(--accent);
+      border-radius:4px;
       background:var(--tagbg);
       color:var(--ink);
       white-space:nowrap;
+      letter-spacing:0.02em;
     }
 
     .contacts{
       min-width:240px;
-      border-left:2px solid var(--ink);
-      padding-left:12px;
+      border-left:3px solid var(--accent2);
+      padding-left:14px;
     }
     .c-row{
       display:flex; gap:8px; align-items:flex-start;
@@ -94,20 +95,21 @@
       margin:0 0 2px;
     }
 
-    /* section strips */
+    /* section strips — left accent stripe */
     .strip{
-      margin-top:10px;
+      margin-top:12px;
       border:1px solid var(--line);
+      border-left:5px solid var(--accent);
       background:var(--panel);
-      padding:10px;
+      padding:12px 12px 12px 10px;
     }
     .strip-h{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      padding-bottom:8px;
-      border-bottom:1px solid var(--line);
+      padding-bottom:10px;
+      border-bottom:2px solid var(--line);
       margin-bottom:10px;
     }
     .strip-h .left{
@@ -116,7 +118,7 @@
     .strip-title{
       margin:0;
       font-size:12px;
-      letter-spacing:.16em;
+      letter-spacing:.2em;
       text-transform:uppercase;
       font-weight:900;
       color:var(--ink);
@@ -127,17 +129,17 @@
       font-size:11px;
     }
 
-    /* horizontal cards row */
+    /* horizontal cards row — card with left accent */
     .row{
       display:flex;
-      gap:10px;
+      gap:12px;
       align-items:stretch;
       flex-wrap:wrap;
     }
     .card{
       border:1px solid var(--line);
       background:var(--panel);
-      padding:10px;
+      padding:12px;
       min-width: 0;
       flex: 1 1 220px;
     }
@@ -179,22 +181,23 @@
       background:var(--accent);
     }
 
-    /* project cards (stacked) */
+    /* project cards — each with left teal stripe */
     .projects{
-      display:grid;
-      gap:10px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
     }
     .proj{
       border:1px solid var(--line);
       background:var(--panel);
-      padding:10px;
+      padding:12px;
     }
     .proj-top{
       display:flex;
       justify-content:space-between;
       gap:10px;
       align-items:flex-start;
-      border-bottom:1px solid var(--line);
+      border-bottom:2px solid var(--line);
       padding-bottom:8px;
       margin-bottom:8px;
     }
@@ -232,12 +235,12 @@
     }
 
     .footer{
-      margin-top:10px;
-      border:1px solid var(--ink);
-      background:var(--panel);
-      padding:10px;
+      margin-top:12px;
+      border-top:1px solid var(--line);
+      background:var(--paper);
+      padding:10px 0 0;
       display:flex;
-      justify-content:space-between;
+      justify-content:flex-start;
       gap:10px;
       font-size:10.5px;
       color:var(--muted);
@@ -258,8 +261,9 @@
       <path d="M21 5L3.8 11.6c-.6.2-.6 1 0 1.2l4.2 1.3 1.6 4.9c.2.6 1 .6 1.2 0l2.2-3.2 4.4 3.2c.4.3 1 .1 1.1-.4L22 5.9c.1-.6-.5-1.1-1-.9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
       <path d="M8 14l12-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
     </symbol>
-    <symbol id="m-shield" viewBox="0 0 24 24">
-      <path d="M12 3l8 4v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <symbol id="m-person" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M5 20c0-3.5 3.1-6 7-6s7 2.5 7 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
     </symbol>
     <symbol id="m-stream" viewBox="0 0 24 24">
       <path d="M4 8h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -313,62 +317,33 @@
       </div>
     </section>
 
-    <!-- VALUE / SUMMARY -->
+    <!-- ABOUT ME -->
     <section class="strip">
       <div class="strip-h">
         <div class="left">
-          <span class="ico"><svg class="i-lg"><use href="#m-shield"/></svg></span>
-          <h2 class="strip-title">Профиль и ценность</h2>
+          <span class="ico"><svg class="i-lg"><use href="#m-person"/></svg></span>
+          <h2 class="strip-title">About Me</h2>
         </div>
-        <p class="strip-note">про качество, скорость и предсказуемость</p>
+        <p class="strip-note">Backend-first fullstack, продукты с AI и монетизацией</p>
       </div>
 
       <div class="row">
-        <div class="card">
+        <div class="card" style="flex:1 1 100%;">
           <div class="card-h">
-            <span class="ico" style="color:var(--accent2)"><svg class="i-lg"><use href="#m-rocket"/></svg></span>
+            <span class="ico" style="color:var(--accent)"><svg class="i-lg"><use href="#m-person"/></svg></span>
             <div>
-              <h3>Я делаю “продукт”, а не “набор фич”</h3>
-              <p>ощущение качества видно пользователю</p>
+              <h3>Approach & Experience</h3>
+              <p>22 года, в разработке с 19 лет, около 3 лет коммерческого опыта</p>
             </div>
           </div>
           <div class="body">
             <p>
-              Я — Middle Python-разработчик, 22 года; в разработке с 19 лет, коммерческий опыт около 3 лет. Для меня важно, чтобы продукт ощущался живым: нейросети в интерфейсе отвечают быстро и предсказуемо, а монетизация — платежи, подписки, боты — не преподносит сюрпризов на проде. Уже за плечами платформы с AI-тьютором (EvoSpeak, ИИ Препод), Telegram-боты (Luna, НБКИ), CRM с gRPC, парсинг PDF и отчёты. Фичи веду от идеи до продовой нагрузки: продуманные контракты API, валидация и поведение в краевых случаях — так, чтобы и пользователю, и команде было спокойно.
+              Я — Middle Python-разработчик (backend-first fullstack), 22 года, в разработке с 19 лет, около 3 лет коммерческого опыта. Создаю продуктовые системы с AI и монетизацией, где важны скорость ответа, стабильность и предсказуемость на проде. Работал над платформами с AI-тьютором (EvoSpeak, ИИ Препод), Telegram-ботами с платежами (Luna, НБКИ), CRM с gRPC и аналитикой, сервисами парсинга PDF и генерации отчётов, а также с big data. Обычно веду фичи от идеи до продакшена: проектирование API, обработка ошибок, валидация и продуманное поведение системы в краевых сценариях.
             </p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-h">
-            <span class="ico"><svg class="i-lg"><use href="#m-stream"/></svg></span>
-            <div>
-              <h3>Streaming-UX и AI/LLM</h3>
-              <p>стриминг ответов, два потока, живые состояния</p>
-            </div>
-          </div>
-          <div class="body">
             <p>
-              В AI/LLM-фичах критична <b>подача результата</b>: делаю стриминг (WebSocket/SSE) так, чтобы интерфейс не замирал в ожидании — ценность видна сразу. OpenAI Assistants (threads, runs, tools), Realtime API, Whisper и TTS. Реализовывал сценарии с двумя потоками: диалог в реальном времени плюс фоновая генерация заданий. На фронте — React, TypeScript, Vite; довожу лоадеры, ошибки и пустые экраны до ощущения цельного продукта, а не набора экранов.
+              В backend работаю с FastAPI, Django, DRF и gRPC, реализую WebSocket/SSE стриминг для AI, интегрирую платежи (YooKassa, Telegram Payments), Telegram-ботов и внешние сервисы. Использую PostgreSQL и Redis для транзакций, кеширования и очередей. В AI-слое работаю с OpenAI Assistants API, streaming, tools, а также голосовыми технологиями (Whisper, TTS). На фронте использую React + TypeScript + Vite, подключая стриминг и продумывая состояния интерфейса, чтобы продукт ощущался быстрым и цельным.
             </p>
           </div>
-        </div>
-
-        <div class="card">
-          <div class="card-h">
-            <span class="ico" style="color:var(--accent2)"><svg class="i-lg"><use href="#m-stack"/></svg></span>
-            <div>
-              <h3>Backend, надёжность, инфра</h3>
-              <p>REST, gRPC, БД, платежи, Docker, Kubernetes</p>
-            </div>
-          </div>
-          <ul class="bul">
-            <li>REST (FastAPI, Django, DRF) и gRPC, WebSocket/SSE под стриминг ответов нейросети</li>
-            <li>Платежи (YooKassa, Telegram Payments), планировщики с учётом таймзоны — сервисы держат нагрузку</li>
-            <li>PostgreSQL и Redis: миграции, транзакции, кэш, rate limit; аккуратная работа с данными</li>
-            <li>Надёжность: ретраи, обработка ошибок, интеграции без «хрупких» связей на проде</li>
-            <li>Docker, Kubernetes, CI/CD; генерация PDF (Playwright); тесты (pytest)</li>
-          </ul>
         </div>
       </div>
     </section>
@@ -378,7 +353,7 @@
       <div class="strip-h">
         <div class="left">
           <span class="ico"><svg class="i-lg"><use href="#m-rocket"/></svg></span>
-          <h2 class="strip-title">Проекты</h2>
+          <h2 class="strip-title">Projects</h2>
         </div>
         <p class="strip-note">кейсы, которые показывают результат</p>
       </div>
@@ -470,7 +445,6 @@
 
     <div class="footer">
       <div>© Дремин Александр</div>
-      <div>PDF template — Teal Executive</div>
     </div>
   </div>
 </body>
