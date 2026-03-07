@@ -23,6 +23,38 @@
   box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.08);
 }
 
+// Появление секции Projects при скролле
+.section--projects .projectsPro__header {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.section--projects.section--visible .projectsPro__header {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section--projects .projectsPro__stage {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.1s, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+}
+
+.section--projects.section--visible .projectsPro__stage {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section--projects .projectsPro__header,
+  .section--projects .projectsPro__stage {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 .projectsPro__header {
   width: min(1180px, 92vw);
   margin: 0 auto 16px;
@@ -40,6 +72,7 @@
 }
 
 .projectsPro__title {
+  font-family: "Outfit", "Manrope", system-ui, sans-serif;
   margin: 0 0 10px;
   font-size: clamp(1.6rem, 3vw, 2.35rem);
   letter-spacing: -0.02em;
