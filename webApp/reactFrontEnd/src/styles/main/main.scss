@@ -518,6 +518,14 @@
   }
 }
 
+@media (max-width: 720px) {
+  .hero__hint {
+    font-size: 0.95rem;
+    margin: 1.25rem auto 0;
+    max-width: 22rem;
+  }
+}
+
 // ——— Контентные секции (навыки, CRM, NBKI, образование, языки) ———
 .content-section {
   &__title {
