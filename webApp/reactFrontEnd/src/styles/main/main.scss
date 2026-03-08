@@ -481,17 +481,41 @@
 
 .hero__hint {
   margin: 1.5rem auto 0;
-  padding: 0.85rem 1.25rem;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.45;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.5;
   text-align: center;
   max-width: 26rem;
-  color: #e0f7fa;
-  background: rgba(103, 232, 249, 0.12);
-  border: 1px solid rgba(103, 232, 249, 0.35);
-  border-radius: 12px;
-  box-sizing: border-box;
+  background: linear-gradient(
+    90deg,
+    rgba(248, 252, 255, 0.9) 0%,
+    rgba(186, 230, 253, 0.97) 20%,
+    rgba(224, 242, 254, 0.98) 40%,
+    rgba(248, 252, 255, 0.92) 50%,
+    rgba(186, 230, 253, 0.96) 70%,
+    rgba(224, 242, 254, 0.97) 85%,
+    rgba(248, 252, 255, 0.9) 100%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: heroHintShimmer 3.2s ease-in-out infinite;
+}
+
+@keyframes heroHintShimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__hint {
+    animation: none;
+    color: rgba(224, 242, 254, 0.92);
+    background: none;
+    background-clip: unset;
+    -webkit-background-clip: unset;
+  }
 }
 
 // ——— Контентные секции (навыки, CRM, NBKI, образование, языки) ———
