@@ -62,7 +62,7 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
       cfg.mouseRadius = mobile ? 90 : 120;
       cfg.impulse = mobile ? 40 : 52;
       cfg.curve = mobile ? 1.0 : 1.2;
-      cfg.drift = mobile ? 0.18 : 0.24;
+      cfg.drift = mobile ? 0.34 : 0.24;
       cfg.nodeStep = mobile ? 14 : 12;
       cfg.nodeRadius = mobile ? 8 : 10;
     };
@@ -247,7 +247,7 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
 
       scrollVel *= 0.92;
       const mobile = isMobile();
-      const scrollK = mobile ? 0.022 : 0.008;
+      const scrollK = mobile ? 0 : 0.008;
 
       const mx = state.mouse.x;
       const my = state.mouse.y;
