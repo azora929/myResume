@@ -379,36 +379,60 @@ body.chat-open {
   cursor: not-allowed;
 }
 
+/* ——— Мобильная адаптация: только отступ от границ экрана (safe-area) ——— */
 @media (max-width: 720px) {
   .chat-modal {
     align-items: stretch;
     justify-content: stretch;
-    padding: 0;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    box-sizing: border-box;
   }
 
   .chat-modal__panel {
     width: 100%;
+    min-width: 0;
     height: 100%;
+    min-height: 0;
     max-height: none;
     border-radius: 0;
     border-left: none;
     border-right: none;
+    box-sizing: border-box;
   }
 
-  .chat-modal__header {
-    padding: 20px 50px 20px 30px;
+  .chat-modal__title {
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+
+  .chat-modal__title span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .chat-modal__close {
+    flex-shrink: 0;
+  }
+
+  .chat-modal__body {
+    min-height: 0;
   }
 
   .chat-modal__messages {
-    padding: 16px 12px 20px;
+    min-width: 0;
   }
 
-  .chat-modal__footer {
-    padding: 18px 14px 24px;
+  .chat-placeholder {
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
-  .chat-modal__input {
-    padding: 17px 10px;
+  .chat-placeholder__text {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .chat-placeholder__icon {
@@ -419,5 +443,13 @@ body.chat-open {
   .chat-placeholder__icon svg {
     width: 36px;
     height: 36px;
+  }
+
+  .chat-modal__footer .chat-modal__input {
+    min-width: 0;
+  }
+
+  .chat-modal__send {
+    flex-shrink: 0;
   }
 }
