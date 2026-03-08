@@ -379,13 +379,16 @@ body.chat-open {
   cursor: not-allowed;
 }
 
-/* ——— Мобильная адаптация: отступ от границ экрана, чат не заезжает ——— */
+/* ——— Мобильная адаптация: единая система отступов, контент не заезжает за экран ——— */
 @media (max-width: 720px) {
+  $chat-mobile-gutter: 16px;
+
   .chat-modal {
     align-items: stretch;
     justify-content: stretch;
-    padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+    padding: max($chat-mobile-gutter, env(safe-area-inset-top)) max($chat-mobile-gutter, env(safe-area-inset-right)) max($chat-mobile-gutter, env(safe-area-inset-bottom)) max($chat-mobile-gutter, env(safe-area-inset-left));
     box-sizing: border-box;
+    overflow: hidden;
   }
 
   .chat-modal__panel {
@@ -400,12 +403,22 @@ body.chat-open {
     border-right: none;
     box-sizing: border-box;
     overflow: hidden;
+    overflow-x: hidden;
+  }
+
+  .chat-modal__header {
+    min-width: 0;
+    flex-shrink: 0;
+    padding: 14px $chat-mobile-gutter;
+    gap: 10px;
   }
 
   .chat-modal__title {
     min-width: 0;
     flex: 1 1 auto;
     overflow: hidden;
+    font-size: 1.05rem;
+    gap: 8px;
   }
 
   .chat-modal__title span {
@@ -414,27 +427,44 @@ body.chat-open {
     white-space: nowrap;
   }
 
-  .chat-modal__close {
+  .chat-modal__title svg {
+    width: 22px;
+    height: 22px;
     flex-shrink: 0;
   }
 
+  .chat-modal__close {
+    flex-shrink: 0;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
   .chat-modal__body {
+    min-width: 0;
     min-height: 0;
+    overflow-x: hidden;
   }
 
   .chat-modal__messages {
     min-width: 0;
+    padding: 16px $chat-mobile-gutter 20px;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   .chat-placeholder {
     max-width: 100%;
     box-sizing: border-box;
+    padding: 0 4px;
   }
 
   .chat-placeholder__text {
     max-width: 100%;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    word-break: break-word;
+    box-sizing: border-box;
+    padding: 0 2px;
   }
 
   .chat-placeholder__icon {
@@ -447,11 +477,37 @@ body.chat-open {
     height: 36px;
   }
 
-  .chat-modal__footer .chat-modal__input {
+  .chat-message__bubble {
+    max-width: 85%;
+    box-sizing: border-box;
+  }
+
+  .chat-modal__footer {
     min-width: 0;
+    flex-shrink: 0;
+    gap: 10px;
+    padding: 14px $chat-mobile-gutter max($chat-mobile-gutter, env(safe-area-inset-bottom));
+    box-sizing: border-box;
+  }
+
+  .chat-modal__input {
+    min-width: 0;
+    padding: 14px 16px;
+    font-size: 1rem;
+    box-sizing: border-box;
   }
 
   .chat-modal__send {
     flex-shrink: 0;
+    padding: 14px 16px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+
+  .chat-reconnect,
+  .chat-modal__error {
+    box-sizing: border-box;
+    max-width: 100%;
   }
 }
