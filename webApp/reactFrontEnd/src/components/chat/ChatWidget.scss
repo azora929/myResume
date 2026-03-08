@@ -381,7 +381,8 @@ body.chat-open {
 
 /* ——— Мобильная адаптация: единая система отступов, контент не заезжает за экран ——— */
 @media (max-width: 720px) {
-  $chat-mobile-gutter: 16px;
+  $chat-mobile-gutter: 12px;
+  $chat-mobile-radius: 14px;
 
   .chat-modal {
     align-items: stretch;
@@ -398,7 +399,7 @@ body.chat-open {
     height: 100%;
     min-height: 0;
     max-height: none;
-    border-radius: 0;
+    border-radius: $chat-mobile-radius;
     border-left: none;
     border-right: none;
     box-sizing: border-box;
