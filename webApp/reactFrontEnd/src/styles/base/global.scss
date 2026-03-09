@@ -9,6 +9,14 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Крупнее текст на больших экранах (мобилку не трогаем) */
+@media (min-width: 1920px) {
+  html { font-size: 17px; }
+}
+@media (min-width: 2560px) {
+  html { font-size: 18px; }
+}
+
 body {
   margin: 0;
   font-family: system-ui, -apple-system, sans-serif;

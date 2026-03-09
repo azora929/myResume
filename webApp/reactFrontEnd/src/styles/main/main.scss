@@ -80,6 +80,16 @@
   width: min(1180px, 92vw);
   margin: 0 auto;
 }
+@media (min-width: 1440px) {
+  .skillsPro__inner {
+    width: min(1400px, 94vw);
+  }
+}
+@media (min-width: 1920px) {
+  .skillsPro__inner {
+    width: min(1680px, 96vw);
+  }
+}
 
 .skillsPro__header {
   margin-bottom: 18px;
@@ -1075,5 +1085,32 @@
 @media (max-width: 720px) {
   .skillsPro {
     padding-top: 50px;
+  }
+}
+
+// —— Большие экраны: читабельнее текст (мобилку не трогаем) ——
+@media (min-width: 1920px) {
+  .hero__title {
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  }
+  .content-section__title {
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
+  }
+  .skillsPro__kicker {
+    font-size: 0.8rem;
+  }
+}
+@media (min-width: 2560px) {
+  .hero__title {
+    font-size: clamp(2.5rem, 4vw, 4rem);
+  }
+  .content-section__title {
+    font-size: clamp(1.75rem, 2.8vw, 2.75rem);
+  }
+  .skillsPro__kicker {
+    font-size: 0.85rem;
+  }
+  .skillsPro__subtitle {
+    font-size: 1.05rem;
   }
 }

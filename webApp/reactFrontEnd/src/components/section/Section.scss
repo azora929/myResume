@@ -9,6 +9,15 @@
   position: relative;
   transition: background 0.6s ease;
 
+  @media (min-width: 1280px) {
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+  @media (min-width: 1920px) {
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+  }
+
   &__inner {
     width: 100%;
     max-width: 93rem;
@@ -112,6 +121,17 @@
 
 .section--visible .section__inner > *:nth-child(3) {
   transition-delay: 0.4s;
+}
+
+@media (min-width: 1440px) {
+  .section__inner {
+    max-width: 100rem;
+  }
+}
+@media (min-width: 1920px) {
+  .section__inner {
+    max-width: 112rem;
+  }
 }
 
 @media (max-width: 900px) {
