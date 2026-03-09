@@ -6,6 +6,7 @@ import { FooterPro } from "@/components/footer/FooterPro";
 import { ChatWidget } from "@/components/chat/ChatWidget";
 import { usePdfDownload } from "@/hooks/usePdfDownload/usePdfDownload";
 import { useSkillsStrings } from "@/hooks/useSkillsStrings/useSkillsStrings";
+import { useSkillsCardsScrollAnimation } from "@/hooks/useSkillsCardsScrollAnimation/useSkillsCardsScrollAnimation";
 import "@/styles/main/main.scss";
 
 export function MainPage() {
@@ -14,6 +15,7 @@ export function MainPage() {
   const [isChatOpen, setIsChatOpen] = useState(false);
 
   useSkillsStrings({ rootRef: skillsRef, svgRef: skillsSvgRef });
+  useSkillsCardsScrollAnimation(skillsRef);
   const { handlePdfDownload, isDownloading, downloadError } = usePdfDownload();
 
   return (
@@ -80,28 +82,31 @@ export function MainPage() {
               </p>
             </header>
 
-            <article className="sCard sCard--wide">
-              <div className="sCard__head">
-                <span className="sIcon" aria-hidden="true">
-                  <PIcon name="person" />
-                </span>
-                <div>
-                  <h3 className="sCard__title">Approach & Experience</h3>
-                  <p className="sCard__desc">Backend-first fullstack, продукты с AI и монетизацией</p>
+            <div className="sCard-slot">
+              <article className="sCard sCard--wide">
+                <div className="sCard__head">
+                  <span className="sIcon" aria-hidden="true">
+                    <PIcon name="person" />
+                  </span>
+                  <div>
+                    <h3 className="sCard__title">Approach & Experience</h3>
+                    <p className="sCard__desc">Backend-first fullstack, продукты с AI и монетизацией</p>
+                  </div>
                 </div>
-              </div>
 
-              <div className="sCard__body prose">
-                <p>
-                  Я — Middle Python-разработчик (backend-first fullstack), 22 года, в разработке с 19 лет, около 3 лет коммерческого опыта. Создаю продуктовые системы с AI и монетизацией, где важны скорость ответа, стабильность и предсказуемость на проде. Работал над платформами с AI-тьютором (EvoSpeak, ИИ Препод), Telegram-ботами с платежами (Luna, НБКИ), CRM с gRPC и аналитикой, а также сервисами парсинга PDF и генерации отчётов. Обычно веду фичи от идеи до продакшена: проектирование API, обработка ошибок, валидация и продуманное поведение системы в краевых сценариях.
-                </p>
-                <p>
-                  В backend работаю с FastAPI, Django, DRF и gRPC, реализую WebSocket/SSE стриминг для AI, интегрирую платежи (YooKassa, Telegram Payments), Telegram-ботов и внешние сервисы. Использую PostgreSQL и Redis для транзакций, кеширования и очередей. В AI-слое работаю с OpenAI Assistants API, streaming, tools, а также голосовыми технологиями (Whisper, TTS). На фронте использую React + TypeScript + Vite, подключая стриминг и продумывая состояния интерфейса, чтобы продукт ощущался быстрым и цельным.
-                </p>
-              </div>
-            </article>
+                <div className="sCard__body prose">
+                  <p>
+                    Я — Middle Python-разработчик (backend-first fullstack), 22 года, в разработке с 19 лет, около 3 лет коммерческого опыта. Создаю продуктовые системы с AI и монетизацией, где важны скорость ответа, стабильность и предсказуемость на проде. Работал над платформами с AI-тьютором (EvoSpeak, ИИ Препод), Telegram-ботами с платежами (Luna, НБКИ), CRM с gRPC и аналитикой, а также сервисами парсинга PDF и генерации отчётов. Обычно веду фичи от идеи до продакшена: проектирование API, обработка ошибок, валидация и продуманное поведение системы в краевых сценариях.
+                  </p>
+                  <p>
+                    В backend работаю с FastAPI, Django, DRF и gRPC, реализую WebSocket/SSE стриминг для AI, интегрирую платежи (YooKassa, Telegram Payments), Telegram-ботов и внешние сервисы. Использую PostgreSQL и Redis для транзакций, кеширования и очередей. В AI-слое работаю с OpenAI Assistants API, streaming, tools, а также голосовыми технологиями (Whisper, TTS). На фронте использую React + TypeScript + Vite, подключая стриминг и продумывая состояния интерфейса, чтобы продукт ощущался быстрым и цельным.
+                  </p>
+                </div>
+              </article>
+            </div>
 
             <div className="skillsPro__grid">
+              <div className="sCard-slot">
               <article className="sCard" data-accent="cyan">
                 <div className="sCard__head">
                   <span className="sIcon" aria-hidden="true">
@@ -138,7 +143,9 @@ export function MainPage() {
                   <li>Надёжность: ретраи, обработка ошибок, логирование</li>
                 </ul>
               </article>
+              </div>
 
+              <div className="sCard-slot">
               <article className="sCard" data-accent="violet">
                 <div className="sCard__head">
                   <span className="sIcon" aria-hidden="true">
@@ -168,7 +175,9 @@ export function MainPage() {
                   <li>Стыковка React с WebSocket/SSE при задержках и обрывах</li>
                 </ul>
               </article>
+              </div>
 
+              <div className="sCard-slot">
               <article className="sCard" data-accent="mint">
                 <div className="sCard__head">
                   <span className="sIcon" aria-hidden="true">
@@ -202,7 +211,9 @@ export function MainPage() {
                   <li>CI/CD: build/test/deploy. Тесты: pytest, manual и integration testing</li>
                 </ul>
               </article>
+              </div>
 
+              <div className="sCard-slot">
               <article className="sCard" data-accent="cyan">
                 <div className="sCard__head">
                   <span className="sIcon" aria-hidden="true">
@@ -233,7 +244,9 @@ export function MainPage() {
                   <li>Realtime API, Whisper, TTS (VoiceKit, SpeechKit); учёт токенов, кэш контекста в Redis</li>
                 </ul>
               </article>
+              </div>
 
+              <div className="sCard-slot">
               <article className="sCard" data-accent="mint">
                 <div className="sCard__head">
                   <span className="sIcon" aria-hidden="true">
@@ -260,7 +273,9 @@ export function MainPage() {
                   <li>Лоадеры, ошибки, пустые экраны — до ощущения цельного продукта</li>
                 </ul>
               </article>
+              </div>
 
+              <div className="sCard-slot">
               <article className="sCard" data-accent="neutral">
                 <div className="sCard__head">
                   <span className="sIcon" aria-hidden="true">
@@ -277,9 +292,11 @@ export function MainPage() {
                   <li>Свободно читаю техническую документацию и спецификации</li>
                 </ul>
               </article>
+              </div>
             </div>
 
             <div className="skillsPro__metaRow">
+              <div className="sCard-slot">
               <article className="sCard" data-accent="neutral">
                 <div className="sCard__head">
                   <span className="sIcon" aria-hidden="true">
@@ -296,6 +313,7 @@ export function MainPage() {
                   <li>Постоянно поддерживаю себя в форме через практику и самообучение</li>
                 </ul>
               </article>
+              </div>
             </div>
           </div>
         </div>

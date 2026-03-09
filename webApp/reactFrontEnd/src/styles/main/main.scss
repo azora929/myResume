@@ -127,37 +127,142 @@
   transform: translateY(0);
 }
 
-.section--skills .skillsPro__inner > .sCard,
+.section--skills .skillsPro__inner > .sCard-slot > .sCard,
 .section--skills .skillsPro__grid .sCard,
 .section--skills .skillsPro__metaRow .sCard {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.98s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.section--skills.section--visible .skillsPro__inner > .sCard,
+// Десктоп: карточки прилетают из-за границ экрана при доскролле, плавная и медленная анимация
+@media (min-width: 721px) {
+  .section--skills .skillsPro__inner > .sCard-slot > .sCard,
+  .section--skills .skillsPro__grid .sCard,
+  .section--skills .skillsPro__metaRow .sCard {
+    transition: opacity 1.5s cubic-bezier(0.19, 1, 0.22, 1), transform 1.58s cubic-bezier(0.19, 1, 0.22, 1);
+    transition-delay: 0s;
+  }
+
+  /* Старт за экраном: vw/vh чтобы блоки реально прилетали извне */
+  .section--skills .skillsPro__inner > .sCard-slot > .sCard:not(.sCard--scroll-visible) {
+    transform: translateY(-85vh);
+  }
+
+  .section--skills .skillsPro__grid > .sCard-slot:nth-child(1) > .sCard:not(.sCard--scroll-visible) { transform: translate(-105vw, 0); }
+  .section--skills .skillsPro__grid > .sCard-slot:nth-child(2) > .sCard:not(.sCard--scroll-visible) { transform: translate(105vw, 0); }
+  .section--skills .skillsPro__grid > .sCard-slot:nth-child(3) > .sCard:not(.sCard--scroll-visible) { transform: translate(-100vw, -55vh); }
+  .section--skills .skillsPro__grid > .sCard-slot:nth-child(4) > .sCard:not(.sCard--scroll-visible) { transform: translate(100vw, -55vh); }
+  .section--skills .skillsPro__grid > .sCard-slot:nth-child(5) > .sCard:not(.sCard--scroll-visible) { transform: translate(-105vw, 25px); }
+  .section--skills .skillsPro__grid > .sCard-slot:nth-child(6) > .sCard:not(.sCard--scroll-visible) { transform: translate(105vw, 25px); }
+
+  .section--skills .skillsPro__metaRow > .sCard-slot:nth-child(1) > .sCard:not(.sCard--scroll-visible) { transform: translate(-108vw, 0); }
+  .section--skills .skillsPro__metaRow > .sCard-slot:nth-child(2) > .sCard:not(.sCard--scroll-visible) { transform: translate(108vw, 0); }
+
+  .section--skills .sCard.sCard--scroll-visible {
+    opacity: 1;
+    transform: translate(0);
+  }
+
+  .section--skills.section--visible .skillsPro__inner > .sCard-slot > .sCard:not(.sCard--scroll-visible),
+  .section--skills.section--visible .skillsPro__grid .sCard:not(.sCard--scroll-visible),
+  .section--skills.section--visible .skillsPro__metaRow .sCard:not(.sCard--scroll-visible) {
+    opacity: 0;
+  }
+
+  .section--skills.section--visible .skillsPro__inner > .sCard-slot > .sCard:not(.sCard--scroll-visible) { transform: translateY(-85vh); }
+  .section--skills.section--visible .skillsPro__grid > .sCard-slot:nth-child(1) > .sCard:not(.sCard--scroll-visible) { transform: translate(-105vw, 0); }
+  .section--skills.section--visible .skillsPro__grid > .sCard-slot:nth-child(2) > .sCard:not(.sCard--scroll-visible) { transform: translate(105vw, 0); }
+  .section--skills.section--visible .skillsPro__grid > .sCard-slot:nth-child(3) > .sCard:not(.sCard--scroll-visible) { transform: translate(-100vw, -55vh); }
+  .section--skills.section--visible .skillsPro__grid > .sCard-slot:nth-child(4) > .sCard:not(.sCard--scroll-visible) { transform: translate(100vw, -55vh); }
+  .section--skills.section--visible .skillsPro__grid > .sCard-slot:nth-child(5) > .sCard:not(.sCard--scroll-visible) { transform: translate(-105vw, 25px); }
+  .section--skills.section--visible .skillsPro__grid > .sCard-slot:nth-child(6) > .sCard:not(.sCard--scroll-visible) { transform: translate(105vw, 25px); }
+  .section--skills.section--visible .skillsPro__metaRow > .sCard-slot:nth-child(1) > .sCard:not(.sCard--scroll-visible) { transform: translate(-108vw, 0); }
+  .section--skills.section--visible .skillsPro__metaRow > .sCard-slot:nth-child(2) > .sCard:not(.sCard--scroll-visible) { transform: translate(108vw, 0); }
+}
+
+@media (max-width: 720px) {
+  .section--skills .skillsPro__inner > .sCard-slot > .sCard,
+  .section--skills .skillsPro__grid .sCard,
+  .section--skills .skillsPro__metaRow .sCard {
+    transform: translateY(18px);
+  }
+}
+
+// Появление по section--visible (fallback; по скроллу управляется классом sCard--scroll-visible)
+.section--skills.section--visible .skillsPro__inner > .sCard-slot > .sCard,
 .section--skills.section--visible .skillsPro__grid .sCard,
 .section--skills.section--visible .skillsPro__metaRow .sCard {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate(0);
 }
 
-.section--skills.section--visible .skillsPro__inner > .sCard { transition-delay: 0.06s; }
-.section--skills.section--visible .skillsPro__grid .sCard:nth-child(1) { transition-delay: 0.12s; }
-.section--skills.section--visible .skillsPro__grid .sCard:nth-child(2) { transition-delay: 0.18s; }
-.section--skills.section--visible .skillsPro__grid .sCard:nth-child(3) { transition-delay: 0.24s; }
-.section--skills.section--visible .skillsPro__grid .sCard:nth-child(4) { transition-delay: 0.3s; }
-.section--skills.section--visible .skillsPro__grid .sCard:nth-child(5) { transition-delay: 0.36s; }
-.section--skills.section--visible .skillsPro__grid .sCard:nth-child(6) { transition-delay: 0.42s; }
-.section--skills.section--visible .skillsPro__metaRow .sCard { transition-delay: 0.48s; }
+.section--skills.section--visible .skillsPro__inner > .sCard-slot > .sCard { transition-delay: 0.05s; }
+.section--skills.section--visible .skillsPro__grid > .sCard-slot:nth-child(1) > .sCard { transition-delay: 0.1s; }
+.section--skills.section--visible .skillsPro__grid > .sCard-slot:nth-child(2) > .sCard { transition-delay: 0.16s; }
+.section--skills.section--visible .skillsPro__grid > .sCard-slot:nth-child(3) > .sCard { transition-delay: 0.22s; }
+.section--skills.section--visible .skillsPro__grid > .sCard-slot:nth-child(4) > .sCard { transition-delay: 0.28s; }
+.section--skills.section--visible .skillsPro__grid > .sCard-slot:nth-child(5) > .sCard { transition-delay: 0.34s; }
+.section--skills.section--visible .skillsPro__grid > .sCard-slot:nth-child(6) > .sCard { transition-delay: 0.4s; }
+.section--skills.section--visible .skillsPro__metaRow > .sCard-slot:nth-child(1) > .sCard { transition-delay: 0.46s; }
+.section--skills.section--visible .skillsPro__metaRow > .sCard-slot:nth-child(2) > .sCard { transition-delay: 0.52s; }
 
 @media (prefers-reduced-motion: reduce) {
   .section--skills .skillsPro__header,
-  .section--skills .skillsPro__inner > .sCard,
+  .section--skills .skillsPro__inner > .sCard-slot > .sCard,
   .section--skills .skillsPro__grid .sCard,
   .section--skills .skillsPro__metaRow .sCard {
     opacity: 1;
     transform: none;
+    transition: none;
+  }
+}
+
+// ——— Мобилка: карточки прилетают из-за границ экрана при доскролле, плавно становятся на место ———
+@media (max-width: 720px) {
+  .section--skills .skillsPro__inner > .sCard-slot > .sCard,
+  .section--skills .skillsPro__grid .sCard,
+  .section--skills .skillsPro__metaRow .sCard {
+    transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 1.43s cubic-bezier(0.19, 1, 0.22, 1);
+    transition-delay: 0s;
+  }
+
+  .section--skills .skillsPro__inner > .sCard-slot > .sCard[data-slide-from="left"]:not(.sCard--scroll-visible):not(.sCard--scroll-exit-right),
+  .section--skills .skillsPro__grid .sCard[data-slide-from="left"]:not(.sCard--scroll-visible):not(.sCard--scroll-exit-right),
+  .section--skills .skillsPro__metaRow .sCard[data-slide-from="left"]:not(.sCard--scroll-visible):not(.sCard--scroll-exit-right) {
+    transform: translate(-105vw, 0);
+    opacity: 0;
+  }
+
+  .section--skills .skillsPro__inner > .sCard-slot > .sCard[data-slide-from="right"]:not(.sCard--scroll-visible):not(.sCard--scroll-exit-left),
+  .section--skills .skillsPro__grid .sCard[data-slide-from="right"]:not(.sCard--scroll-visible):not(.sCard--scroll-exit-left),
+  .section--skills .skillsPro__metaRow .sCard[data-slide-from="right"]:not(.sCard--scroll-visible):not(.sCard--scroll-exit-left) {
+    transform: translate(105vw, 0);
+    opacity: 0;
+  }
+
+  .section--skills .sCard.sCard--scroll-visible {
+    transform: translate(0);
+    opacity: 1;
+  }
+
+  .section--skills .sCard.sCard--scroll-exit-left {
+    transform: translate(-105vw, 0);
+    opacity: 0;
+  }
+
+  .section--skills .sCard.sCard--scroll-exit-right {
+    transform: translate(105vw, 0);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 720px) and (prefers-reduced-motion: reduce) {
+  .section--skills .sCard[data-slide-from],
+  .section--skills .sCard.sCard--scroll-visible,
+  .section--skills .sCard.sCard--scroll-exit-left,
+  .section--skills .sCard.sCard--scroll-exit-right {
+    transform: none;
+    opacity: 1;
     transition: none;
   }
 }
@@ -314,9 +419,10 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 14px;
+  align-items: stretch;
 }
 
-.skillsPro__grid > .sCard {
+.skillsPro__grid > .sCard-slot {
   grid-column: span 6;
 }
 
@@ -325,10 +431,23 @@
   grid-template-columns: 1fr 1fr;
   gap: 14px;
   margin-top: 14px;
+  align-items: stretch;
+}
+
+/* Слот и карточка растягиваются по высоте ряда — карточки в ряду одной высоты */
+.sCard-slot {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sCard-slot > .sCard {
+  flex: 1;
+  min-height: 0;
 }
 
 @media (max-width: 980px) {
-  .skillsPro__grid > .sCard {
+  .skillsPro__grid > .sCard-slot {
     grid-column: span 12;
   }
 
