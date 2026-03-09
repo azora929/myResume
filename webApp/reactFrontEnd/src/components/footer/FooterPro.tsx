@@ -6,6 +6,8 @@ const EMAIL = "dreminaleksandr06@gmail.com";
 
 export function FooterPro() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const brandRef = useRef<HTMLDivElement>(null);
+  const hasAnimatedBrand = useRef(false);
   const [emailCopied, setEmailCopied] = useState(false);
 
   const handleEmailClick = useCallback(() => {
@@ -164,19 +166,59 @@ export function FooterPro() {
     };
   }, []);
 
+  // Появление блока имени: иконка → текст одним блоком (fade)
+  useEffect(() => {
+    const root = brandRef.current;
+    if (!root || hasAnimatedBrand.current || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const mark = root.querySelector<HTMLElement>(".footerPro__mark");
+    const textBlock = root.querySelector<HTMLElement>(".footerPro__brandText");
+    const easeOut = "cubic-bezier(0.33, 1, 0.68, 1)";
+
+    const runTimeline = () => {
+      hasAnimatedBrand.current = true;
+
+      mark?.animate([{ opacity: 0, transform: "scale(0.9)" }, { opacity: 1, transform: "scale(1)" }], {
+        duration: 450,
+        easing: easeOut,
+        fill: "forwards",
+      });
+
+      textBlock?.animate([{ opacity: 0 }, { opacity: 1 }], {
+        duration: 500,
+        delay: 180,
+        easing: easeOut,
+        fill: "forwards",
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        runTimeline();
+      },
+      { rootMargin: "0px 0px -40px 0px", threshold: 0.2 }
+    );
+    observer.observe(root);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <footer className="footerPro" id="contacts">
       <canvas className="footerPro__fx" ref={canvasRef} aria-hidden="true" />
 
       <div className="footerPro__inner">
         <div className="footerPro__top">
-          <div className="footerPro__brand">
-            <div className="footerPro__mark" aria-hidden="true">
-              <PIcon name="person" />
-            </div>
-            <div>
-              <p className="footerPro__name">Дремин Александр</p>
-              <p className="footerPro__tagline">Middle Python Developer</p>
+          <div className="footerPro__brand" ref={brandRef}>
+            <div className="footerPro__brandContent">
+              <div className="footerPro__mark" aria-hidden="true">
+                <PIcon name="person" />
+              </div>
+              <div className="footerPro__brandText">
+                <p className="footerPro__name">Дремин Александр</p>
+                <p className="footerPro__tagline">Middle Python Developer</p>
+              </div>
             </div>
           </div>
 
