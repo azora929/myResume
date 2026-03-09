@@ -365,14 +365,6 @@
   font-weight: 600;
 }
 
-.hero__subtitle {
-  font-size: 1.25rem;
-  opacity: 0.9;
-  margin: 0 0 2.5rem;
-  max-width: 28rem;
-  margin: 0 auto 2.5rem;
-}
-
 .hero__actions {
   display: flex;
   align-items: center;
@@ -480,12 +472,12 @@
 }
 
 .hero__hint {
-  margin: 1.5rem auto 0;
-  font-size: 1.1rem;
+  margin: 1.5rem auto 2.5rem;
+  font-size: 1.2rem;
   font-weight: 500;
   line-height: 1.5;
   text-align: center;
-  max-width: 26rem;
+  max-width: 28rem;
   background: linear-gradient(
     90deg,
     rgba(248, 252, 255, 0.9) 0%,
@@ -520,8 +512,8 @@
 
 @media (max-width: 720px) {
   .hero__hint {
-    font-size: 0.95rem;
-    margin: 1.25rem auto 0;
+    font-size: 1rem;
+    margin: 1.25rem auto 2rem;
     max-width: 22rem;
   }
 }
@@ -849,9 +841,9 @@
 }
 
 @media (max-width: 900px) {
-  .hero__subtitle {
-    font-size: 1.05rem;
+  .hero__hint {
     margin-bottom: 2rem;
+    font-size: 0.95rem;
   }
 
   .skillsPro {
@@ -887,8 +879,8 @@
     font-size: clamp(1.6rem, 8vw, 2.4rem);
   }
 
-  .hero__subtitle {
-    font-size: 1rem;
+  .hero__hint {
+    font-size: 0.875rem;
   }
 
   .hero__cta {
@@ -944,10 +936,6 @@
 
 .section--visible .hero__title {
   animation: mainFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
-}
-
-.section--visible .hero__subtitle {
-  animation: mainFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
 }
 
 .section--visible .hero__cta {

@@ -25,41 +25,38 @@ export function MainPage() {
             Middle Python Fullstack Developer
             <span className="hero__title-accent"> — AI/LLM Integrations</span>
           </h1>
-          <p className="hero__subtitle">
-            Backend, API, стриминг ответов нейросети и живой UX в продуктах
+          <p className="hero__hint">
+            Пообщайтесь с нейросетью по резюме или отправьте оффер — откройте чат и напишите.
           </p>
           <div className="hero__actions">
             <a href="#skills" className="hero__cta">
               <span>Смотреть</span>
               <span className="hero__cta-icon" aria-hidden="true">
-                <PIcon name="arrow-down" />
+                <PIcon name="arrow-down"/>
               </span>
             </a>
 
             <div className="hero__actions-right">
               <button
-                className="hero__btn hero__btn--pdf"
-                type="button"
-                onClick={handlePdfDownload}
-                disabled={isDownloading}
-                aria-busy={isDownloading}
+                  className="hero__btn hero__btn--pdf"
+                  type="button"
+                  onClick={handlePdfDownload}
+                  disabled={isDownloading}
+                  aria-busy={isDownloading}
               >
                 {isDownloading ? "Готовим PDF..." : "Выгрузить в PDF резюме"}
               </button>
               <button
-                className="hero__btn hero__btn--chat"
-                type="button"
-                onClick={() => setIsChatOpen(true)}
-                aria-label="Открыть чат с нейросетью"
+                  className="hero__btn hero__btn--chat"
+                  type="button"
+                  onClick={() => setIsChatOpen(true)}
+                  aria-label="Открыть чат с нейросетью"
               >
-                <PIcon name="chat" />
+                <PIcon name="chat"/>
               </button>
               {downloadError ? <p className="hero__download-error">{downloadError}</p> : null}
             </div>
           </div>
-          <p className="hero__hint">
-            Пообщайтесь с нейросетью по резюме или отправьте оффер — откройте чат и напишите.
-          </p>
         </div>
       </Section>
 
