@@ -317,6 +317,7 @@
         </div>
         <ul class="bul">
           <li>CRM: инфраструктура для бота ресторана (рассылки, меню, брони, промокоды). PostgreSQL → gRPC databaseManager → FastAPI + React; таблицы, переписка, аналитика; Proto, реестр таблиц; проверка gRPC при старте.</li>
+          <li>ИИ-менеджер: чат-бот с доступом к данным — по запросу строит SQL (SELECT), выполняет к CRM (PostgreSQL) или R-Keeper (MSSQL по SSH), выводит результат в чат; режимы переключаются пользователем или через инструмент нейросети. FastAPI, OpenAI (function calling), asyncpg/pymssql, read-only.</li>
           <li>НБКИ (Credit Bot): парсинг кредитных отчётов БКИ из PDF — сводка в чат + JSON; async, блокировки по пользователю, PyPDF2, pytest.</li>
         </ul>
       </article>

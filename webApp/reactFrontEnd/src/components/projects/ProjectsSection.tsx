@@ -340,6 +340,7 @@ function CrmNbkiSlide() {
             <span className="tag">gRPC</span>
             <span className="tag">React/Vite</span>
             <span className="tag">PDF→JSON</span>
+            <span className="tag">OpenAI</span>
           </div>
         </header>
 
@@ -349,7 +350,7 @@ function CrmNbkiSlide() {
               <span className="pIcon" aria-hidden="true">{gridIcon}</span>
               <div>
                 <h3 className="pCard__title">Chester Feya CRM</h3>
-                <p className="pCard__desc">Инфраструктура для бота ресторана: привлечение гостей, рассылки, меню, брони, промокоды. Веб-панель: таблицы, переписка, аналитика</p>
+                <p className="pCard__desc">Инфраструктура для бота ресторана: привлечение гостей, рассылки, меню, брони, промокоды. Веб-панель: таблицы, переписка, аналитика. ИИ-менеджер: чат с доступом к данным — строит SQL по запросу и выводит сводки из CRM или R-Keeper.</p>
               </div>
             </div>
             <div className="pCard__body">
@@ -358,6 +359,7 @@ function CrmNbkiSlide() {
                 <li>PostgreSQL → gRPC databaseManager (SQLAlchemy) → FastAPI REST + React SPA; проверка gRPC при старте</li>
                 <li>Таблицы: пагинация, поиск по полям и ID, редактирование строк</li>
                 <li>Переписка с пользователями, аналитика: агрегаты и персональная по пользователю, временные ряды, графики (Recharts)</li>
+                <li><strong>ИИ-менеджер:</strong> чат-помощник с доступом к данным — по запросу на естественном языке формирует SQL (только SELECT), выполняет к выбранной БД и возвращает результат в чат (в т.ч. таблицы). Два режима: <em>Честер Фей</em> (PostgreSQL, CRM: пользователи, сообщения, брони, коктейли, рулетка, промокоды) и <em>R-Keeper</em> (MSSQL по SSH: выручка, смены, блюда, визиты). Режим задаётся вручную или через инструмент нейросети; сессии сохраняются. Микросервис FastAPI, OpenAI API (function calling), asyncpg/pymssql, проверка read-only</li>
                 <li>Protocol Buffers, реестр таблиц и моделей, кодогенерация стабов</li>
               </ul>
             </div>
