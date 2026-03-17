@@ -231,6 +231,12 @@
   }
 }
 
+@media (max-width: 768px) {
+  .pSlide {
+      padding: 0 0 64px;
+  }
+}
+
 .pSlide.is-active .pSlide__inner {
   opacity: 1;
   transform: translateY(0) scale(1);
