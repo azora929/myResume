@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Section } from "@/components/section/Section";
 import { ProjectsSection } from "@/components/projects/ProjectsSection";
 import { PIcon } from "@/components/icons/PIcon";
@@ -9,14 +9,124 @@ import { useSkillsStrings } from "@/hooks/useSkillsStrings/useSkillsStrings";
 import { useSkillsCardsScrollAnimation } from "@/hooks/useSkillsCardsScrollAnimation/useSkillsCardsScrollAnimation";
 import "@/styles/main/main.scss";
 
+const HERO_TITLE_MAIN = "Middle Python Fullstack Developer";
+const HERO_TITLE_ACCENT = " — AI/LLM Integrations";
+const HERO_HINT_TEXT = "Пообщайтесь с нейросетью по резюме или отправьте оффер — откройте чат и напишите.";
+const SCRAMBLE_CHARS = "漢字カナひらがなアイウエオ甲乙丙丁ΨΣЖЯ01#@&%$";
+
 export function MainPage() {
   const skillsRef = useRef<HTMLDivElement>(null);
   const skillsSvgRef = useRef<SVGSVGElement>(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [animatedTitle, setAnimatedTitle] = useState("");
+  const [animatedHint, setAnimatedHint] = useState("");
 
   useSkillsStrings({ rootRef: skillsRef, svgRef: skillsSvgRef });
   useSkillsCardsScrollAnimation(skillsRef);
   const { handlePdfDownload, isDownloading, downloadError } = usePdfDownload();
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const fullTitle = `${HERO_TITLE_MAIN}${HERO_TITLE_ACCENT}`;
+
+    if (reduceMotion) {
+      setAnimatedTitle(fullTitle);
+      setAnimatedHint(HERO_HINT_TEXT);
+      return;
+    }
+
+    let cancelled = false;
+    const rafIds: number[] = [];
+    const randomChar = () => SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+    const isStaticChar = (ch: string) => /\s|[—.,:;!?/()-]/.test(ch);
+
+    const buildEncryptedText = (target: string) =>
+      target
+        .split("")
+        .map((ch) => (isStaticChar(ch) ? ch : randomChar()))
+        .join("");
+
+    const runScramble = (
+      target: string,
+      setText: (value: string) => void,
+      revealStepMs: number
+    ) =>
+      new Promise<void>((resolve) => {
+        const chars = target.split("");
+        const noise = chars.map((ch) => (isStaticChar(ch) ? ch : randomChar()));
+        let startTs = 0;
+        let lastNoiseShuffleTs = 0;
+
+        // Сразу показываем полную строку, но зашифрованную.
+        setText(noise.join(""));
+
+        const tick = (ts: number) => {
+          if (cancelled) {
+            resolve();
+            return;
+          }
+          if (!startTs) startTs = ts;
+
+          const elapsed = ts - startTs;
+          const rawProgress = elapsed / revealStepMs;
+          const total = chars.length;
+          const normalized = Math.min(rawProgress / total, 1);
+          // Небольшой ease-out для более мягкой расшифровки.
+          const eased = 1 - Math.pow(1 - normalized, 1.45);
+          const revealProgress = eased * total;
+          const leadingIndex = Math.floor(revealProgress);
+
+          // Редкое обновление «шума» убирает дёргание и делает анимацию мягче.
+          if (ts - lastNoiseShuffleTs > 88) {
+            for (let i = leadingIndex; i < chars.length; i += 1) {
+              if (!isStaticChar(chars[i])) noise[i] = randomChar();
+            }
+            lastNoiseShuffleTs = ts;
+          }
+
+          const frame = chars
+            .map((ch, idx) => {
+              if (isStaticChar(ch)) return ch;
+              if (idx < leadingIndex) return ch;
+              if (idx > leadingIndex) return noise[idx];
+
+              // Текущий символ «дозревает» и плавно фиксируется в конце шага.
+              const localPhase = revealProgress - leadingIndex;
+              return localPhase > 0.72 ? ch : noise[idx];
+            })
+            .join("");
+
+          setText(frame);
+
+          if (revealProgress >= chars.length) {
+            setText(target);
+            resolve();
+            return;
+          }
+
+          const rafId = window.requestAnimationFrame(tick);
+          rafIds.push(rafId);
+        };
+
+        const initialRafId = window.requestAnimationFrame(tick);
+        rafIds.push(initialRafId);
+      });
+
+    (async () => {
+      // Обе строки сразу видны полностью, но в зашифрованном виде.
+      setAnimatedTitle(buildEncryptedText(fullTitle));
+      setAnimatedHint(buildEncryptedText(HERO_HINT_TEXT));
+
+      await runScramble(fullTitle, setAnimatedTitle, 76);
+      if (cancelled) return;
+      await runScramble(HERO_HINT_TEXT, setAnimatedHint, 44);
+    })();
+
+    return () => {
+      cancelled = true;
+      rafIds.forEach((id) => window.cancelAnimationFrame(id));
+    };
+  }, []);
 
   return (
     <main className="main-page">
@@ -24,11 +134,11 @@ export function MainPage() {
         <div className="hero__content">
           <p className="hero__label">Резюме</p>
           <h1 className="hero__title">
-            Middle Python Fullstack Developer
-            <span className="hero__title-accent"> — AI/LLM Integrations</span>
+            {animatedTitle.slice(0, HERO_TITLE_MAIN.length)}
+            <span className="hero__title-accent">{animatedTitle.slice(HERO_TITLE_MAIN.length)}</span>
           </h1>
           <p className="hero__hint">
-            Пообщайтесь с нейросетью по резюме или отправьте оффер — откройте чат и напишите.
+            {animatedHint}
           </p>
           <div className="hero__actions">
             <a href="#skills" className="hero__cta">
