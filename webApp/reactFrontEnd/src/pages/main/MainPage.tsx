@@ -17,9 +17,10 @@ const SCRAMBLE_CHARS = "漢字カナひらがなアイウエオ甲乙丙丁ΨΣ�
 export function MainPage() {
   const skillsRef = useRef<HTMLDivElement>(null);
   const skillsSvgRef = useRef<SVGSVGElement>(null);
+  const heroTitleMainRef = useRef<HTMLSpanElement>(null);
+  const heroTitleAccentRef = useRef<HTMLSpanElement>(null);
+  const heroHintRef = useRef<HTMLParagraphElement>(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [animatedTitle, setAnimatedTitle] = useState("");
-  const [animatedHint, setAnimatedHint] = useState("");
 
   useSkillsStrings({ rootRef: skillsRef, svgRef: skillsSvgRef });
   useSkillsCardsScrollAnimation(skillsRef);
@@ -28,10 +29,23 @@ export function MainPage() {
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const fullTitle = `${HERO_TITLE_MAIN}${HERO_TITLE_ACCENT}`;
+    const titleMainEl = heroTitleMainRef.current;
+    const titleAccentEl = heroTitleAccentRef.current;
+    const hintEl = heroHintRef.current;
+
+    if (!titleMainEl || !titleAccentEl || !hintEl) return;
+
+    const setTitle = (value: string) => {
+      titleMainEl.textContent = value.slice(0, HERO_TITLE_MAIN.length);
+      titleAccentEl.textContent = value.slice(HERO_TITLE_MAIN.length);
+    };
+    const setHint = (value: string) => {
+      hintEl.textContent = value;
+    };
 
     if (reduceMotion) {
-      setAnimatedTitle(fullTitle);
-      setAnimatedHint(HERO_HINT_TEXT);
+      setTitle(fullTitle);
+      setHint(HERO_HINT_TEXT);
       return;
     }
 
@@ -114,12 +128,12 @@ export function MainPage() {
 
     (async () => {
       // Обе строки сразу видны полностью, но в зашифрованном виде.
-      setAnimatedTitle(buildEncryptedText(fullTitle));
-      setAnimatedHint(buildEncryptedText(HERO_HINT_TEXT));
+      setTitle(buildEncryptedText(fullTitle));
+      setHint(buildEncryptedText(HERO_HINT_TEXT));
 
-      await runScramble(fullTitle, setAnimatedTitle, 76);
+      await runScramble(fullTitle, setTitle, 76);
       if (cancelled) return;
-      await runScramble(HERO_HINT_TEXT, setAnimatedHint, 44);
+      await runScramble(HERO_HINT_TEXT, setHint, 44);
     })();
 
     return () => {
@@ -134,12 +148,10 @@ export function MainPage() {
         <div className="hero__content">
           <p className="hero__label">Резюме</p>
           <h1 className="hero__title">
-            {animatedTitle.slice(0, HERO_TITLE_MAIN.length)}
-            <span className="hero__title-accent">{animatedTitle.slice(HERO_TITLE_MAIN.length)}</span>
+            <span ref={heroTitleMainRef}>{HERO_TITLE_MAIN}</span>
+            <span className="hero__title-accent" ref={heroTitleAccentRef}>{HERO_TITLE_ACCENT}</span>
           </h1>
-          <p className="hero__hint">
-            {animatedHint}
-          </p>
+          <p className="hero__hint" ref={heroHintRef}>{HERO_HINT_TEXT}</p>
           <div className="hero__actions">
             <a href="#skills" className="hero__cta">
               <span>Смотреть</span>

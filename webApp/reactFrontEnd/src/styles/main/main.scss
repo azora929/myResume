@@ -141,6 +141,7 @@
 .section--skills .skillsPro__grid .sCard,
 .section--skills .skillsPro__metaRow .sCard {
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.98s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -171,6 +172,7 @@
   .section--skills .sCard.sCard--scroll-visible {
     opacity: 1;
     transform: translate(0);
+    pointer-events: auto;
   }
 
   .section--skills.section--visible .skillsPro__inner > .sCard-slot > .sCard:not(.sCard--scroll-visible),
@@ -204,6 +206,7 @@
 .section--skills.section--visible .skillsPro__metaRow .sCard {
   opacity: 1;
   transform: translate(0);
+  pointer-events: auto;
 }
 
 .section--skills.section--visible .skillsPro__inner > .sCard-slot > .sCard { transition-delay: 0.05s; }
