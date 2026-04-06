@@ -16,8 +16,10 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
     const NS = "http://www.w3.org/2000/svg";
     const make = (t: string) => document.createElementNS(NS, t);
     const supportsPointer = "PointerEvent" in window;
-    /** Телефоны: облегчённый режим (без blur, меньше геометрии, реже обновление path) */
-    const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
+    const MOBILE_MQ = "(max-width: 768px)";
+    const isMobile = () => window.matchMedia(MOBILE_MQ).matches;
+    /** На мобилках: без blur-фильтра, меньше DOM, реже перерисовка path — линии остаются */
+    let mobileLight = false;
 
     let rect: DOMRect;
     let w = 0;
@@ -37,11 +39,6 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
       drift: 0.24,
       nodeStep: 12,
       nodeRadius: 10,
-      /** Десктоп: blur + узлы; мобилка: без blur, реже setAttribute на path */
-      usePathFilter: true,
-      useNodes: true,
-      /** 1 = каждый кадр; 2 = path/узлы обновлять через кадр (~30 визуальных обновлений/с) */
-      renderStride: 1,
     };
 
     let lastScrollY = window.scrollY;
@@ -60,49 +57,44 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
 
     const applyCfg = () => {
       const mobile = isMobile();
+      mobileLight = mobile;
       if (mobile) {
-        cfg.strings = 7;
-        cfg.points = 16;
-        cfg.usePathFilter = false;
-        cfg.useNodes = true;
-        cfg.nodeStep = 8;
-        cfg.nodeRadius = 7;
-        cfg.renderStride = 2;
-        cfg.stiffness = 0.044;
-        cfg.coupling = 0.095;
+        cfg.strings = 6;
+        cfg.points = 11;
+        cfg.stiffness = 0.05;
+        cfg.coupling = 0.11;
         cfg.damping = 0.93;
+        cfg.mouseRadius = 90;
+        cfg.impulse = 40;
+        cfg.curve = 0.95;
+        cfg.drift = 0.38;
+        cfg.nodeStep = 99;
+        cfg.nodeRadius = 6;
+      } else {
+        cfg.strings = 20;
+        cfg.points = 28;
+        cfg.stiffness = 0.05;
+        cfg.coupling = 0.12;
+        cfg.damping = 0.92;
         cfg.mouseRadius = 120;
         cfg.impulse = 52;
-        cfg.curve = 1.06;
-        cfg.drift = 0.19;
-        return;
+        cfg.curve = 1.2;
+        cfg.drift = 0.24;
+        cfg.nodeStep = 12;
+        cfg.nodeRadius = 10;
       }
-      cfg.strings = 20;
-      cfg.points = 28;
-      cfg.stiffness = 0.05;
-      cfg.coupling = 0.12;
-      cfg.damping = 0.92;
-      cfg.mouseRadius = 120;
-      cfg.impulse = 52;
-      cfg.curve = 1.2;
-      cfg.drift = 0.24;
-      cfg.nodeStep = 12;
-      cfg.nodeRadius = 10;
-      cfg.usePathFilter = true;
-      cfg.useNodes = true;
-      cfg.renderStride = 1;
     };
 
     const setSize = () => {
       const mobile = isMobile();
       rect = root.getBoundingClientRect();
-      w = Math.max(mobile ? 360 : 700, Math.floor(rect.width));
-      h = Math.max(mobile ? 420 : 560, Math.floor(rect.height));
+      w = Math.max(mobile ? 320 : 700, Math.floor(rect.width));
+      h = Math.max(mobile ? 380 : 560, Math.floor(rect.height));
       svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
       svg.setAttribute("preserveAspectRatio", "none");
     };
 
-    const buildDefs = () => {
+    const buildDefs = (light: boolean) => {
       svg.innerHTML = "";
       const defs = make("defs");
 
@@ -112,13 +104,21 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
       grad.setAttribute("y1", "0");
       grad.setAttribute("x2", "0");
       grad.setAttribute("y2", "1");
-      grad.innerHTML = `
-        <stop offset="0" stop-color="rgba(103,232,249,.26)"/>
-        <stop offset="0.55" stop-color="rgba(255,255,255,.10)"/>
-        <stop offset="1" stop-color="rgba(165,140,255,.22)"/>
-      `;
+      if (light) {
+        grad.innerHTML = `
+          <stop offset="0" stop-color="rgba(103,232,249,.34)"/>
+          <stop offset="0.55" stop-color="rgba(255,255,255,.14)"/>
+          <stop offset="1" stop-color="rgba(165,140,255,.28)"/>
+        `;
+      } else {
+        grad.innerHTML = `
+          <stop offset="0" stop-color="rgba(103,232,249,.26)"/>
+          <stop offset="0.55" stop-color="rgba(255,255,255,.10)"/>
+          <stop offset="1" stop-color="rgba(165,140,255,.22)"/>
+        `;
+      }
 
-      if (cfg.usePathFilter) {
+      if (!light) {
         const glow = make("filter");
         glow.setAttribute("id", "strGlow");
         glow.setAttribute("x", "-40%");
@@ -126,27 +126,26 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
         glow.setAttribute("width", "180%");
         glow.setAttribute("height", "180%");
         glow.innerHTML = `
-        <feGaussianBlur stdDeviation="1.2" result="b"/>
-        <feMerge>
-          <feMergeNode in="b"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      `;
-        defs.appendChild(glow);
-      }
+          <feGaussianBlur stdDeviation="1.2" result="b"/>
+          <feMerge>
+            <feMergeNode in="b"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        `;
 
-      if (cfg.useNodes) {
         const node = make("radialGradient");
         node.setAttribute("id", "strNode");
         node.innerHTML = `
-        <stop offset="0" stop-color="rgba(255,255,255,.70)"/>
-        <stop offset="0.35" stop-color="rgba(103,232,249,.26)"/>
-        <stop offset="1" stop-color="rgba(103,232,249,0)"/>
-      `;
-        defs.appendChild(node);
+          <stop offset="0" stop-color="rgba(255,255,255,.70)"/>
+          <stop offset="0.35" stop-color="rgba(103,232,249,.26)"/>
+          <stop offset="1" stop-color="rgba(103,232,249,0)"/>
+        `;
+
+        defs.append(grad, glow, node);
+      } else {
+        defs.appendChild(grad);
       }
 
-      defs.appendChild(grad);
       svg.appendChild(defs);
     };
 
@@ -168,7 +167,7 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
     const rebuild = () => {
       applyCfg();
       setSize();
-      buildDefs();
+      buildDefs(mobileLight);
       state.strings = [];
 
       const leftPad = w * 0.06;
@@ -196,22 +195,29 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
         const path = make("path") as SVGPathElement;
         path.setAttribute("fill", "none");
         path.setAttribute("stroke", "url(#strGrad)");
-        path.setAttribute("stroke-width", (0.95 + Math.random() * 0.95).toFixed(2));
-        path.setAttribute("opacity", (0.16 + Math.random() * 0.18).toFixed(2));
-        if (cfg.usePathFilter) path.setAttribute("filter", "url(#strGlow)");
+        if (mobileLight) {
+          path.setAttribute("stroke-width", (1.05 + Math.random() * 0.55).toFixed(2));
+          path.setAttribute("opacity", (0.22 + Math.random() * 0.16).toFixed(2));
+          path.setAttribute("stroke-linecap", "round");
+        } else {
+          path.setAttribute("stroke-width", (0.95 + Math.random() * 0.95).toFixed(2));
+          path.setAttribute("opacity", (0.16 + Math.random() * 0.18).toFixed(2));
+          path.setAttribute("filter", "url(#strGlow)");
+        }
         svg.appendChild(path);
 
         const nodes: Array<{ i: number; el: SVGCircleElement; seed: number }> = [];
-        if (cfg.useNodes) {
+        if (!mobileLight) {
           const nodesG = make("g") as SVGGElement;
           nodesG.setAttribute("opacity", "0.62");
           svg.appendChild(nodesG);
+
           const step = cfg.nodeStep;
           for (let i = 0; i < cfg.points; i += step) {
             const c = make("circle") as SVGCircleElement;
             c.setAttribute("r", cfg.nodeRadius.toString());
             c.setAttribute("fill", "url(#strNode)");
-            if (cfg.usePathFilter) c.setAttribute("filter", "url(#strGlow)");
+            c.setAttribute("filter", "url(#strGlow)");
             nodesG.appendChild(c);
             nodes.push({ i, el: c, seed: Math.random() * Math.PI * 2 });
           }
@@ -222,14 +228,6 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
 
       for (const st of state.strings) {
         st.path.setAttribute("d", pathFromPoints(st.pts));
-      }
-
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-        rafId = 0;
-      }
-      if (!reduced && active) {
-        rafId = requestAnimationFrame(tick);
       }
     };
 
@@ -265,8 +263,7 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
 
     const onScroll = () => {
       const y = window.scrollY;
-      const k = isMobile() ? 0.14 : 0.3;
-      const delta = (y - lastScrollY) * k;
+      const delta = (y - lastScrollY) * 0.3;
       scrollVel += delta;
       scrollVel = Math.max(-75, Math.min(75, scrollVel));
       lastScrollY = y;
@@ -280,10 +277,6 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
     };
 
     const tick = () => {
-      if (reduced) {
-        rafId = 0;
-        return;
-      }
       if (!active) {
         rafId = 0;
         return;
@@ -293,14 +286,12 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
 
       scrollVel *= 0.92;
       const mobile = isMobile();
-      const scrollK = mobile ? 0.0035 : 0.008;
+      const scrollK = mobile ? 0 : 0.008;
 
       const mx = state.mouse.x;
       const my = state.mouse.y;
       const mv = Math.hypot(state.mouse.vx, state.mouse.vy);
       const kick = Math.min(1.7, 0.55 + mv / 26);
-      const stride = Math.max(1, cfg.renderStride);
-      const shouldDraw = state.frame % stride === 0;
 
       for (const st of state.strings) {
         const pts = st.pts;
@@ -353,11 +344,11 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
         pts[pts.length - 1].x = pts[pts.length - 1].x0;
         pts[pts.length - 1].vx = 0;
 
-        if (shouldDraw) {
+        if (!mobileLight || state.frame % 2 === 0) {
           st.path.setAttribute("d", pathFromPoints(pts));
         }
 
-        if (shouldDraw && st.nodes.length > 0) {
+        if (st.nodes.length && state.frame % 3 === 0) {
           for (const n of st.nodes) {
             const p = pts[n.i];
             const breathe = 0.55 + 0.45 * Math.sin(state.t * 1.25 + n.seed);
@@ -376,21 +367,13 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
 
     rebuild();
 
+    if (!reduced) rafId = requestAnimationFrame(tick);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         active = entry.isIntersecting;
-        if (reduced) {
-          if (rafId) {
-            cancelAnimationFrame(rafId);
-            rafId = 0;
-          }
-          return;
-        }
-        if (active && !rafId) {
+        if (active && !rafId && !reduced) {
           rafId = requestAnimationFrame(tick);
-        } else if (!active && rafId) {
-          cancelAnimationFrame(rafId);
-          rafId = 0;
         }
       },
       { threshold: 0.1 }
@@ -398,6 +381,9 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
     observer.observe(root);
 
     window.addEventListener("resize", rebuild, { passive: true });
+    const mobileMq = window.matchMedia(MOBILE_MQ);
+    const onMobileMqChange = () => rebuild();
+    mobileMq.addEventListener("change", onMobileMqChange);
     window.addEventListener("scroll", onScroll, { passive: true });
     if (supportsPointer) {
       root.addEventListener("pointermove", onPointerMove, { passive: true });
@@ -412,6 +398,7 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
 
     return () => {
       window.removeEventListener("resize", rebuild);
+      mobileMq.removeEventListener("change", onMobileMqChange);
       window.removeEventListener("scroll", onScroll);
       if (supportsPointer) {
         root.removeEventListener("pointermove", onPointerMove);

@@ -74,11 +74,9 @@
   opacity: 0.95;
 }
 
-/* Мобилка: облегчённая анимация линий — чуть тише фон, изоляция слоя */
 @media (max-width: 768px) {
   .skillsPro__bg {
-    opacity: 0.72;
-    contain: strict;
+    shape-rendering: optimizeSpeed;
   }
 }
 
@@ -1029,6 +1027,10 @@
 
   .sCard {
     border-radius: 18px;
+  }
+
+  .skillsPro__bg {
+    opacity: 0.75;
   }
 }
 
