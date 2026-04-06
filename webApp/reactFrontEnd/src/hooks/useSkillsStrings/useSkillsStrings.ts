@@ -16,7 +16,7 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
     const NS = "http://www.w3.org/2000/svg";
     const make = (t: string) => document.createElementNS(NS, t);
     const supportsPointer = "PointerEvent" in window;
-    /** На телефонах отключаем rAF-анимацию: только статичные линии без фильтров — иначе SVG + blur грузят GPU/CPU */
+    /** Телефоны: облегчённый режим (без blur, меньше геометрии, реже обновление path) */
     const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
 
     let rect: DOMRect;
@@ -37,9 +37,11 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
       drift: 0.24,
       nodeStep: 12,
       nodeRadius: 10,
-      /** Десктоп: blur + узлы; мобилка: выключается в applyCfg */
+      /** Десктоп: blur + узлы; мобилка: без blur, реже setAttribute на path */
       usePathFilter: true,
       useNodes: true,
+      /** 1 = каждый кадр; 2 = path/узлы обновлять через кадр (~30 визуальных обновлений/с) */
+      renderStride: 1,
     };
 
     let lastScrollY = window.scrollY;
@@ -59,19 +61,20 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
     const applyCfg = () => {
       const mobile = isMobile();
       if (mobile) {
-        cfg.strings = 5;
-        cfg.points = 11;
+        cfg.strings = 7;
+        cfg.points = 16;
         cfg.usePathFilter = false;
-        cfg.useNodes = false;
-        cfg.stiffness = 0.05;
-        cfg.coupling = 0.12;
-        cfg.damping = 0.92;
+        cfg.useNodes = true;
+        cfg.nodeStep = 8;
+        cfg.nodeRadius = 7;
+        cfg.renderStride = 2;
+        cfg.stiffness = 0.044;
+        cfg.coupling = 0.095;
+        cfg.damping = 0.93;
         cfg.mouseRadius = 120;
         cfg.impulse = 52;
-        cfg.curve = 1.05;
-        cfg.drift = 0.24;
-        cfg.nodeStep = 12;
-        cfg.nodeRadius = 10;
+        cfg.curve = 1.06;
+        cfg.drift = 0.19;
         return;
       }
       cfg.strings = 20;
@@ -87,6 +90,7 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
       cfg.nodeRadius = 10;
       cfg.usePathFilter = true;
       cfg.useNodes = true;
+      cfg.renderStride = 1;
     };
 
     const setSize = () => {
@@ -224,7 +228,7 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
         cancelAnimationFrame(rafId);
         rafId = 0;
       }
-      if (!reduced && !isMobile() && active) {
+      if (!reduced && active) {
         rafId = requestAnimationFrame(tick);
       }
     };
@@ -260,9 +264,9 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
     };
 
     const onScroll = () => {
-      if (isMobile()) return;
       const y = window.scrollY;
-      const delta = (y - lastScrollY) * 0.3;
+      const k = isMobile() ? 0.14 : 0.3;
+      const delta = (y - lastScrollY) * k;
       scrollVel += delta;
       scrollVel = Math.max(-75, Math.min(75, scrollVel));
       lastScrollY = y;
@@ -276,7 +280,7 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
     };
 
     const tick = () => {
-      if (isMobile() || reduced) {
+      if (reduced) {
         rafId = 0;
         return;
       }
@@ -289,12 +293,14 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
 
       scrollVel *= 0.92;
       const mobile = isMobile();
-      const scrollK = mobile ? 0 : 0.008;
+      const scrollK = mobile ? 0.0035 : 0.008;
 
       const mx = state.mouse.x;
       const my = state.mouse.y;
       const mv = Math.hypot(state.mouse.vx, state.mouse.vy);
       const kick = Math.min(1.7, 0.55 + mv / 26);
+      const stride = Math.max(1, cfg.renderStride);
+      const shouldDraw = state.frame % stride === 0;
 
       for (const st of state.strings) {
         const pts = st.pts;
@@ -347,9 +353,11 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
         pts[pts.length - 1].x = pts[pts.length - 1].x0;
         pts[pts.length - 1].vx = 0;
 
-        st.path.setAttribute("d", pathFromPoints(pts));
+        if (shouldDraw) {
+          st.path.setAttribute("d", pathFromPoints(pts));
+        }
 
-        if (state.frame % 3 === 0 && st.nodes.length > 0) {
+        if (shouldDraw && st.nodes.length > 0) {
           for (const n of st.nodes) {
             const p = pts[n.i];
             const breathe = 0.55 + 0.45 * Math.sin(state.t * 1.25 + n.seed);
@@ -371,7 +379,7 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         active = entry.isIntersecting;
-        if (reduced || isMobile()) {
+        if (reduced) {
           if (rafId) {
             cancelAnimationFrame(rafId);
             rafId = 0;
