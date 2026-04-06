@@ -59,15 +59,15 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
       const mobile = isMobile();
       mobileLight = mobile;
       if (mobile) {
-        cfg.strings = 6;
-        cfg.points = 11;
-        cfg.stiffness = 0.05;
-        cfg.coupling = 0.11;
-        cfg.damping = 0.93;
+        cfg.strings = 8;
+        cfg.points = 12;
+        cfg.stiffness = 0.052;
+        cfg.coupling = 0.118;
+        cfg.damping = 0.928;
         cfg.mouseRadius = 90;
         cfg.impulse = 40;
-        cfg.curve = 0.95;
-        cfg.drift = 0.38;
+        cfg.curve = 1.02;
+        cfg.drift = 0.42;
         cfg.nodeStep = 99;
         cfg.nodeRadius = 6;
       } else {
@@ -286,7 +286,7 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
 
       scrollVel *= 0.92;
       const mobile = isMobile();
-      const scrollK = mobile ? 0 : 0.008;
+      const scrollK = mobile ? 0.0032 : 0.008;
 
       const mx = state.mouse.x;
       const my = state.mouse.y;
