@@ -16,6 +16,7 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
     const NS = "http://www.w3.org/2000/svg";
     const make = (t: string) => document.createElementNS(NS, t);
     const supportsPointer = "PointerEvent" in window;
+    /** На телефонах отключаем rAF-анимацию: только статичные линии без фильтров — иначе SVG + blur грузят GPU/CPU */
     const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
 
     let rect: DOMRect;
@@ -36,6 +37,9 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
       drift: 0.24,
       nodeStep: 12,
       nodeRadius: 10,
+      /** Десктоп: blur + узлы; мобилка: выключается в applyCfg */
+      usePathFilter: true,
+      useNodes: true,
     };
 
     let lastScrollY = window.scrollY;
@@ -54,17 +58,35 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
 
     const applyCfg = () => {
       const mobile = isMobile();
-      cfg.strings = mobile ? 9 : 20;
-      cfg.points = mobile ? 15 : 28;
-      cfg.stiffness = mobile ? 0.045 : 0.05;
-      cfg.coupling = mobile ? 0.1 : 0.12;
-      cfg.damping = mobile ? 0.93 : 0.92;
-      cfg.mouseRadius = mobile ? 90 : 120;
-      cfg.impulse = mobile ? 40 : 52;
-      cfg.curve = mobile ? 1.0 : 1.2;
-      cfg.drift = mobile ? 0.34 : 0.24;
-      cfg.nodeStep = mobile ? 14 : 12;
-      cfg.nodeRadius = mobile ? 8 : 10;
+      if (mobile) {
+        cfg.strings = 5;
+        cfg.points = 11;
+        cfg.usePathFilter = false;
+        cfg.useNodes = false;
+        cfg.stiffness = 0.05;
+        cfg.coupling = 0.12;
+        cfg.damping = 0.92;
+        cfg.mouseRadius = 120;
+        cfg.impulse = 52;
+        cfg.curve = 1.05;
+        cfg.drift = 0.24;
+        cfg.nodeStep = 12;
+        cfg.nodeRadius = 10;
+        return;
+      }
+      cfg.strings = 20;
+      cfg.points = 28;
+      cfg.stiffness = 0.05;
+      cfg.coupling = 0.12;
+      cfg.damping = 0.92;
+      cfg.mouseRadius = 120;
+      cfg.impulse = 52;
+      cfg.curve = 1.2;
+      cfg.drift = 0.24;
+      cfg.nodeStep = 12;
+      cfg.nodeRadius = 10;
+      cfg.usePathFilter = true;
+      cfg.useNodes = true;
     };
 
     const setSize = () => {
@@ -92,29 +114,35 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
         <stop offset="1" stop-color="rgba(165,140,255,.22)"/>
       `;
 
-      const glow = make("filter");
-      glow.setAttribute("id", "strGlow");
-      glow.setAttribute("x", "-40%");
-      glow.setAttribute("y", "-40%");
-      glow.setAttribute("width", "180%");
-      glow.setAttribute("height", "180%");
-      glow.innerHTML = `
+      if (cfg.usePathFilter) {
+        const glow = make("filter");
+        glow.setAttribute("id", "strGlow");
+        glow.setAttribute("x", "-40%");
+        glow.setAttribute("y", "-40%");
+        glow.setAttribute("width", "180%");
+        glow.setAttribute("height", "180%");
+        glow.innerHTML = `
         <feGaussianBlur stdDeviation="1.2" result="b"/>
         <feMerge>
           <feMergeNode in="b"/>
           <feMergeNode in="SourceGraphic"/>
         </feMerge>
       `;
+        defs.appendChild(glow);
+      }
 
-      const node = make("radialGradient");
-      node.setAttribute("id", "strNode");
-      node.innerHTML = `
+      if (cfg.useNodes) {
+        const node = make("radialGradient");
+        node.setAttribute("id", "strNode");
+        node.innerHTML = `
         <stop offset="0" stop-color="rgba(255,255,255,.70)"/>
         <stop offset="0.35" stop-color="rgba(103,232,249,.26)"/>
         <stop offset="1" stop-color="rgba(103,232,249,0)"/>
       `;
+        defs.appendChild(node);
+      }
 
-      defs.append(grad, glow, node);
+      defs.appendChild(grad);
       svg.appendChild(defs);
     };
 
@@ -166,22 +194,23 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
         path.setAttribute("stroke", "url(#strGrad)");
         path.setAttribute("stroke-width", (0.95 + Math.random() * 0.95).toFixed(2));
         path.setAttribute("opacity", (0.16 + Math.random() * 0.18).toFixed(2));
-        path.setAttribute("filter", "url(#strGlow)");
+        if (cfg.usePathFilter) path.setAttribute("filter", "url(#strGlow)");
         svg.appendChild(path);
 
-        const nodesG = make("g") as SVGGElement;
-        nodesG.setAttribute("opacity", "0.62");
-        svg.appendChild(nodesG);
-
-        const nodes = [];
-        const step = cfg.nodeStep;
-        for (let i = 0; i < cfg.points; i += step) {
-          const c = make("circle") as SVGCircleElement;
-          c.setAttribute("r", cfg.nodeRadius.toString());
-          c.setAttribute("fill", "url(#strNode)");
-          c.setAttribute("filter", "url(#strGlow)");
-          nodesG.appendChild(c);
-          nodes.push({ i, el: c, seed: Math.random() * Math.PI * 2 });
+        const nodes: Array<{ i: number; el: SVGCircleElement; seed: number }> = [];
+        if (cfg.useNodes) {
+          const nodesG = make("g") as SVGGElement;
+          nodesG.setAttribute("opacity", "0.62");
+          svg.appendChild(nodesG);
+          const step = cfg.nodeStep;
+          for (let i = 0; i < cfg.points; i += step) {
+            const c = make("circle") as SVGCircleElement;
+            c.setAttribute("r", cfg.nodeRadius.toString());
+            c.setAttribute("fill", "url(#strNode)");
+            if (cfg.usePathFilter) c.setAttribute("filter", "url(#strGlow)");
+            nodesG.appendChild(c);
+            nodes.push({ i, el: c, seed: Math.random() * Math.PI * 2 });
+          }
         }
 
         state.strings.push({ pts, path, nodes });
@@ -189,6 +218,14 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
 
       for (const st of state.strings) {
         st.path.setAttribute("d", pathFromPoints(st.pts));
+      }
+
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = 0;
+      }
+      if (!reduced && !isMobile() && active) {
+        rafId = requestAnimationFrame(tick);
       }
     };
 
@@ -223,6 +260,7 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
     };
 
     const onScroll = () => {
+      if (isMobile()) return;
       const y = window.scrollY;
       const delta = (y - lastScrollY) * 0.3;
       scrollVel += delta;
@@ -238,6 +276,10 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
     };
 
     const tick = () => {
+      if (isMobile() || reduced) {
+        rafId = 0;
+        return;
+      }
       if (!active) {
         rafId = 0;
         return;
@@ -307,7 +349,7 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
 
         st.path.setAttribute("d", pathFromPoints(pts));
 
-        if (state.frame % 3 === 0) {
+        if (state.frame % 3 === 0 && st.nodes.length > 0) {
           for (const n of st.nodes) {
             const p = pts[n.i];
             const breathe = 0.55 + 0.45 * Math.sin(state.t * 1.25 + n.seed);
@@ -326,13 +368,21 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
 
     rebuild();
 
-    if (!reduced) rafId = requestAnimationFrame(tick);
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         active = entry.isIntersecting;
-        if (active && !rafId && !reduced) {
+        if (reduced || isMobile()) {
+          if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = 0;
+          }
+          return;
+        }
+        if (active && !rafId) {
           rafId = requestAnimationFrame(tick);
+        } else if (!active && rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = 0;
         }
       },
       { threshold: 0.1 }

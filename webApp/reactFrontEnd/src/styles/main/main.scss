@@ -74,6 +74,14 @@
   opacity: 0.95;
 }
 
+/* Мобилка: фон без rAF — лёгкий SVG; уменьшаем перерисовку и нагрузку на композитинг */
+@media (max-width: 768px) {
+  .skillsPro__bg {
+    opacity: 0.62;
+    contain: strict;
+  }
+}
+
 .skillsPro__inner {
   position: relative;
   z-index: 2;
@@ -1021,10 +1029,6 @@
 
   .sCard {
     border-radius: 18px;
-  }
-
-  .skillsPro__bg {
-    opacity: 0.75;
   }
 }
 
