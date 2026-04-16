@@ -3,6 +3,7 @@ import { PIcon } from "@/components/icons/PIcon";
 import "./FooterPro.scss";
 
 const EMAIL = "dreminaleksandr06@gmail.com";
+const GITHUB_URL = "https://github.com/azora929";
 
 export function FooterPro() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -249,6 +250,19 @@ export function FooterPro() {
                 <PIcon name="arrow" />
               </span>
             </a>
+
+            <a className="fBtn" href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+              <span className="fBtn__icon" aria-hidden="true">
+                <PIcon name="code" />
+              </span>
+              <span className="fBtn__text">
+                <span className="fBtn__label">GitHub</span>
+                <span className="fBtn__value">github.com/azora929</span>
+              </span>
+              <span className="fBtn__arrow" aria-hidden="true">
+                <PIcon name="arrow" />
+              </span>
+            </a>
           </div>
         </div>
 
@@ -307,6 +321,9 @@ export function FooterPro() {
               </a>
               <a className="fPill" href="https://t.me/azora929" target="_blank" rel="noopener noreferrer">
                 <span className="fPill__dot" aria-hidden="true"></span>Telegram
+              </a>
+              <a className="fPill" href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+                <span className="fPill__dot" aria-hidden="true"></span>GitHub
               </a>
               <a className="fPill" href="#projects">
                 <span className="fPill__dot" aria-hidden="true"></span>Проекты

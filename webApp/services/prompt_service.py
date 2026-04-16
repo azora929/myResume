@@ -13,6 +13,7 @@ class PromptService:
             "Контакты:\n"
             "- Email: dreminaleksandr06@gmail.com\n"
             "- Telegram: https://t.me/azora929 (@azora929)\n\n"
+            "- GitHub: https://github.com/azora929\n\n"
             "Короткий профиль:\n"
             "- Backend-first разработчик на Python.\n"
             "- Фокус: надёжность, предсказуемость, REST API, WS/SSE streaming.\n"
