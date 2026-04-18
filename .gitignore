@@ -42,6 +42,9 @@ pnpm-debug.log*
 reactFrontEnd/build/
 reactFrontEnd/dist/
 
+# assets general
+assets/photos
+
 # Local data (офферы из чата)
 data/
 
