@@ -432,8 +432,10 @@ export function MainPage() {
                 <ul className="sList">
                   <li>Разрабатываю backend-сервисы и AI-функциональность для web-приложений и Telegram-сервисов в команде из 3 человек</li>
                   <li>Реализую FastAPI/Django backend, REST/gRPC интеграции, realtime и stateful user flow</li>
-                  <li>Оптимизирую PostgreSQL/Redis слой: индексы, bulk-операции, сырые SQL, транзакции, производительность</li>
-                  <li>Поддерживаю production-контур: Docker, Kubernetes, Nginx, SSL/TLS, стабильность под живой нагрузкой</li>
+                  <li>Оптимизирую PostgreSQL/Redis слой: индексы, bulk-операции, сырые SQL, устранение N+1, транзакции и latency</li>
+                  <li>Интегрирую OpenAI API/Assistants/Realtime, Telegram Bot API и YooKassa в продуктовые сценарии</li>
+                  <li>Поддерживаю production-контур: Docker, Kubernetes, Nginx, SSL/TLS, тесты на pytest и стабильность под нагрузкой</li>
+                  <li>Результат: production-ready backend для AI/web-продуктов и заметное снижение задержек в критичных пользовательских flow</li>
                 </ul>
               </article>
               </div>
