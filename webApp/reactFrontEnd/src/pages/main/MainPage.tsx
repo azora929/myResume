@@ -422,6 +422,25 @@ export function MainPage() {
               <article className="sCard" data-accent="neutral">
                 <div className="sCard__head">
                   <span className="sIcon" aria-hidden="true">
+                    <PIcon name="code" />
+                  </span>
+                  <div>
+                    <h3 className="sCard__title">Work Experience</h3>
+                    <p className="sCard__desc">StrokovAI · Middle Python Backend / Fullstack · апрель 2023 — сейчас</p>
+                  </div>
+                </div>
+                <ul className="sList">
+                  <li>Разрабатываю backend-сервисы и AI-функциональность для web-приложений и Telegram-сервисов в команде из 3 человек</li>
+                  <li>Реализую FastAPI/Django backend, REST/gRPC интеграции, realtime и stateful user flow</li>
+                  <li>Оптимизирую PostgreSQL/Redis слой: индексы, bulk-операции, сырые SQL, транзакции, производительность</li>
+                  <li>Поддерживаю production-контур: Docker, Kubernetes, Nginx, SSL/TLS, стабильность под живой нагрузкой</li>
+                </ul>
+              </article>
+              </div>
+              <div className="sCard-slot">
+              <article className="sCard" data-accent="neutral">
+                <div className="sCard__head">
+                  <span className="sIcon" aria-hidden="true">
                     <PIcon name="education" />
                   </span>
                   <div>

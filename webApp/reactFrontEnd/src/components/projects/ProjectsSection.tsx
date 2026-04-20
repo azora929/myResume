@@ -14,7 +14,7 @@ export function ProjectsSection() {
   const titleMeta = useMemo(
     () => ({
       title: "Projects",
-      subtitle: "Проекты, где я отвечал за backend, интеграции OpenAI и “живой” UX со стримингом.",
+      subtitle: "Кейсы из коммерческого опыта в StrokovAI: мой личный вклад в backend, AI-интеграции и production-реализацию.",
     }),
     []
   );
