@@ -85,7 +85,7 @@ function YespeakSlide() {
               <span className="pIcon" aria-hidden="true">{monitorIcon}</span>
               <div>
                 <h3 className="pCard__title">Продукт</h3>
-                <p className="pCard__desc">Платформа изучения языка с AI: чат, тест уровня, уроки, экзамены</p>
+                <p className="pCard__desc">Мой вклад: спроектировал и реализовал backend и AI-flow, чтобы платформа стабильно вела пользователя по урокам и тестам.</p>
               </div>
             </div>
             <div className="pMedia">
@@ -98,15 +98,15 @@ function YespeakSlide() {
               <span className="pIcon" aria-hidden="true">{idIcon}</span>
               <div>
                 <h3 className="pCard__title">Роль и стек</h3>
-                <p className="pCard__desc">Коротко и по делу</p>
+                <p className="pCard__desc">Мой вклад в архитектуру и реализацию</p>
               </div>
             </div>
             <div className="pCard__body">
               <p><b>Роль:</b> Fullstack Developer (Python backend + React frontend)</p>
               <p><b>Стек:</b> Django 5, Channels, WebSocket, PostgreSQL, Redis, Assistants API + Realtime API, React 18, TypeScript, Vite, Three.js, MobX</p>
-              <p><b>Фокус:</b> устойчивый backend, стриминг‑UX, два потока (диалог + фоновая генерация заданий), голос (TTS, Realtime).</p>
+              <p><b>Фокус моего вклада:</b> устойчивый backend, стриминг‑UX, двухпоточный AI-flow (диалог + фоновая генерация задач), голосовые сценарии.</p>
               <p>
-                Чат-уроки, тест уровня, разговорные уроки и экзамен говорения (Realtime API), экзамены по этапам; 3D-аватар с липсинком; монетизация ЮKassa.
+                Лично закрывал значимую часть backend и AI-логики: уроки, экзамены, пользовательские состояния, интеграции и связку backend + frontend под живой продукт.
               </p>
             </div>
           </article>
@@ -116,19 +116,17 @@ function YespeakSlide() {
               <span className="pIcon" aria-hidden="true">{boltIcon}</span>
               <div>
                 <h3 className="pCard__title">Что сделал и эффект</h3>
-                <p className="pCard__desc">Фичи, которые видно</p>
+                <p className="pCard__desc">Мой вклад и продуктовый эффект</p>
               </div>
             </div>
             <div className="pCard__body">
               <ul className="pList pList--cols">
-                <li>Два потока: стриминг диалога по WebSocket + фоновая генерация заданий в отдельном OpenAI thread (tools)</li>
-                <li>OpenAI Assistants API: контекст, lifecycle, кастомные tools (request_task_generation, check_task_status и др.)</li>
-                <li>Realtime API: разговорные уроки и экзамен говорения через прокси (голос в реальном времени)</li>
-                <li>3D-аватар (Three.js) с липсинком под озвучку сообщений</li>
-                <li>TTS по HTTP, озвучка по частям с кешем; голосовой ввод (транскрипция), анализ произношения</li>
-                <li>Тест уровня языка (WebSocket), экзамены по этапам (грамматика, чтение, аудирование, письмо, говорение)</li>
-                <li>ЮKassa: пополнение баланса, безлимит, проверка доступа к уроку, покупка с баланса</li>
-                <li>Django Channels, Redis (channel layers), светлая/тёмная тема, code-splitting (Vite)</li>
+                <li>Лично почти полностью реализовал двухпоточный AI-flow: отдельный поток диалога + отдельный поток генерации JSON-задач для UI</li>
+                <li>Интегрировал Assistants API и Realtime API, реализовал кастомные tools и lifecycle взаимодействия</li>
+                <li>Сократил время ожидания задач с 1–2 минут до нескольких секунд за счёт переработки backend/AI-архитектуры</li>
+                <li>Реализовал realtime-механику (WebSocket), голосовые сценарии (TTS/транскрипция), озвучку и анализ произношения</li>
+                <li>Участвовал в реализации монетизации через YooKassa: доступы, баланс, проверки прав на урок</li>
+                <li>Дорабатывал продуктовый UX: состояния, переходы этапов, стабильную стыковку backend, AI и frontend</li>
               </ul>
             </div>
           </article>
@@ -174,7 +172,7 @@ function IiprepodSlide() {
               <span className="pIcon" aria-hidden="true">{monitorIcon}</span>
               <div>
                 <h3 className="pCard__title">Продукт</h3>
-                <p className="pCard__desc">EdTech для школьников: AI-тьютор, роли, сессии, чат, оплата</p>
+                <p className="pCard__desc">Мой вклад: backend-логика и AI-сценарии для живого EdTech-продукта с ролями, сессиями, чатом и оплатой.</p>
               </div>
             </div>
             <div className="pMedia">
@@ -187,16 +185,16 @@ function IiprepodSlide() {
               <span className="pIcon" aria-hidden="true">{brainIcon}</span>
               <div>
                 <h3 className="pCard__title">Ключевые штуки</h3>
-                <p className="pCard__desc">AI, роли, платежи, SMS и Telegram</p>
+                <p className="pCard__desc">Мой вклад в ключевые продуктовые механики</p>
               </div>
             </div>
             <div className="pCard__body">
               <ul className="pList">
-                <li>Роли: ученик, родитель, учитель, партнёр; кастомная модель пользователя</li>
-                <li>Сессии по предметам/классам, чат с GPT, стриминг ответов (SSE), онлайн-уроки, подготовка к ОГЭ, психотесты с GPT</li>
-                <li>Токен-биллинг USD→RUB (курс ЦБ, tiktoken), баланс + овердрафт, YooKassa + webhooks</li>
-                <li>Авторизация: SMS (Exolve), Telegram-бот (привязка по коду из ЛК, уведомления, альтернативный вход)</li>
-                <li>TTS: Tinkoff VoiceKit (gRPC), Yandex SpeechKit; пробные уроки с лимитом по IP, ЛК родителя, награды и баллы</li>
+                <li>Лично разрабатывал backend-логику продукта: роли, сессии, доступы и основные пользовательские сценарии</li>
+                <li>Реализовывал AI-часть и стриминг ответов (SSE), включая рабочие учебные сценарии внутри платформы</li>
+                <li>Участвовал в биллинге: баланс, токен-логика, интеграция YooKassa и обработка webhooks</li>
+                <li>Интегрировал внешние каналы: SMS (Exolve), Telegram-связку и голосовые сервисы (VoiceKit/SpeechKit)</li>
+                <li>Работал над устойчивостью продовых flow с лимитами, пробными доступами и контролем состояний</li>
               </ul>
             </div>
           </article>
@@ -206,14 +204,14 @@ function IiprepodSlide() {
               <span className="pIcon" aria-hidden="true">{rocketIcon}</span>
               <div>
                 <h3 className="pCard__title">Результат</h3>
-                <p className="pCard__desc">Стабильность и рост</p>
+                <p className="pCard__desc">Мой вклад в стабильность и масштабирование</p>
               </div>
             </div>
             <div className="pCard__body">
               <ul className="pList pList--cols">
-                <li>Django 5, DRF, Daphne (ASGI), Channels, PostgreSQL; пики до ~1000 пользователей</li>
-                <li>OpenAI API (GPT), tiktoken, стриминг SSE; YooKassa, вебхуки, баланс</li>
-                <li>Exolve (SMS), Telegram-бот (привязка/уведомления/альт-авторизация), TTS (VoiceKit gRPC, SpeechKit)</li>
+                <li>Лично развивал backend под реальные продуктовые нагрузки и командные итерации в коммерческой разработке</li>
+                <li>Работал с Django/DRF/Channels/PostgreSQL и продовыми ограничениями на пиках до ~1000 пользователей</li>
+                <li>Закрывал интеграции AI, платежей и коммуникаций (SSE, YooKassa, SMS, Telegram, TTS)</li>
                 <li>~300–400 ₽ за урок; публикации:{" "}
                   <a href="https://www.cnews.ru/news/line/2025-01-28_v_rossii_zapustili_innovatsionnuyu" target="_blank" rel="noopener noreferrer">CNews</a>,{" "}
                   <a href="https://hi-tech.mail.ru/news/122609-v-rossii-sozdali-iskusstvennyj-intellekt-s-myshleniem-rebenka/" target="_blank" rel="noopener noreferrer">Hi‑Tech Mail.ru</a>,{" "}
@@ -265,7 +263,7 @@ function LunaSlide() {
               <span className="pIcon" aria-hidden="true">{monitorIcon}</span>
               <div>
                 <h3 className="pCard__title">Продукт</h3>
-                <p className="pCard__desc">Астрологический AI-помощник «Луна»: портрет, отчёты, подписка</p>
+                <p className="pCard__desc">Мой вклад: самостоятельно собрал production-ready AI-сервис с подпиской, отчётами и многошаговыми пользовательскими сценариями.</p>
               </div>
             </div>
             <div className="pMedia">
@@ -278,16 +276,16 @@ function LunaSlide() {
               <span className="pIcon" aria-hidden="true">{codeIcon}</span>
               <div>
                 <h3 className="pCard__title">Механики</h3>
-                <p className="pCard__desc">Этапы, подписка, магазин</p>
+                <p className="pCard__desc">Мой вклад в stateful user flow и монетизацию</p>
               </div>
             </div>
             <div className="pCard__body">
               <ul className="pList">
-                <li>Поэтапный сценарий: introduction → бесплатный портрет (PDF) → продажа подписки/магазин отчётов</li>
-                <li>Динамические tools и промпты по этапу; миграция истории диалога; кэш контекста в Redis</li>
-                <li>Подписка: ежедневные расклады и вечерние вопросы по таймзоне пользователя; истечение и продление</li>
-                <li>Магазин в WebApp (HTTPS: ngrok в dev, свой домен в prod); очередь покупок, атомарное сохранение отчётов</li>
-                <li>Голос: Whisper (транскрипция), TTS ответов; Telegram Payments, ЮKassa</li>
+                <li>Лично с нуля спроектировал архитектуру и самостоятельно реализовал backend всего продукта</li>
+                <li>Построил stage-based user flow, динамические tools/prompt, миграцию истории и кэш контекста в Redis</li>
+                <li>Реализовал подписочную модель, очередь покупок, атомарное сохранение отчётов и timezone-aware планировщик</li>
+                <li>Сделал WebApp-магазин, интеграции Telegram Payments и YooKassa, рабочие сценарии монетизации</li>
+                <li>Подключил голосовые сценарии (Whisper/TTS) и связал их с продуктовой логикой без разрывов UX</li>
               </ul>
             </div>
           </article>
@@ -297,15 +295,15 @@ function LunaSlide() {
               <span className="pIcon" aria-hidden="true">{sparkIcon}</span>
               <div>
                 <h3 className="pCard__title">Стек и отчёты</h3>
-                <p className="pCard__desc">Assistants API, PDF, платёжки</p>
+                <p className="pCard__desc">Мой вклад в интеграции и инженерную надёжность</p>
               </div>
             </div>
             <div className="pCard__body">
               <ul className="pList pList--cols">
-                <li>Assistants API, кастомные tools; async FastAPI, Redis</li>
-                <li>PDF-отчёты: Jinja2, Playwright; натальные/ведические карты (Kerykeion, AstroKundali, Matplotlib)</li>
-                <li>Платные отчёты: синастрия, натал, прогнозы, выбор даты, карьера/деньги, карта ребёнка</li>
-                <li>Стоимость диалога (токены → USD → RUB по курсу ЦБ); планировщик с привязкой к таймзоне</li>
+                <li>Лично реализовал AI-слой на Assistants API с кастомными tools и асинхронной сервисной логикой</li>
+                <li>Собрал pipeline генерации PDF-отчётов (Jinja2 + Playwright + расчётные модули)</li>
+                <li>Настроил платные продуктовые сценарии: отчёты, подписки и расчёт стоимости диалога (токены → USD → RUB)</li>
+                <li>Сделал инженерно устойчивую orchestration-схему под длинные пользовательские сценарии и фоновые задачи</li>
               </ul>
             </div>
           </article>
@@ -350,17 +348,16 @@ function CrmNbkiSlide() {
               <span className="pIcon" aria-hidden="true">{gridIcon}</span>
               <div>
                 <h3 className="pCard__title">Chester Feya CRM</h3>
-                <p className="pCard__desc">Инфраструктура для бота ресторана: привлечение гостей, рассылки, меню, брони, промокоды. Веб-панель: таблицы, переписка, аналитика. ИИ-менеджер: чат с доступом к данным — строит SQL по запросу и выводит сводки из CRM или R-Keeper.</p>
+                <p className="pCard__desc">Мой вклад: построил backend-контур CRM и ИИ-менеджера с доступом к данным, где запросы на естественном языке превращаются в безопасные SQL-выборки и отчёты.</p>
               </div>
             </div>
             <div className="pCard__body">
               <ul className="pList">
-                <li>Бот: зазывает гостей, рассылки, меню, бронирование, промокоды</li>
-                <li>PostgreSQL → gRPC databaseManager (SQLAlchemy) → FastAPI REST + React SPA; проверка gRPC при старте</li>
-                <li>Таблицы: пагинация, поиск по полям и ID, редактирование строк</li>
-                <li>Переписка с пользователями, аналитика: агрегаты и персональная по пользователю, временные ряды, графики (Recharts)</li>
-                <li><strong>ИИ-менеджер:</strong> чат-помощник с доступом к данным — по запросу на естественном языке формирует SQL (только SELECT), выполняет к выбранной БД и возвращает результат в чат (в т.ч. таблицы). Два режима: <em>Честер Фей</em> (PostgreSQL, CRM: пользователи, сообщения, брони, коктейли, рулетка, промокоды) и <em>R-Keeper</em> (MSSQL по SSH: выручка, смены, блюда, визиты). Режим задаётся вручную или через инструмент нейросети; сессии сохраняются. Микросервис FastAPI, OpenAI API (function calling), asyncpg/pymssql, проверка read-only</li>
-                <li>Protocol Buffers, реестр таблиц и моделей, кодогенерация стабов</li>
+                <li>Лично разрабатывал backend на FastAPI и строил сервисный контур PostgreSQL → gRPC → REST → React SPA</li>
+                <li>Реализовывал модельный слой, API для таблиц и бизнес-логику поиска/пагинации/редактирования</li>
+                <li>Участвовал в архитектуре аналитики и пользовательских данных (агрегаты, персональная аналитика, временные ряды)</li>
+                <li><strong>ИИ-менеджер (мой вклад):</strong> отдельный AI-микросервис с function calling, SQL generation (только SELECT), read-only валидацией, режимами CRM/R-Keeper и сохранением сессий</li>
+                <li>Поддерживал интеграционный каркас: Protocol Buffers, реестр таблиц/моделей и кодогенерацию gRPC-стабов</li>
               </ul>
             </div>
           </article>
@@ -370,16 +367,16 @@ function CrmNbkiSlide() {
               <span className="pIcon" aria-hidden="true">{docIcon}</span>
               <div>
                 <h3 className="pCard__title">НБКИ (Credit Bot)</h3>
-                <p className="pCard__desc">Обработка кредитных отчётов БКИ из PDF: сводка в чат + JSON</p>
+                <p className="pCard__desc">Мой вклад: реализовал end-to-end pipeline обработки PDF-отчётов БКИ с валидацией, сводкой в чат и полной JSON-выгрузкой.</p>
               </div>
             </div>
             <div className="pCard__body">
               <ul className="pList">
-                <li>Telegram-бот: приём PDF отчёта, только PDF (проверка MIME)</li>
-                <li>Парсинг: скоринг, договоры, просрочки, заявки; валидация структуры</li>
-                <li>Краткая сводка в чат и полная выгрузка в JSON-файл</li>
-                <li>Async (python-telegram-bot, asyncio), блокировка по пользователю, ретраи при отправке</li>
-                <li>Парсер ~1400 строк, PyPDF2, pytest</li>
+                <li>Лично реализовал Telegram-бота и end-to-end обработку PDF-отчётов БКИ</li>
+                <li>Написал большой парсер (~1400 строк) с валидацией структуры и извлечением ключевых разделов отчёта</li>
+                <li>Сделал выдачу результата в двух форматах: краткая сводка в чат и полная JSON-выгрузка</li>
+                <li>Реализовал асинхронную архитектуру (python-telegram-bot + asyncio), блокировку 1 запрос/пользователь и retry logic</li>
+                <li>Покрыл критичные части тестами (pytest)</li>
               </ul>
             </div>
           </article>
@@ -389,18 +386,17 @@ function CrmNbkiSlide() {
               <span className="pIcon" aria-hidden="true">{globeIcon}</span>
               <div>
                 <h3 className="pCard__title">Сайт-резюме</h3>
-                <p className="pCard__desc">На чём построен этот сайт</p>
+                <p className="pCard__desc">Мой вклад: полностью реализовал сайт как инженерный продукт — от UX и чата до PDF-рендера, интеграций и деплоя.</p>
               </div>
             </div>
             <div className="pCard__body">
               <ul className="pList">
-                <li>Frontend: React 18, TypeScript, Vite 6, React Router, SASS</li>
-                <li>Backend: FastAPI, Uvicorn; раздача статики из сборки React</li>
-                <li>PDF-резюме: Playwright (Chromium), выбор шаблона из нескольких HTML</li>
-                <li>Чат с AI: WebSocket, стриминг ответов OpenAI; лимит сообщений (Redis)</li>
-                <li>Офферы из чата: tool calling → gRPC в Telegram-бота, уведомление мне</li>
-                <li>Сборка и деплой: Docker, Kubernetes</li>
-                <li>Адаптивная вёрстка, доступность</li>
+                <li>Лично реализовал сайт как инженерный продукт: frontend на React/TypeScript/Vite и backend на FastAPI</li>
+                <li>Собрал AI-чат по WebSocket со стримингом OpenAI и лимитами по IP через Redis</li>
+                <li>Реализовал сценарий оффера: tool calling в чате → gRPC → Telegram-бот → уведомление в личку</li>
+                <li>Сделал PDF-генерацию резюме через Playwright и шаблоны</li>
+                <li>Подготовил production-контур: Docker, Kubernetes, домен, TLS, runtime-конфигурация сервисов</li>
+                <li>Доработал адаптивность и UX-состояния так, чтобы продукт ощущался цельным</li>
               </ul>
             </div>
           </article>

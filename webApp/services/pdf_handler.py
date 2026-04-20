@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import random
 from pathlib import Path
 from uuid import uuid4
 
@@ -14,11 +13,9 @@ class PdfRenderHandler:
         self.output_dir = output_dir or (project_root / "tmp")
 
     def render_random_pdf(self) -> Path:
-        template_paths = sorted(self.templates_dir.glob("*.html"))
-        if not template_paths:
-            raise FileNotFoundError("Шаблоны не найдены")
-
-        template_path = random.choice(template_paths)
+        template_path = self.templates_dir / "template.html"
+        if not template_path.exists():
+            raise FileNotFoundError("Шаблон template.html не найден")
         html = template_path.read_text(encoding="utf-8")
 
         self.output_dir.mkdir(parents=True, exist_ok=True)

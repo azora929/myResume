@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Resume — Teal Executive</title>
+  <title>Resume — Business Profile</title>
   <style>
     @page { size: A4; margin: 14mm; }
     *{ box-sizing:border-box; }
@@ -20,9 +20,9 @@
 
       --paper:#f8f4ec;
       --panel:#ffffff;
-      --accent:#0d9488;
-      --accent2:#15678d;
-      --tagbg:#e6f2f1;
+      --accent:#1f4b7a;
+      --accent2:#2f5f93;
+      --tagbg:#eef3f8;
       --tagline:#a8c4d4;
     }
 
@@ -76,7 +76,7 @@
     }
 
     .contacts{
-      min-width:240px;
+      min-width:280px;
       border-left:3px solid var(--accent2);
       padding-left:14px;
     }
@@ -306,12 +306,20 @@
           </div>
         </div>
 
-        <div class="c-row" style="margin-bottom:0;">
+        <div class="c-row">
           <span class="ico"><svg class="i-lg"><use href="#m-tg"/></svg></span>
           <div>
             <div class="c-label">Telegram</div>
             <a href="https://t.me/azora929">t.me/azora929</a>
             <div style="color:var(--muted); font-size:11px; margin-top:2px;">@azora929</div>
+          </div>
+        </div>
+
+        <div class="c-row" style="margin-bottom:0;">
+          <span class="ico"><svg class="i-lg"><use href="#m-stack"/></svg></span>
+          <div>
+            <div class="c-label">GitHub</div>
+            <a href="https://github.com/azora929">github.com/azora929</a>
           </div>
         </div>
       </div>
@@ -324,7 +332,7 @@
           <span class="ico"><svg class="i-lg"><use href="#m-person"/></svg></span>
           <h2 class="strip-title">About Me</h2>
         </div>
-        <p class="strip-note">Backend-first fullstack, продукты с AI и монетизацией</p>
+        <p class="strip-note">Backend-first инженер: AI/LLM, realtime и production-ready сервисы</p>
       </div>
 
       <div class="row">
@@ -338,10 +346,10 @@
           </div>
           <div class="body">
             <p>
-              Я — Middle Python-разработчик (backend-first fullstack), 22 года, в разработке с 19 лет, около 3 лет коммерческого опыта. Создаю продуктовые системы с AI и монетизацией, где важны скорость ответа, стабильность и предсказуемость на проде. Работал над платформами с AI-тьютором (EvoSpeak, ИИ Препод), Telegram-ботами с платежами (Luna, НБКИ), CRM с gRPC и аналитикой, сервисами парсинга PDF и генерации отчётов, а также с big data. Обычно веду фичи от идеи до продакшена: проектирование API, обработка ошибок, валидация и продуманное поведение системы в краевых сценариях.
+              Я — Middle Python Developer (backend-first), 22 года, в разработке с 19 лет, около 3 лет коммерческого опыта. Мой фокус — не «написать пару эндпоинтов», а довести сервис до рабочего product-state: устойчивый backend, предсказуемое поведение в проде, контроль пользовательских состояний и интеграции без сбоев.
             </p>
             <p>
-              В backend работаю с FastAPI, Django, DRF и gRPC, реализую WebSocket/SSE стриминг для AI, интегрирую платежи (YooKassa, Telegram Payments), Telegram-ботов и внешние сервисы. Использую PostgreSQL и Redis для транзакций, кеширования и очередей. В AI-слое работаю с OpenAI Assistants API, streaming, tools, а также голосовыми технологиями (Whisper, TTS). На фронте использую React + TypeScript + Vite, подключая стриминг и продумывая состояния интерфейса, чтобы продукт ощущался быстрым и цельным.
+              Лично проектирую и реализую backend-сервисы с AI/LLM, realtime-логикой, платежами, Telegram и gRPC. Работаю с FastAPI, Django, DRF, PostgreSQL, Redis, WebSocket/SSE, OpenAI Assistants/Realtime API; при необходимости иду глубже ORM — оптимизация запросов, индексы, bulk-операции, транзакции и снижение latency в пользовательских сценариях.
             </p>
           </div>
         </div>
@@ -369,10 +377,10 @@
           </div>
 
           <ul class="bul">
-            <li>Платформа изучения языка с AI: чат-уроки, тест уровня, разговорные уроки и экзамен говорения (Realtime API), экзамены по этапам.</li>
-            <li>Два потока: стриминг диалога по WebSocket + фоновая генерация заданий в отдельном OpenAI thread (tools). Assistants API, lifecycle, custom tools.</li>
-            <li>3D-аватар (Three.js) с липсинком; TTS, голосовой ввод; Realtime API через прокси для разговорных сценариев.</li>
-            <li>Django 5, Channels, Redis; ЮKassa: пополнение, безлимит, доступ к уроку, покупка с баланса.</li>
+            <li>Лично реализовал ключевую backend-логику уроков, тестов и пользовательских сценариев на Django/Channels.</li>
+            <li>Почти полностью реализовал двухпоточный AI-flow: отдельный поток диалога + отдельный поток генерации JSON-задачи для UI.</li>
+            <li>Интегрировал Assistants API/Realtime API, tool calling и streaming-ответы; сократил ожидание задачи с 1–2 минут до нескольких секунд.</li>
+            <li>Участвовал в frontend-части (React/TypeScript), голосовых сценариях (TTS/транскрипция) и монетизации через YooKassa.</li>
           </ul>
 
           <div class="chips">
@@ -390,9 +398,9 @@
           </div>
 
           <ul class="bul">
-            <li>Платформа для школьников: роли (ученик, родитель, учитель, партнёр), сессии по предметам/классам, чат с GPT, стриминг (SSE), онлайн-уроки, ОГЭ, психотесты с GPT, пробные уроки по IP, ЛК родителя, награды и баллы.</li>
-            <li>Платежи: YooKassa (вебхуки, баланс). Авторизация: SMS (Exolve), Telegram-бот (привязка по коду из ЛК, уведомления, альт-вход). TTS: Tinkoff VoiceKit (gRPC), Yandex SpeechKit.</li>
-            <li>Токен-биллинг USD→RUB (курс ЦБ, tiktoken), баланс/овердрафт; пики ~1000 пользователей; ~300–400 ₽ за урок.</li>
+            <li>Лично разрабатывал backend-логику продукта: роли, сессии, AI-чат и потоковую выдачу ответов (SSE).</li>
+            <li>Участвовал в биллинге и оплатах: YooKassa/webhooks, баланс, токен-биллинг USD→RUB, ограничения и доступы.</li>
+            <li>Реализовывал интеграции с SMS, Telegram и TTS-сервисами; работал с продуктом под нагрузкой до ~1000 пользователей.</li>
           </ul>
 
           <div class="chips">
@@ -409,8 +417,10 @@
             <a class="proj-link" href="https://t.me/Luna_knowbot">t.me/Luna_knowbot</a>
           </div>
           <ul class="bul">
-            <li>Астробот «Луна» (Jyotish): бесплатный портрет по дате/времени/месту рождения; платные отчёты (синастрия, натал, прогнозы) и подписка на ежедневные расклады и вечерние вопросы по таймзоне.</li>
-            <li>Поэтапный сценарий (introduction → портрет → продажа/сопровождение); динамические tools и промпты по этапу; кэш контекста в Redis; планировщик с таймзоной; очередь покупок. Магазин в WebApp (ngrok/dev, свой домен/prod). Голос: Whisper, TTS. PDF: Jinja2, Playwright, натальные/ведические карты.</li>
+            <li>Полностью самостоятельно спроектировал и реализовал backend и продуктовую архитектуру проекта с нуля.</li>
+            <li>Сделал stage-based user flow, динамические tools/prompt, миграцию истории диалога, кэш контекста в Redis.</li>
+            <li>Реализовал подписки, очередь покупок, атомарное сохранение отчётов, timezone-aware планировщик.</li>
+            <li>Подключил Telegram Payments и YooKassa, голосовые сценарии (Whisper/TTS), WebApp-магазин и PDF-рендер.</li>
           </ul>
         </article>
 
@@ -423,9 +433,10 @@
             <a class="proj-link" href="https://t.me/iiChesterField">t.me/iiChesterField</a>
           </div>
           <ul class="bul">
-            <li>CRM: инфраструктура для бота ресторана (зазывает гостей, рассылки, меню, брони, промокоды). PostgreSQL → gRPC databaseManager → FastAPI + React; таблицы, переписка, аналитика (агрегаты и по пользователю, временные ряды, Recharts); Proto, реестр таблиц; проверка gRPC при старте.</li>
-            <li>ИИ-менеджер: чат-бот с доступом к данным — по запросу на естественном языке строит SQL (SELECT), выполняет к CRM (PostgreSQL) или к базе R-Keeper (MSSQL по SSH) и выводит результат в чат; режимы переключаются пользователем или через инструмент нейросети. Микросервис FastAPI, OpenAI API (function calling), asyncpg/pymssql, проверка read-only.</li>
-            <li>НБКИ (Credit Bot): Telegram-бот для парсинга кредитных отчётов БКИ из PDF — сводка в чат и полный JSON; async, блокировки по пользователю, ретраи; парсер ~1400 строк, PyPDF2, pytest.</li>
+            <li>Лично разрабатывал backend на FastAPI и строил связку PostgreSQL → gRPC → FastAPI REST → React SPA.</li>
+            <li>Реализовал CRM-механику таблиц/поиска/пагинации и аналитики; участвовал в сервисной архитектуре и model-layer.</li>
+            <li>Сделал отдельный AI-микросервис: OpenAI function calling, генерация SQL (только SELECT), read-only валидация, asyncpg/pymssql, режимы CRM/R-Keeper, сохранение сессий.</li>
+            <li>Для НБКИ-бота реализовал parser pipeline PDF→summary+JSON, блокировки по пользователю, retry logic и тесты (pytest).</li>
           </ul>
         </article>
 
@@ -437,8 +448,9 @@
             </div>
           </div>
           <ul class="bul">
-            <li>Frontend: React 18, TypeScript, Vite 6, React Router, SASS. Backend: FastAPI, раздача статики из сборки React.</li>
-            <li>PDF-резюме: Playwright (Chromium), выбор шаблона из нескольких HTML. Чат с AI: WebSocket, стриминг OpenAI; лимит по IP (Redis). Офферы из чата → gRPC в Telegram-бота. Деплой: Docker, Kubernetes. Адаптивная вёрстка.</li>
+            <li>Лично реализовал frontend (React/TypeScript/Vite) и backend (FastAPI) как единый продуктовый сценарий.</li>
+            <li>Сделал AI-чат по WebSocket со стримингом OpenAI, лимитами по IP (Redis) и отправкой оффера через gRPC в Telegram.</li>
+            <li>Реализовал PDF-генерацию резюме через Playwright и шаблоны; настроил production-деплой (Docker/Kubernetes, домен и TLS).</li>
           </ul>
         </article>
       </div>
