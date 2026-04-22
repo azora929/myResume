@@ -200,7 +200,7 @@ export function MainPage() {
               </p>
               <h2 className="content-section__title skillsPro__title">Skills & Strengths</h2>
               <p className="skillsPro__subtitle">
-                Python backend (Django, FastAPI), AI/LLM (OpenAI Assistants, Realtime API), стриминг (WebSocket/SSE), платежи, Telegram-боты, gRPC, React — из реальных продуктов.
+                Python backend (Django, FastAPI, Celery), AI/LLM (OpenAI Assistants, Realtime API, LangGraph), стриминг (WebSocket/SSE), платежи, Telegram-боты, gRPC, React — из реальных продуктов.
               </p>
             </header>
 
@@ -244,14 +244,20 @@ export function MainPage() {
                   <li className="chip">Python</li>
                   <li className="chip">FastAPI</li>
                   <li className="chip">Django / DRF</li>
+                  <li className="chip">Celery</li>
                   <li className="chip">REST API</li>
                   <li className="chip">WebSocket streaming</li>
                   <li className="chip">asyncio</li>
                   <li className="chip">gRPC</li>
+                  <li className="chip">Apache Kafka</li>
                   <li className="chip">Microservices</li>
+                  <li className="chip">SQL</li>
                   <li className="chip">PostgreSQL</li>
                   <li className="chip">Redis</li>
+                  <li className="chip">NoSQL</li>
+                  <li className="chip">MongoDB</li>
                   <li className="chip">SQLAlchemy</li>
+                  <li className="chip">CI/CD</li>
                   <li className="chip">aiohttp</li>
                 </ul>
 
@@ -260,6 +266,8 @@ export function MainPage() {
                 <ul className="sList">
                   <li>REST API: контракты, валидация (Pydantic), интеграции</li>
                   <li>gRPC: proto, кодогенерация, обмен между сервисами</li>
+                  <li>Apache Kafka: использовал как очередь сообщений и транспорт для event-driven взаимодействия сервисов</li>
+                  <li>Celery: использовал для реализации фоновых воркеров и асинхронных задач</li>
                   <li>Платежи: YooKassa, Telegram Payments, webhooks, баланс, подписки</li>
                   <li>БД: миграции, транзакции, индексы; Redis — кэш, rate limiting, TTL</li>
                   <li>Надёжность: ретраи, обработка ошибок, логирование</li>
@@ -349,6 +357,7 @@ export function MainPage() {
 
                 <ul className="chips">
                   <li className="chip">LLM API</li>
+                  <li className="chip">LangGraph</li>
                   <li className="chip">AI agent tools</li>
                   <li className="chip">Prompt engineering</li>
                   <li className="chip">Streaming LLM</li>
@@ -362,6 +371,7 @@ export function MainPage() {
 
                 <ul className="sList">
                   <li>OpenAI Assistants: threads, runs, стриминг; кастомные tools (в т.ч. gRPC → Telegram)</li>
+                  <li>Оркестрация AI-пайплайнов и сценариев с LangGraph для управляемого agent-flow</li>
                   <li>Динамические промпты и набор tools по этапу пользователя; conversational AI</li>
                   <li>Realtime API, Whisper, TTS (VoiceKit, SpeechKit); учёт токенов, кэш контекста в Redis</li>
                 </ul>

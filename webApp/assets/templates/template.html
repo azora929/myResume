@@ -349,7 +349,7 @@
               Я — Middle Python Developer (backend-first), 22 года, в разработке с 19 лет, около 3 лет коммерческого опыта. Мой фокус — не «написать пару эндпоинтов», а довести сервис до рабочего product-state: устойчивый backend, предсказуемое поведение в проде, контроль пользовательских состояний и интеграции без сбоев.
             </p>
             <p>
-              Лично проектирую и реализую backend-сервисы с AI/LLM, realtime-логикой, платежами, Telegram и gRPC. Работаю с FastAPI, Django, DRF, PostgreSQL, Redis, WebSocket/SSE, OpenAI Assistants/Realtime API; при необходимости иду глубже ORM — оптимизация запросов, индексы, bulk-операции, транзакции и снижение latency в пользовательских сценариях.
+              Лично проектирую и реализую backend-сервисы с AI/LLM, realtime-логикой, платежами, Telegram и gRPC. Работаю с FastAPI, Django, DRF, Celery, PostgreSQL, Redis, WebSocket/SSE, OpenAI Assistants/Realtime API и LangGraph; при необходимости иду глубже ORM — оптимизация запросов, индексы, bulk-операции, транзакции и снижение latency в пользовательских сценариях.
             </p>
           </div>
         </div>
@@ -379,6 +379,8 @@
           <li>Лично реализую backend на FastAPI и Django, REST API, gRPC-сервисы и интеграции с внешними системами.</li>
           <li>Работаю с PostgreSQL/Redis/SQLAlchemy/asyncpg, оптимизирую БД-слой (индексы, bulk-операции, сырые SQL, транзакции, устранение N+1).</li>
           <li>Реализую retry/timeout/rate-limit/state management, realtime-сценарии и AI/LLM-flow (OpenAI API, Assistants API, Realtime API).</li>
+          <li>Использую Apache Kafka как очередь сообщений для event-driven взаимодействия между сервисами.</li>
+          <li>Использую Celery для реализации фоновых воркеров и выполнения асинхронных задач.</li>
           <li>Интегрирую OpenAI API, Telegram Bot API, YooKassa и внешние сервисы в единые пользовательские сценарии.</li>
           <li>Поддерживаю production-контур: Docker, Kubernetes, Nginx, Linux, SSL/TLS; пишу тесты на pytest, делаю рефакторинг и поддержку прода.</li>
           <li><b>Результат:</b> реализовал production-ready backend для AI/web-продуктов, снизил задержки и улучшил производительность backend-сервисов и БД.</li>
@@ -387,12 +389,19 @@
         <div class="chips">
           <span class="chip">FastAPI</span>
           <span class="chip">Django</span>
+          <span class="chip">Celery</span>
           <span class="chip">PostgreSQL</span>
           <span class="chip">Redis</span>
+          <span class="chip">NoSQL</span>
+          <span class="chip">MongoDB</span>
+          <span class="chip">SQL</span>
           <span class="chip">gRPC</span>
+          <span class="chip">Apache Kafka</span>
           <span class="chip">WebSocket</span>
           <span class="chip">OpenAI API</span>
+          <span class="chip">LangGraph</span>
           <span class="chip">YooKassa</span>
+          <span class="chip">CI/CD</span>
           <span class="chip">Docker/K8s</span>
         </div>
       </article>
@@ -409,6 +418,27 @@
       </div>
 
       <div class="projects">
+        <article class="proj">
+          <div class="proj-top">
+            <div>
+              <p class="proj-name">DJSet Analytic — автоматический разбор длинных DJ-сетов</p>
+              <p class="meta"><b>Роль:</b> Solo Fullstack (с нуля, самостоятельно) · <b>Стек:</b> FastAPI, Uvicorn, Celery, Redis, MongoDB, ffmpeg/ffprobe, OpenAI Responses API, LangGraph, React 18, TypeScript, WebSocket, python-docx</p>
+            </div>
+          </div>
+
+          <ul class="bul">
+            <li>Полностью с нуля и самостоятельно спроектировал и реализовал fullstack-сервис: API + фоновые воркеры + UI для конвейерной обработки длинных аудиофайлов.</li>
+            <li>Построил асинхронный pipeline: сегментация аудио, распознавание через AudioTag API, AI-постобработка и сборка финального треклиста с таймингами.</li>
+            <li>Реализовал AI-этап очистки и нормализации (OpenAI Responses API + LangGraph): удаление дублей/шума, восстановление структуры, проставление годов и сводной аналитики.</li>
+            <li>Сделал WebSocket live-статусы этапов и личный кабинет с историей задач, повторными запусками и скачиванием результата в DOCX.</li>
+            <li>Обеспечил инженерную устойчивость: идемпотентность, контроль конкурентной нагрузки, обработку внешних ошибок без падения приложения.</li>
+          </ul>
+
+          <div class="chips">
+            <span class="chip">FastAPI</span><span class="chip">Celery</span><span class="chip">Redis</span><span class="chip">MongoDB</span><span class="chip">LangGraph</span><span class="chip">WebSocket</span><span class="chip">DOCX export</span>
+          </div>
+        </article>
+
         <article class="proj">
           <div class="proj-top">
             <div>
