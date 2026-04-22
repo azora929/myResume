@@ -33,6 +33,7 @@ export function ProjectsSection() {
 
         <div className="projectsPro__stage" id="projectsStage" ref={stageRef}>
           <div className="projectsPro__track" id="projectsTrack" ref={trackRef}>
+            <DjsetAnalyticSlide />
             <YespeakSlide />
             <IiprepodSlide />
             <LunaSlide />
@@ -47,6 +48,92 @@ export function ProjectsSection() {
         </div>
       </div>
     </Section>
+  );
+}
+
+function DjsetAnalyticSlide() {
+  const monitorIcon = usePIcon("monitor");
+  const codeIcon = usePIcon("code");
+  const boltIcon = usePIcon("bolt");
+
+  return (
+    <article className="pSlide" data-accent="mint">
+      <div className="pSlide__inner">
+        <header className="pSlide__top">
+          <div className="pSlide__brand">
+            <div className="pSlide__logo pSlide__logo--ghost" aria-hidden>
+              <PIcon name="monitor" />
+            </div>
+            <div>
+              <p className="pSlide__kicker">DJSet Analytic</p>
+              <span className="pSlide__link">Self-initiated fullstack project</span>
+            </div>
+          </div>
+
+          <div className="pSlide__tags">
+            <span className="tag">FastAPI</span>
+            <span className="tag">Celery</span>
+            <span className="tag">Redis</span>
+            <span className="tag">MongoDB</span>
+            <span className="tag">LangGraph</span>
+            <span className="tag">WebSocket</span>
+          </div>
+        </header>
+
+        <div className="pSlide__grid">
+          <article className="pCard pCard--media">
+            <div className="pCard__head">
+              <span className="pIcon" aria-hidden="true">{monitorIcon}</span>
+              <div>
+                <h3 className="pCard__title">Продукт</h3>
+                <p className="pCard__desc">Мой вклад: полностью с нуля и самостоятельно реализовал fullstack-сервис для автоматического анализа длинных DJ-сетов.</p>
+              </div>
+            </div>
+            <div className="pMedia">
+              <img className="pMedia__img" src="/assets/photos/dj_analytic.png" alt="DJSet Analytic — интерфейс анализа аудиосетов" />
+            </div>
+          </article>
+
+          <article className="pCard">
+            <div className="pCard__head">
+              <span className="pIcon" aria-hidden="true">{codeIcon}</span>
+              <div>
+                <h3 className="pCard__title">Архитектура и стек</h3>
+                <p className="pCard__desc">Самостоятельная реализация end-to-end pipeline</p>
+              </div>
+            </div>
+            <div className="pCard__body">
+              <ul className="pList">
+                <li>С нуля спроектировал и реализовал API + worker + UI для конвейерной обработки длинных аудиофайлов</li>
+                <li>FastAPI + Uvicorn для API и WebSocket-статусов; Celery + Redis для фоновых задач и очередей</li>
+                <li>MongoDB для хранения истории задач и результатов; ffmpeg/ffprobe для сегментации и анализа аудио</li>
+                <li>Собрал AI-постобработку на OpenAI Responses API + LangGraph: очистка дублей, нормализация и финальный треклист</li>
+                <li>Реализовал экспорт результата в DOCX (python-docx) и личный кабинет с историей запусков</li>
+              </ul>
+            </div>
+          </article>
+
+          <article className="pCard pCard--wide">
+            <div className="pCard__head">
+              <span className="pIcon" aria-hidden="true">{boltIcon}</span>
+              <div>
+                <h3 className="pCard__title">Что сделал и эффект</h3>
+                <p className="pCard__desc">Личный вклад в надёжность и реальный продуктовый результат</p>
+              </div>
+            </div>
+            <div className="pCard__body">
+              <ul className="pList pList--cols">
+                <li>Реализовал идемпотентный запуск задач, защиту от дублей и контроль конкурентной нагрузки</li>
+                <li>Сделал live-статусы этапов: очередь, сканирование, AI-обработка, завершение/ошибка</li>
+                <li>Собрал устойчивую обработку внешних ошибок интеграций без падения всего приложения</li>
+                <li>Преобразовал «сырые» распознавания в чистый структурированный треклист с таймингами и годами релизов</li>
+                <li>Сократил ручной разбор многочасовых сетов до автоматического прогона с готовым документом</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </article>
   );
 }
 
