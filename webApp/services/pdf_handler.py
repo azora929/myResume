@@ -39,7 +39,7 @@ class PdfRenderHandler:
         return pdf_path
 
     def _build_resume_photo_data_uri(self) -> str:
-        photo_path = self.project_root / "reactFrontEnd" / "public" / "assets" / "photos" / "resume.png"
+        photo_path = self.project_root / "assets" / "photos" / "resume.png"
         if not photo_path.exists():
             return ""
 
