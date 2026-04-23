@@ -217,7 +217,7 @@ export function FooterPro() {
                 <PIcon name="person" />
               </div>
               <div className="footerPro__brandText">
-                <p className="footerPro__name">Дремин Александр</p>
+                <p className="footerPro__name">Дремин Александр Сергеевич</p>
                 <p className="footerPro__tagline">Middle Python Developer</p>
               </div>
             </div>
@@ -334,7 +334,7 @@ export function FooterPro() {
             </div>
 
             <div className="footerPro__bottom">
-              <p className="footerPro__copy">© {new Date().getFullYear()} Дремин Александр</p>
+              <p className="footerPro__copy">© {new Date().getFullYear()} Дремин Александр Сергеевич</p>
               <p className="footerPro__made">Сделано с вниманием к деталям ✦</p>
             </div>
           </article>
