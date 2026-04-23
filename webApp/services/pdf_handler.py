@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import base64
 from pathlib import Path
 from uuid import uuid4
 
@@ -38,5 +37,4 @@ class PdfRenderHandler:
         if not photo_path.exists():
             return ""
 
-        encoded = base64.b64encode(photo_path.read_bytes()).decode("ascii")
-        return f"data:image/png;base64,{encoded}"
+        return photo_path.resolve().as_uri()
