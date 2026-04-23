@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
@@ -33,6 +34,18 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="myResume API", lifespan=lifespan)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://myresume-azora.ru",
+        "https://www.myresume-azora.ru",
+    ],
+    allow_credentials=True,
+    allow_methods=["GET", "POST"],
+    allow_headers=["Authorization", "Content-Type", "Accept", "Origin"],
+)
+
 app.include_router(ApiRouter().router)
 
 # Корень проекта и папка со сборкой фронта
