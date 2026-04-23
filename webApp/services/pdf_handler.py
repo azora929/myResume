@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import base64
 from pathlib import Path
 from uuid import uuid4
 
+from jinja2 import Environment, FileSystemLoader, select_autoescape
 from playwright.sync_api import sync_playwright
 
 
@@ -17,8 +19,12 @@ class PdfRenderHandler:
         template_path = self.templates_dir / "template.html"
         if not template_path.exists():
             raise FileNotFoundError("Шаблон template.html не найден")
-        html = template_path.read_text(encoding="utf-8")
-        html = html.replace("__RESUME_PHOTO_DATA_URI__", self._build_resume_photo_data_uri())
+        env = Environment(
+            loader=FileSystemLoader(str(self.templates_dir)),
+            autoescape=select_autoescape(("html", "xml")),
+        )
+        template = env.get_template(template_path.name)
+        html = template.render(resume_photo_uri=self._build_resume_photo_data_uri())
 
         self.output_dir.mkdir(parents=True, exist_ok=True)
         pdf_path = self.output_dir / f"resume_{uuid4().hex}.pdf"
@@ -37,4 +43,5 @@ class PdfRenderHandler:
         if not photo_path.exists():
             return ""
 
-        return photo_path.resolve().as_uri()
+        encoded = base64.b64encode(photo_path.read_bytes()).decode("ascii")
+        return f"data:image/png;base64,{encoded}"

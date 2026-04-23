@@ -312,7 +312,9 @@
     <section class="top">
       <div class="top-main">
         <div class="top-photo">
-          <img src="__RESUME_PHOTO_DATA_URI__" alt="Фото Дремина Александра" />
+          {% if resume_photo_uri %}
+          <img src="{{ resume_photo_uri }}" alt="Фото Дремина Александра" />
+          {% endif %}
         </div>
         <div class="top-bio">
           <h1 class="name">Дремин Александр</h1>

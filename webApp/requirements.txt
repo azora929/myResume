@@ -14,6 +14,7 @@ httpcore==1.0.9
 httptools==0.7.1
 httpx==0.28.1
 idna==3.11
+jinja2
 jiter==0.13.0
 openai==2.24.0
 playwright==1.58.0
