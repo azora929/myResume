@@ -23,7 +23,14 @@ export interface SectionProps {
 }
 
 export function Section({ id, variant, children, className = "" }: SectionProps) {
-  const { ref, isInView } = useInView();
+  const inViewOptions =
+    variant === "skills"
+      ? {
+          rootMargin: "0px 0px 0px 0px",
+          threshold: 0.01,
+        }
+      : undefined;
+  const { ref, isInView } = useInView(inViewOptions);
 
   return (
     <section

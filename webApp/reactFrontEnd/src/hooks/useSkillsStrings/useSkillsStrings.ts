@@ -376,7 +376,7 @@ export function useSkillsStrings({ rootRef, svgRef }: UseSkillsStringsArgs) {
           rafId = requestAnimationFrame(tick);
         }
       },
-      { threshold: 0.1 }
+      { rootMargin: "10% 0px 0px 0px", threshold: 0.01 }
     );
     observer.observe(root);
 
