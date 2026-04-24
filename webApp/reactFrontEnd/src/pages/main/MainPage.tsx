@@ -9,7 +9,7 @@ import { useSkillsStrings } from "@/hooks/useSkillsStrings/useSkillsStrings";
 import { useSkillsCardsScrollAnimation } from "@/hooks/useSkillsCardsScrollAnimation/useSkillsCardsScrollAnimation";
 import "@/styles/main/main.scss";
 
-const HERO_TITLE_MAIN = "Middle Python Fullstack Developer";
+const HERO_TITLE_MAIN = "Python Backend / Fullstack Developer (Middle)";
 const HERO_TITLE_ACCENT = " — AI/LLM Integrations";
 const HERO_HINT_TEXT = "Пообщайтесь с нейросетью по резюме или отправьте оффер — откройте чат и напишите.";
 const SCRAMBLE_CHARS = "漢字カナひらがなアイウエオ甲乙丙丁ΨΣЖЯ01#@&%$";
@@ -212,17 +212,88 @@ export function MainPage() {
                   </span>
                   <div>
                     <h3 className="sCard__title">Approach & Experience</h3>
-                    <p className="sCard__desc">Backend-first fullstack, продукты с AI и монетизацией</p>
+                    <p className="sCard__desc">Middle Python Backend Developer · AI/LLM · production systems</p>
                   </div>
                 </div>
 
                 <div className="sCard__body prose">
                   <p>
-                    Я — Middle Python-разработчик (backend-first fullstack), 22 года, в разработке с 19 лет, около 3 лет коммерческого опыта. Мой фокус — не просто «написать пару эндпоинтов», а довести backend-систему до рабочего product-state: AI/LLM-интеграции, realtime, платежи, интеграции и устойчивое поведение под живой нагрузкой. Работал над платформами с AI-тьютором (EvoSpeak, ИИ Препод), Telegram-ботами с платежами (Luna, НБКИ), CRM с gRPC и аналитикой, а также сервисами парсинга PDF и генерации отчётов. Обычно веду фичи от идеи до продакшена: проектирование API, обработка ошибок, валидация и продуманное поведение системы в краевых сценариях.
+                    Я — Middle Python Backend Developer, 22 года, в разработке с 19 лет, коммерческий опыт около 3 лет. Специализируюсь на backend-разработке, AI/LLM-интеграциях и сложной продуктовой бизнес-логике: API, realtime-сценарии, фоновые пайплайны, платежные механики и production-инфраструктура. Работаю со стеком Python, FastAPI, Django/DRF, PostgreSQL, MongoDB, Redis, SQLAlchemy, asyncpg, asyncio, aiohttp, gRPC, WebSocket, Celery, Docker, Kubernetes, Nginx и Linux; интегрировал OpenAI API, LangGraph, Telegram Bot API, YooKassa и внешние сервисы. Есть опыт fullstack-разработки, но основной фокус — backend, надежность сервисов, производительность и сложные пользовательские сценарии.
                   </p>
+                </div>
+              </article>
+            </div>
+
+            <div className="sCard-slot">
+              <article className="sCard sCard--wide sCard--experience" data-accent="neutral">
+                <div className="sCard__head">
+                  <span className="sIcon" aria-hidden="true">
+                    <PIcon name="code" />
+                  </span>
+                  <div>
+                    <h3 className="sCard__title">Work Experience</h3>
+                    <p className="sCard__desc">StrokovAI (стартап) · Middle Python Backend / Fullstack · апрель 2023 — сейчас</p>
+                  </div>
+                </div>
+
+                <div className="sCard__body prose">
                   <p>
-                    В backend работаю с FastAPI, Django, DRF и gRPC, реализую WebSocket/SSE стриминг для AI, интегрирую платежи (YooKassa, Telegram Payments), Telegram-ботов и внешние сервисы. Использую PostgreSQL и Redis для транзакций, кеширования и очередей; при необходимости иду глубже ORM: индексы, bulk-операции, оптимизация запросов и задержек. В AI-слое работаю с OpenAI Assistants API, streaming, tools, а также голосовыми технологиями (Whisper, TTS). На фронте использую React + TypeScript + Vite, подключая стриминг и продумывая состояния интерфейса, чтобы продукт ощущался быстрым и цельным.
+                    Разрабатываю backend-сервисы, AI-функциональность и продуктовую бизнес-логику для веб-приложений,
+                    Telegram-сервисов и AI-продуктов в команде из 3 человек. Участвую в обсуждении архитектуры и задач,
+                    собираю и анализирую требования от заказчика, декомпозирую работу и делегирую задачи внутри команды.
                   </p>
+                </div>
+
+                <ul className="chips">
+                  <li className="chip">Python</li>
+                  <li className="chip">FastAPI</li>
+                  <li className="chip">Django / DRF</li>
+                  <li className="chip">PostgreSQL</li>
+                  <li className="chip">MongoDB</li>
+                  <li className="chip">Redis</li>
+                  <li className="chip">gRPC</li>
+                  <li className="chip">WebSocket</li>
+                  <li className="chip">WebRTC</li>
+                  <li className="chip">Celery</li>
+                  <li className="chip">OpenAI API</li>
+                  <li className="chip">LangGraph</li>
+                  <li className="chip">Docker / Kubernetes</li>
+                  <li className="chip">Nginx</li>
+                </ul>
+
+                <div className="sDivider"></div>
+
+                <div className="sExperience__grid">
+                  <div>
+                    <h4 className="sExperience__title">Задачи и зона ответственности</h4>
+                    <ul className="sList">
+                      <li>Разрабатывал production-ready backend на FastAPI и Django, реализовывал REST API, gRPC-сервисы и интеграции</li>
+                      <li>Участвовал в проектировании сервисов, обсуждении архитектуры и выборе технических решений с командой</li>
+                      <li>Собирал и анализировал требования от заказчика, уточнял бизнес-логику и переводил задачи в техническую реализацию</li>
+                      <li>Декомпозировал задачи, распределял и делегировал часть работы внутри команды</li>
+                      <li>Оптимизировал БД и backend: индексы, bulk-операции, сырые SQL, устранение N+1, транзакции, pooling</li>
+                      <li>Реализовывал retry/timeout/rate-limit/state management, realtime-сценарии и worker-based pipeline на Celery</li>
+                      <li>Интегрировал OpenAI API/Assistants/Realtime/Responses, LangGraph, Telegram Bot API, YooKassa</li>
+                      <li>Настраивал инфраструктуру: Docker, Kubernetes, Nginx, Linux, SSL/TLS; тесты на pytest и поддержка production</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="sExperience__title">Результат</h4>
+                    <ul className="sList">
+                      <li>Реализовал production-ready backend для AI- и веб-продуктов</li>
+                      <li>Снизил задержки и улучшил производительность backend-сервисов и БД</li>
+                      <li>Участвовал в проработке требований, архитектуры и распределении задач внутри команды</li>
+                      <li>Развивал сложные пользовательские сценарии с AI, платежами, состояниями и интеграциями</li>
+                      <li>Поддерживал и масштабировал production-сервисы с упором на надежность, производительность и UX</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="sExperience__actions">
+                  <a href="#projects" className="sExperience__cta">
+                    Смотреть проекты
+                  </a>
                 </div>
               </article>
             </div>
@@ -432,20 +503,18 @@ export function MainPage() {
               <article className="sCard" data-accent="neutral">
                 <div className="sCard__head">
                   <span className="sIcon" aria-hidden="true">
-                    <PIcon name="code" />
+                    <PIcon name="rocket" />
                   </span>
                   <div>
-                    <h3 className="sCard__title">Work Experience</h3>
-                    <p className="sCard__desc">StrokovAI · Middle Python Backend / Fullstack · апрель 2023 — сейчас</p>
+                    <h3 className="sCard__title">Key Projects</h3>
+                    <p className="sCard__desc">Коммерческие и pet-проекты с измеримым результатом</p>
                   </div>
                 </div>
                 <ul className="sList">
-                  <li>Разрабатываю backend-сервисы и AI-функциональность для web-приложений и Telegram-сервисов в команде из 3 человек</li>
-                  <li>Реализую FastAPI/Django backend, REST/gRPC интеграции, realtime и stateful user flow</li>
-                  <li>Оптимизирую PostgreSQL/Redis слой: индексы, bulk-операции, сырые SQL, устранение N+1, транзакции и latency</li>
-                  <li>Интегрирую OpenAI API/Assistants/Realtime, Telegram Bot API и YooKassa в продуктовые сценарии</li>
-                  <li>Поддерживаю production-контур: Docker, Kubernetes, Nginx, SSL/TLS, тесты на pytest и стабильность под нагрузкой</li>
-                  <li>Результат: production-ready backend для AI/web-продуктов и заметное снижение задержек в критичных пользовательских flow</li>
+                  <li><strong>EvoSpeak / Yespeak:</strong> двухпоточный AI-flow, ускорение генерации задач с минут до секунд</li>
+                  <li><strong>Luna:</strong> Telegram AI-сервис с подпиской, платежами, voice-flow и production-ready backend</li>
+                  <li><strong>DJSet Analytic:</strong> worker-пайплайн (Celery/Redis/MongoDB), AI-постобработка и DOCX-экспорт</li>
+                  <li><strong>ИИ Препод:</strong> backend EdTech-платформы с AI-тьютором и нагрузкой до ~1000 пользователей</li>
                 </ul>
               </article>
               </div>
