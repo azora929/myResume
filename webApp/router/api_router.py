@@ -35,7 +35,7 @@ class ApiRouter:
         return FileResponse(
             path=pdf_path,
             media_type="application/pdf",
-            filename="resume.pdf",
+            filename="Дремин_Александр_Сергеевич.pdf",
             background=background_tasks,
         )
 
