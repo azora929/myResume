@@ -5,449 +5,198 @@
   <title>Resume — Business Profile</title>
   <style>
     @page { size: A4; margin: 14mm; }
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font:12px/1.52 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-      color:#0b1220;
-      background:#ffffff;
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font: 12px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: #1f1f1f;
+      background: #fff;
     }
-
-    :root{
-      --ink:#0f2847;
-      --muted:#4a657a;
-      --line:#c5d4e0;
-
-      --paper:#f8f4ec;
-      --panel:#ffffff;
-      --accent:#1f4b7a;
-      --accent2:#2f5f93;
-      --tagbg:#eef3f8;
-      --tagline:#a8c4d4;
+    .page {
+      width: 100%;
+      padding: 0;
     }
-
-    /* icons */
-    .i{ width:14px; height:14px; vertical-align:-2px; }
-    .i-lg{ width:16px; height:16px; vertical-align:-3px; }
-    .ico{
-      width:30px;height:30px;border:1px solid var(--line);
-      border-radius:12px;background:var(--paper);
-      display:grid;place-items:center;color:var(--accent);
-      flex:0 0 auto;
+    .top {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 12px;
+      align-items: start;
+      margin-bottom: 14px;
     }
-
-    .page{
-      border:2px solid var(--line);
-      background:var(--paper);
-      padding:14px;
+    .top-photo {
+      width: 100%;
+      height: 120px;
+      overflow: hidden;
+      border: 1px solid #d8d8d8;
     }
-
-    .top{
-      display:flex;
-      justify-content:space-between;
-      gap:14px;
-      padding:12px 14px 12px 10px;
-      border:1px solid var(--line);
-      background:var(--panel);
+    .top-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
-    .top-main{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      flex:1 1 auto;
-      min-width:0;
+    .name {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.08;
+      font-weight: 800;
+      color: #111;
+      letter-spacing: -0.01em;
     }
-    .top-identity{
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
+    .top-meta {
+      margin: 4px 0 10px;
+      color: #555;
+      font-size: 12px;
     }
-    .top-photo{
-      width:128px;
-      height:164px;
-      border-radius:10px;
-      overflow:hidden;
-      border:1px solid var(--line);
-      background:#fff;
-      flex:0 0 auto;
+    .contacts {
+      margin: 0;
+      color: #1f1f1f;
+      font-size: 11.5px;
     }
-    .top-photo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
+    .contacts a {
+      color: #1f1f1f;
+      text-decoration: none;
     }
-    .top-bio{
-      min-width:0;
-      flex:1 1 auto;
+    .hline {
+      margin: 14px 0 8px;
+      border: 0;
+      border-top: 1px solid #d8d8d8;
     }
-    .name{ margin:0; font-size:22px; font-weight:900; letter-spacing:-0.02em; color:var(--ink); }
-    .title{
-      margin:4px 0 0;
-      color:var(--muted);
-      font-size:12px;
-      font-weight:650;
+    .section-title {
+      margin: 0 0 6px;
+      font-size: 18px;
+      font-weight: 550;
+      color: #7f7f7f;
+      letter-spacing: 0.01em;
     }
-    .kicker{
-      margin:0;
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
+    .role-line {
+      margin: 0 0 10px;
+      font-size: 16px;
+      font-weight: 750;
+      color: #111;
     }
-    .top-stack{
-      border-top:1px solid var(--line);
-      padding-top:8px;
+    .subhead {
+      margin: 0 0 6px;
+      font-size: 12px;
+      color: #6f6f6f;
+      font-weight: 500;
     }
-    .top-stack-label{
-      margin:0 0 6px;
-      font-size:10px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:var(--muted);
-      font-weight:700;
+    .plain-p {
+      margin: 0 0 10px;
+      font-size: 12px;
+      color: #1f1f1f;
     }
-    .tag{
-      font-size:11px;
-      padding:5px 12px;
-      border:1px solid var(--accent);
-      border-radius:4px;
-      background:var(--tagbg);
-      color:var(--ink);
-      white-space:nowrap;
-      letter-spacing:0.02em;
+    .bul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 4px;
     }
-
-    .contacts{
-      min-width:280px;
-      border-left:0;
-      padding-left:14px;
+    .bul li {
+      position: relative;
+      padding-left: 12px;
     }
-    .c-row{
-      display:flex; gap:8px; align-items:flex-start;
-      margin-bottom:8px;
-      color:var(--ink);
-      font-size:11.5px;
+    .bul li::before {
+      content: "-";
+      position: absolute;
+      left: 0;
+      color: #1f1f1f;
     }
-    .c-row a{ color:inherit; text-decoration:none; border-bottom:1px solid var(--tagline); }
-    .c-label{
-      font-size:10px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:var(--muted);
-      margin:0 0 2px;
+    .exp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 8px;
     }
-
-    /* section strips — left accent stripe */
-    .strip{
-      margin-top:12px;
-      border:1px solid var(--line);
-      background:var(--panel);
-      padding:12px 12px 12px 10px;
+    .exp-col {
+      border: 1px solid #e0e0e0;
+      padding: 8px;
+      background: #fff;
     }
-    .strip-h{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding-bottom:10px;
-      border-bottom:2px solid var(--line);
-      margin-bottom:10px;
+    .exp-col h4 {
+      margin: 0 0 6px;
+      font-size: 11px;
+      color: #787878;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
-    .strip-h .left{
-      display:flex; gap:10px; align-items:center;
+    .projects { display: grid; gap: 11px; }
+    .proj { border-top: 1px solid #e2e2e2; padding-top: 9px; }
+    .proj:first-child { border-top: 0; padding-top: 0; }
+    .proj-name { margin: 0; font-size: 15px; font-weight: 700; color: #111; }
+    .meta { margin: 4px 0 8px; color: #595959; font-size: 11px; }
+    .proj-link { font-size: 11px; color: #1f1f1f; text-decoration: none; }
+    .chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+    .chip {
+      border: 1px solid #d2d2d2;
+      background: #f3f3f3;
+      color: #1f1f1f;
+      font-size: 10px;
+      padding: 3px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.01em;
     }
-    .strip-title{
-      margin:0;
-      font-size:12px;
-      letter-spacing:.2em;
-      text-transform:uppercase;
-      font-weight:900;
-      color:var(--ink);
+    .footer {
+      margin-top: 14px;
+      padding-top: 8px;
+      border-top: 1px solid #e1e1e1;
+      color: #8d8d8d;
+      font-size: 10px;
     }
-    .strip-note{
-      margin:0;
-      color:var(--muted);
-      font-size:11px;
-    }
-
-    /* horizontal cards row — card with left accent */
-    .row{
-      display:flex;
-      gap:12px;
-      align-items:stretch;
-      flex-wrap:wrap;
-    }
-    .card{
-      border:1px solid var(--line);
-      background:var(--panel);
-      padding:12px;
-      min-width: 0;
-      flex: 1 1 220px;
-    }
-    .card-h{
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
-      margin-bottom:8px;
-    }
-    .card h3{
-      margin:0;
-      font-size:13px;
-      font-weight:900;
-      letter-spacing:-0.01em;
-    }
-    .card p{
-      margin:0;
-      color:var(--muted);
-      font-size:11px;
-    }
-    .card .body{ margin-top:8px; color:var(--ink); }
-    .card .body p{ color:var(--ink); font-size:12px; margin:0 0 8px; }
-    .card .body p:last-child{ margin:0; }
-
-    .bul{
-      list-style:none;
-      padding:0; margin:0;
-      display:grid; gap:7px;
-    }
-    .bul li{
-      position:relative;
-      padding-left:14px;
-      color:var(--ink);
-    }
-    .bul li::before{
-      content:"";
-      position:absolute; left:0; top:.62em;
-      width:8px; height:2px;
-      background:var(--accent);
-    }
-
-    /* project cards — each with left teal stripe */
-    .projects{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-    .proj{
-      border:1px solid var(--line);
-      background:var(--panel);
-      padding:12px;
-    }
-    .proj--experience{
-      padding:14px;
-      border-left:0;
-    }
-    .experience-lead{
-      margin:0 0 10px;
-      color:var(--ink);
-      font-size:12px;
-      line-height:1.6;
-    }
-    .exp-grid{
-      display:grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap:12px;
-      margin-top:10px;
-    }
-    .exp-col{
-      border:1px solid var(--line);
-      background:#fcfdff;
-      padding:10px;
-      border-radius:8px;
-    }
-    .exp-col h4{
-      margin:0 0 8px;
-      font-size:11px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:var(--muted);
-    }
-    .proj-top{
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      align-items:flex-start;
-      border-bottom:2px solid var(--line);
-      padding-bottom:8px;
-      margin-bottom:8px;
-    }
-    .proj-name{
-      margin:0;
-      font-size:14px;
-      font-weight:950;
-      letter-spacing:-0.01em;
-    }
-    .proj-link{
-      font-size:11px;
-      color:var(--ink);
-      text-decoration:none;
-      border-bottom:1px solid var(--tagline);
-      white-space:nowrap;
-    }
-    .meta{
-      margin:0 0 8px;
-      color:var(--muted);
-      font-size:11px;
-    }
-    .meta b{ color:var(--ink); }
-    .chips{
-      display:flex; flex-wrap:wrap; gap:6px;
-      margin:8px 0 0;
-    }
-    .chip{
-      font-size:10.5px;
-      padding:4px 8px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:#fff;
-      color:var(--ink);
-      white-space:nowrap;
-    }
-
-    .footer{
-      margin-top:12px;
-      border-top:1px solid var(--line);
-      background:var(--paper);
-      padding:10px 0 0;
-      display:flex;
-      justify-content:flex-start;
-      gap:10px;
-      font-size:10.5px;
-      color:var(--muted);
-    }
-
-    /* helper */
-    .tight{ margin-top:8px; }
+    .i, .i-lg, .ico { display: none; }
   </style>
 </head>
 <body>
-  <!-- svg sprite -->
-  <svg width="0" height="0" style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
-    <symbol id="m-mail" viewBox="0 0 24 24">
-      <path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="2"/>
-      <path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2"/>
-    </symbol>
-    <symbol id="m-tg" viewBox="0 0 24 24">
-      <path d="M21 5L3.8 11.6c-.6.2-.6 1 0 1.2l4.2 1.3 1.6 4.9c.2.6 1 .6 1.2 0l2.2-3.2 4.4 3.2c.4.3 1 .1 1.1-.4L22 5.9c.1-.6-.5-1.1-1-.9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-      <path d="M8 14l12-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </symbol>
-    <symbol id="m-person" viewBox="0 0 24 24">
-      <circle cx="12" cy="8" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/>
-      <path d="M5 20c0-3.5 3.1-6 7-6s7 2.5 7 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </symbol>
-    <symbol id="m-stream" viewBox="0 0 24 24">
-      <path d="M4 8h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <path d="M14 5l6 3-6 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-      <path d="M4 16h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <path d="M14 13l6 3-6 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-    </symbol>
-    <symbol id="m-stack" viewBox="0 0 24 24">
-      <path d="M12 3l9 5-9 5-9-5 9-5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-      <path d="M3 12l9 5 9-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-    </symbol>
-    <symbol id="m-rocket" viewBox="0 0 24 24">
-      <path d="M14 3c4 1 7 4 7 8-2 1-5 1-8-1L6 17l-3 1 1-3 7-7C9 5 10 2 14 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-      <path d="M9 15l-2 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </symbol>
-  </svg>
-
   <div class="page">
-    <!-- TOP -->
     <section class="top">
-      <div class="top-main">
-        <div class="top-identity">
-          <div class="top-photo">
-            {% if resume_photo_uri %}
-            <img src="{{ resume_photo_uri }}" alt="Фото Дремина Александра Сергеевича" />
-            {% endif %}
-          </div>
-          <div class="top-bio">
-            <h1 class="name">Дремин Александр Сергеевич</h1>
-            <p class="title">Python Backend / Fullstack Developer (Middle) — AI/LLM Integrations</p>
-          </div>
-        </div>
-
-        <div class="top-stack">
-          <p class="top-stack-label">Core Stack</p>
-          <div class="kicker">
-            <span class="tag">Celery</span>
-            <span class="tag">LangGraph</span>
-            <span class="tag">Python</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">Django / DRF</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">gRPC</span>
-          </div>
-        </div>
+      <div class="top-photo">
+        {% if resume_photo_uri %}
+        <img src="{{ resume_photo_uri }}" alt="Фото Дремина Александра Сергеевича" />
+        {% endif %}
       </div>
-
-      <div class="contacts">
-        <div class="c-row">
-          <span class="ico"><svg class="i-lg"><use href="#m-mail"/></svg></span>
-          <div>
-            <div class="c-label">Email</div>
-            <a href="mailto:dreminaleksandr06@gmail.com">dreminaleksandr06@gmail.com</a>
-          </div>
-        </div>
-
-        <div class="c-row">
-          <span class="ico"><svg class="i-lg"><use href="#m-tg"/></svg></span>
-          <div>
-            <div class="c-label">Telegram</div>
-            <a href="https://t.me/azora929">t.me/azora929</a>
-            <div style="color:var(--muted); font-size:11px; margin-top:2px;">@azora929</div>
-          </div>
-        </div>
-
-        <div class="c-row" style="margin-bottom:0;">
-          <span class="ico"><svg class="i-lg"><use href="#m-stack"/></svg></span>
-          <div>
-            <div class="c-label">GitHub</div>
-            <a href="https://github.com/azora929">github.com/azora929</a>
-          </div>
-        </div>
+      <div>
+        <h1 class="name">Дремин Александр Сергеевич</h1>
+        <p class="top-meta">Мужчина, 22 года, родился 28 августа 2003</p>
+        <p class="contacts">
+          dreminaleksandr06@gmail.com — предпочитаемый способ связи<br>
+          telegram: @azora929<br>
+          GitHub: github.com/azora929
+        </p>
+        <p class="plain-p" style="margin-top:10px;">
+          Проживает: Москва<br>
+          Гражданство: Россия, есть разрешение на работу: Россия<br>
+          Не готов к переезду, готов к командировкам
+        </p>
       </div>
     </section>
 
-    <!-- ABOUT ME -->
-    <section class="strip">
-      <div class="strip-h">
-        <div class="left">
-          <span class="ico"><svg class="i-lg"><use href="#m-person"/></svg></span>
-          <h2 class="strip-title">About Me</h2>
-        </div>
-        <p class="strip-note">Backend-first инженер: AI/LLM, realtime и production-ready сервисы</p>
-      </div>
+    <hr class="hline">
+    <h2 class="section-title">Желаемая должность и специализация</h2>
+    <p class="role-line">Python Backend / Fullstack Developer (Middle)</p>
+    <p class="plain-p">
+      Специализации: программист, разработчик<br>
+      Тип занятости: полная занятость<br>
+      Формат работы: на месте работодателя, гибрид
+    </p>
 
-      <div class="row">
-        <div class="card" style="flex:1 1 100%;">
-          <div class="card-h">
-            <span class="ico" style="color:var(--accent)"><svg class="i-lg"><use href="#m-person"/></svg></span>
-            <div>
-              <h3>Approach & Experience</h3>
-              <p>Middle Python Backend Developer · коммерческий опыт около 3 лет</p>
-            </div>
-          </div>
-          <div class="body">
-            <p>
-              Я — Middle Python Backend Developer, 22 года, в разработке с 19 лет, коммерческий опыт около 3 лет. Специализируюсь на backend-разработке, AI/LLM-интеграциях и сложной продуктовой бизнес-логике: API, realtime-сценарии, фоновые пайплайны, платежные механики и production-инфраструктура. Работаю со стеком Python, FastAPI, Django/DRF, PostgreSQL, MongoDB, Redis, SQLAlchemy, asyncpg, asyncio, aiohttp, gRPC, WebSocket, Celery, Docker, Kubernetes, Nginx и Linux; интегрировал OpenAI API, LangGraph, Telegram Bot API, YooKassa и внешние сервисы. Есть опыт fullstack-разработки, но основной фокус — backend, надежность сервисов, производительность и сложные пользовательские сценарии.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <hr class="hline">
+    <h2 class="section-title">Дополнительная информация</h2>
+    <p class="subhead">Обо мне</p>
+    <p class="plain-p">
+      Я — Middle Python Backend Developer, 22 года, в разработке с 19 лет, коммерческий опыт около 3 лет.
+      Специализируюсь на backend-разработке, AI/LLM-интеграциях и сложной продуктовой бизнес-логике.
+      Разрабатываю API, realtime-сценарии, фоновые пайплайны, платежные механики, микросервисные взаимодействия и production-инфраструктуру.
+    </p>
+    <p class="plain-p">
+      Работаю со стеком Python, FastAPI, Django/DRF, PostgreSQL, MongoDB, Redis, SQLAlchemy, asyncpg, asyncio, aiohttp, gRPC,
+      WebSocket, Celery, Docker, Kubernetes, Nginx и Linux. Интегрировал OpenAI API, LangGraph, Telegram Bot API, YooKassa и внешние сервисы.
+      Есть опыт fullstack-разработки, но основной фокус — backend, надежность сервисов, производительность и сложные пользовательские сценарии.
+    </p>
 
-    <!-- WORK EXPERIENCE -->
-    <section class="strip">
-      <div class="strip-h">
-        <div class="left">
-          <span class="ico"><svg class="i-lg"><use href="#m-stack"/></svg></span>
-          <h2 class="strip-title">Work Experience</h2>
-        </div>
-        <p class="strip-note">ключевая роль, ответственность и измеримый результат; база для продуктовых кейсов ниже</p>
-      </div>
-
-      <article class="proj proj--experience">
+    <hr class="hline">
+    <h2 class="section-title">Опыт работы — 3 года 1 месяц</h2>
+    <article class="proj proj--experience">
         <div class="proj-top">
           <div>
             <p class="proj-name">StrokovAI (стартап)</p>
@@ -499,20 +248,11 @@
           <span class="chip">CI/CD</span>
           <span class="chip">Docker/K8s</span>
         </div>
-      </article>
-    </section>
+    </article>
 
-    <!-- PROJECTS -->
-    <section class="strip">
-      <div class="strip-h">
-        <div class="left">
-          <span class="ico"><svg class="i-lg"><use href="#m-rocket"/></svg></span>
-          <h2 class="strip-title">Projects</h2>
-        </div>
-        <p class="strip-note">продуктовые кейсы, где этот опыт реализован на практике</p>
-      </div>
-
-      <div class="projects">
+    <hr class="hline">
+    <h2 class="section-title">Ключевые проекты</h2>
+    <div class="projects">
         <article class="proj">
           <div class="proj-top">
             <div>
@@ -624,8 +364,25 @@
             <li>Реализовал PDF-генерацию резюме через Playwright и шаблоны; настроил production-деплой (Docker/Kubernetes, домен и TLS).</li>
           </ul>
         </article>
-      </div>
-    </section>
+    </div>
+
+    <hr class="hline">
+    <h2 class="section-title">Образование</h2>
+    <p class="plain-p">
+      Государственный академический университет гуманитарных наук, Москва — экономический факультет (неоконченное высшее).<br>
+      МАДК им. А.А. Николаева — «Информационные системы и программирование».
+    </p>
+
+    <hr class="hline">
+    <h2 class="section-title">Навыки</h2>
+    <p class="plain-p">Русский — родной, Английский — B1.</p>
+    <div class="chips">
+      <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Django / DRF</span><span class="chip">SQLAlchemy</span><span class="chip">asyncpg</span>
+      <span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span><span class="chip">NoSQL</span><span class="chip">SQL</span><span class="chip">asyncio</span><span class="chip">aiohttp</span>
+      <span class="chip">REST API</span><span class="chip">gRPC</span><span class="chip">Protocol Buffers</span><span class="chip">WebSocket</span><span class="chip">WebRTC</span><span class="chip">Celery</span><span class="chip">Apache Kafka</span>
+      <span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Nginx</span><span class="chip">Linux</span><span class="chip">CI/CD</span><span class="chip">pytest</span><span class="chip">Playwright</span><span class="chip">Jinja2</span>
+      <span class="chip">OpenAI API</span><span class="chip">Assistants API</span><span class="chip">Realtime API</span><span class="chip">Responses API</span><span class="chip">LangGraph</span><span class="chip">Telegram Bot API</span><span class="chip">YooKassa</span><span class="chip">TypeScript</span><span class="chip">Git</span>
+    </div>
 
     <div class="footer">
       <div>© Дремин Александр Сергеевич</div>
