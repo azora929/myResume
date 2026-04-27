@@ -86,7 +86,7 @@ function DjsetAnalyticSlide() {
               <span className="pIcon" aria-hidden="true">{monitorIcon}</span>
               <div>
                 <h3 className="pCard__title">Продукт</h3>
-                <p className="pCard__desc">Мой вклад: полностью с нуля и самостоятельно реализовал fullstack-сервис для автоматического анализа длинных DJ-сетов.</p>
+                <p className="pCard__desc">Реализовал с нуля fullstack-сервис для автоматического анализа длинных DJ-сетов и довел его до рабочего продукта, включая координацию требований и пользовательского сценария.</p>
               </div>
             </div>
             <div className="pMedia">
@@ -104,11 +104,12 @@ function DjsetAnalyticSlide() {
             </div>
             <div className="pCard__body">
               <ul className="pList">
-                <li>С нуля спроектировал и реализовал API + worker + UI для конвейерной обработки длинных аудиофайлов</li>
+                <li>Спроектировал и реализовал API + worker + UI для конвейерной обработки длинных аудиофайлов</li>
                 <li>FastAPI + Uvicorn для API и WebSocket-статусов; Celery + Redis для фоновых задач и очередей</li>
                 <li>MongoDB для хранения истории задач и результатов; ffmpeg/ffprobe для сегментации и анализа аудио</li>
                 <li>Собрал AI-постобработку на OpenAI Responses API + LangGraph: очистка дублей, нормализация и финальный треклист</li>
                 <li>Реализовал экспорт результата в DOCX (python-docx) и личный кабинет с историей запусков</li>
+                <li>Выстроил рабочую коммуникацию по требованиям и приоритизации, чтобы быстрее доводить фичи до практического результата</li>
               </ul>
             </div>
           </article>
@@ -193,7 +194,7 @@ function YespeakSlide() {
               <p><b>Стек:</b> Django 5, Channels, WebSocket, WebRTC, PostgreSQL, Redis, Assistants API + Realtime API, React 18, TypeScript, Vite, YooKassa</p>
               <p><b>Фокус моего вклада:</b> устойчивый backend, стриминг‑UX, двухпоточный AI-flow (диалог + фоновая генерация задач), голосовые и экзаменационные сценарии.</p>
               <p>
-                Совместно с коллегами проектировал ключевые механики платформы, участвовал в обсуждении задач с заказчиком и доводил учебные сценарии до production-ready состояния.
+                Активно взаимодействовал с командой и заказчиком: совместно проектировал ключевые механики и доводил учебные сценарии до production-ready состояния.
               </p>
             </div>
           </article>
@@ -211,6 +212,7 @@ function YespeakSlide() {
                 <li>Реализовал двухпоточный AI-flow: основной ассистент ведет диалог, а генерация задач идет в отдельном фоне</li>
                 <li>Сделал генерацию задач незаметной для пользователя и без блокировки чата в момент составления задания</li>
                 <li>Интегрировал Assistants API и Realtime API, реализовал tools и lifecycle взаимодействия</li>
+                <li>Координировал реализацию с командой frontend/backend для согласованного поведения AI-сценариев и пользовательских потоков</li>
                 <li>Улучшил UX продукта за счет переработки backend- и AI-архитектуры</li>
               </ul>
             </div>
@@ -257,7 +259,7 @@ function IiprepodSlide() {
               <span className="pIcon" aria-hidden="true">{monitorIcon}</span>
               <div>
                 <h3 className="pCard__title">Продукт</h3>
-                <p className="pCard__desc">Мой вклад: backend-логика AI-продукта, роли, стриминг ответов, платежи, подписки, личный кабинет, уроки и тесты.</p>
+                <p className="pCard__desc">Отвечал за backend-логику AI-продукта: роли, стриминг ответов, платежи, подписки, личный кабинет, уроки и тесты.</p>
               </div>
             </div>
             <div className="pMedia">
@@ -279,6 +281,7 @@ function IiprepodSlide() {
                 <li>Реализовывал стриминг ответов (SSE), TTS/STT-сценарии и рабочие учебные сценарии внутри платформы</li>
                 <li>Участвовал в платежах и подписках: YooKassa/webhooks, баланс и продуктовые ограничения</li>
                 <li>Участвовал в обсуждении требований, распределении задач и реализации продуктовых сценариев в команде</li>
+                <li>Плотно взаимодействовал с коллегами на этапах проектирования и релизов, синхронизируя backend-изменения с продуктовой логикой</li>
                 <li>Интегрировал внешние каналы: SMS (Exolve), Telegram-связку и голосовые сервисы (VoiceKit/SpeechKit)</li>
                 <li>Работал над устойчивостью продовых flow с лимитами, пробными доступами и контролем состояний</li>
               </ul>
@@ -348,7 +351,7 @@ function LunaSlide() {
               <span className="pIcon" aria-hidden="true">{monitorIcon}</span>
               <div>
                 <h3 className="pCard__title">Продукт</h3>
-                <p className="pCard__desc">Мой вклад: самостоятельно с нуля разработал коммерческий AI-сервис в формате Telegram-бота.</p>
+                <p className="pCard__desc">Реализовал с нуля коммерческий AI-сервис в формате Telegram-бота и вывел его в прод.</p>
               </div>
             </div>
             <div className="pMedia">
@@ -366,10 +369,11 @@ function LunaSlide() {
             </div>
             <div className="pCard__body">
               <ul className="pList">
-                <li>Лично с нуля спроектировал архитектуру и самостоятельно реализовал backend всего продукта</li>
+                <li>Спроектировал архитектуру и реализовал backend всего продукта end-to-end</li>
                 <li>Спроектировал backend-архитектуру, поэтапную воронку через статусы, подписку, оплаты, WebApp и планировщики</li>
                 <li>Сделал WebApp-магазин, интеграции Telegram Payments и YooKassa, рабочие сценарии монетизации</li>
                 <li>Подключил голосовые сценарии (Whisper/TTS) и связал их с продуктовой логикой без разрывов UX</li>
+                <li>На всем цикле разработки синхронизировал продуктовые решения с заказчиком: от требований до запуска и доработок</li>
               </ul>
             </div>
           </article>
@@ -384,7 +388,7 @@ function LunaSlide() {
             </div>
             <div className="pCard__body">
               <ul className="pList pList--cols">
-                <li>Лично реализовал AI-слой на Assistants API с кастомными tools и асинхронной сервисной логикой</li>
+                <li>Реализовал AI-слой на Assistants API с кастомными tools и асинхронной сервисной логикой</li>
                 <li>Собрал pipeline генерации PDF-отчётов (Jinja2 + Playwright + расчётные модули)</li>
                 <li>Довел проект до полностью готового и рабочего состояния</li>
                 <li>Реализовал рабочую платежную и подписочную логику с продлениями, возобновлениями и оформлением подписок</li>
@@ -438,11 +442,12 @@ function CrmNbkiSlide() {
             </div>
             <div className="pCard__body">
               <ul className="pList">
-                <li>Лично разрабатывал backend на FastAPI и строил сервисный контур PostgreSQL → gRPC → REST → React SPA</li>
+                <li>Разрабатывал backend на FastAPI и строил сервисный контур PostgreSQL → gRPC → REST → React SPA</li>
                 <li>Реализовывал модельный слой, API для таблиц и бизнес-логику поиска/пагинации/редактирования</li>
                 <li>Участвовал в архитектуре аналитики и пользовательских данных (агрегаты, персональная аналитика, временные ряды)</li>
                 <li><strong>ИИ-менеджер (мой вклад):</strong> отдельный AI-микросервис с function calling, SQL generation (только SELECT), read-only валидацией, режимами CRM/R-Keeper и сохранением сессий</li>
                 <li>Поддерживал интеграционный каркас: Protocol Buffers, реестр таблиц/моделей и кодогенерацию gRPC-стабов</li>
+                <li>Работал в плотной связке с командой по архитектурным решениям и приоритизации доработок под бизнес-задачи</li>
               </ul>
             </div>
           </article>
@@ -457,7 +462,7 @@ function CrmNbkiSlide() {
             </div>
             <div className="pCard__body">
               <ul className="pList">
-                <li>Лично реализовал Telegram-бота и end-to-end обработку PDF-отчётов БКИ</li>
+                <li>Реализовал Telegram-бота и end-to-end обработку PDF-отчётов БКИ</li>
                 <li>Написал большой парсер (~1400 строк) с валидацией структуры и извлечением ключевых разделов отчёта</li>
                 <li>Сделал выдачу результата в двух форматах: краткая сводка в чат и полная JSON-выгрузка</li>
                 <li>Реализовал асинхронную архитектуру (python-telegram-bot + asyncio), блокировку 1 запрос/пользователь и retry logic</li>
@@ -471,17 +476,18 @@ function CrmNbkiSlide() {
               <span className="pIcon" aria-hidden="true">{globeIcon}</span>
               <div>
                 <h3 className="pCard__title">Сайт-резюме</h3>
-                <p className="pCard__desc">Мой вклад: полностью реализовал сайт как инженерный продукт — от UX и чата до PDF-рендера, интеграций и деплоя.</p>
+                <p className="pCard__desc">Собрал сайт как инженерный продукт end-to-end: от UX и чата до PDF-рендера, интеграций и деплоя.</p>
               </div>
             </div>
             <div className="pCard__body">
               <ul className="pList">
-                <li>Лично реализовал сайт как инженерный продукт: frontend на React/TypeScript/Vite и backend на FastAPI</li>
+                <li>Реализовал сайт как инженерный продукт: frontend на React/TypeScript/Vite и backend на FastAPI</li>
                 <li>Собрал AI-чат по WebSocket со стримингом OpenAI и лимитами по IP через Redis</li>
                 <li>Реализовал сценарий оффера: tool calling в чате → gRPC → Telegram-бот → уведомление в личку</li>
                 <li>Сделал PDF-генерацию резюме через Playwright и шаблоны</li>
                 <li>Подготовил production-контур: Docker, Kubernetes, домен, TLS, runtime-конфигурация сервисов</li>
                 <li>Доработал адаптивность и UX-состояния так, чтобы продукт ощущался цельным</li>
+                <li>Согласовывал структуру, тексты и UX с заказчиком на всех этапах, чтобы быстро переводить обратную связь в рабочие релизы</li>
               </ul>
             </div>
           </article>

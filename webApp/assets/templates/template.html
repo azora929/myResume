@@ -224,7 +224,7 @@
           <div class="proj-top">
             <div>
               <p class="proj-name">DJSet Analytic — автоматический разбор длинных DJ-сетов</p>
-              <p class="meta"><b>Роль:</b> Solo Fullstack (с нуля, самостоятельно) · <b>Стек:</b> FastAPI, Uvicorn, Celery, Redis, MongoDB, ffmpeg/ffprobe, OpenAI Responses API, LangGraph, React 18, TypeScript, WebSocket, python-docx</p>
+              <p class="meta"><b>Роль:</b> Fullstack Developer · <b>Стек:</b> FastAPI, Uvicorn, Celery, Redis, MongoDB, ffmpeg/ffprobe, OpenAI Responses API, LangGraph, React 18, TypeScript, WebSocket, python-docx</p>
             </div>
           </div>
 
@@ -234,6 +234,7 @@
             <li>Интегрировал внешний AudioTag API и AI-постобработку через OpenAI Responses API + LangGraph.</li>
             <li>Сделал WebSocket-статусы, личный кабинет с историей задач и экспорт результата в DOCX.</li>
             <li>Построил устойчивую worker-based архитектуру с идемпотентностью, ограничением конкуренции и обработкой ошибок внешних API.</li>
+            <li>Выстроил коммуникацию по требованиям и приоритизации, чтобы быстрее доводить продуктовые задачи до рабочего результата.</li>
           </ul>
 
           <div class="chips">
@@ -257,6 +258,7 @@
             <li>Работал с Django, PostgreSQL, Redis, WebSocket, WebRTC, React, TypeScript, OpenAI Assistants API, Realtime API, YooKassa.</li>
             <li>Реализовал двухпоточный AI-поток: диалог в основном ассистенте и фоновая генерация задач без блокировки чата.</li>
             <li>Улучшил UX продукта за счет переработки backend- и AI-архитектуры.</li>
+            <li>Плотно взаимодействовал с командой frontend/backend, синхронизируя релизы и обеспечивая стабильную работу ключевых пользовательских сценариев.</li>
           </ul>
 
           <div class="chips">
@@ -279,6 +281,7 @@
             <li>Работал с Django, DRF, PostgreSQL, Redis, Channels, SSE, OpenAI API, YooKassa и Telegram.</li>
             <li>Участвовал в развитии коммерческого EdTech-продукта с нагрузкой до ~1000 пользователей одновременно.</li>
             <li>Работал над сервисом, о котором писали CNews, Hi-Tech Mail и 3DNews.</li>
+            <li>Активно координировал реализацию с командой на этапах проектирования, разработки и релизов.</li>
           </ul>
 
           <div class="chips">
@@ -289,18 +292,19 @@
         <article class="proj">
           <div class="proj-top">
             <div>
-              <p class="proj-name">Luna — Telegram AI-сервис (разработанный лично)</p>
+              <p class="proj-name">Luna — Telegram AI-сервис</p>
               <p class="meta"><b>Стек:</b> FastAPI, Assistants API, Redis, Playwright, Jinja2, Telegram Payments, ЮKassa, WebApp</p>
             </div>
             <a class="proj-link" href="https://t.me/Luna_knowbot">t.me/Luna_knowbot</a>
           </div>
           <ul class="bul">
-            <li>Самостоятельно с нуля разработал коммерческий AI-сервис в формате Telegram-бота.</li>
+            <li>Реализовал с нуля коммерческий AI-сервис в формате Telegram-бота и вывел его в рабочий прод.</li>
             <li>Спроектировал backend-архитектуру, поэтапную воронку через статусы, подписку, оплаты, WebApp, планировщики и пользовательские состояния.</li>
             <li>Работал с FastAPI, Redis, Telegram Bot API, Telegram Payments, YooKassa, OpenAI Assistants API, Whisper, TTS, Playwright, asyncio, pytest.</li>
             <li>Довел проект до полностью готового и рабочего состояния.</li>
             <li>Реализовал рабочую платежную и подписочную логику с продлениями, возобновлениями и оформлением подписок.</li>
             <li>Собрал backend-поток с голосовыми сценариями, очередью покупок и timezone-aware логикой.</li>
+            <li>На всем цикле разработки взаимодействовал с заказчиком: от согласования требований до запуска и последующих улучшений.</li>
           </ul>
         </article>
 
@@ -313,10 +317,11 @@
             <a class="proj-link" href="https://t.me/iiChesterField">t.me/iiChesterField</a>
           </div>
           <ul class="bul">
-            <li>Лично разрабатывал backend на FastAPI и строил связку PostgreSQL → gRPC → FastAPI REST → React SPA.</li>
+            <li>Разрабатывал backend на FastAPI и строил связку PostgreSQL → gRPC → FastAPI REST → React SPA.</li>
             <li>Реализовал CRM-механику таблиц/поиска/пагинации и аналитики; участвовал в сервисной архитектуре и model-layer.</li>
             <li>Сделал отдельный AI-микросервис: OpenAI function calling, генерация SQL (только SELECT), read-only валидация, asyncpg/pymssql, режимы CRM/R-Keeper, сохранение сессий.</li>
             <li>Для НБКИ-бота реализовал parser pipeline PDF→summary+JSON, блокировки по пользователю, retry logic и тесты (pytest).</li>
+            <li>Работал в тесной связке с командой и бизнес-стороной, чтобы быстрее внедрять изменения под реальные операционные задачи.</li>
           </ul>
         </article>
 
@@ -328,9 +333,10 @@
             </div>
           </div>
           <ul class="bul">
-            <li>Лично реализовал frontend (React/TypeScript/Vite) и backend (FastAPI) как единый продуктовый сценарий.</li>
+            <li>Реализовал frontend (React/TypeScript/Vite) и backend (FastAPI) как единый продуктовый сценарий.</li>
             <li>Сделал AI-чат по WebSocket со стримингом OpenAI, лимитами по IP (Redis) и отправкой оффера через gRPC в Telegram.</li>
             <li>Реализовал PDF-генерацию резюме через Playwright и шаблоны; настроил production-деплой (Docker/Kubernetes, домен и TLS).</li>
+            <li>Согласовывал структуру, контент и UX с заказчиком на всех этапах, переводя обратную связь в быстрые продуктовые релизы.</li>
           </ul>
         </article>
     </div>
