@@ -9,7 +9,7 @@ import { useSkillsStrings } from "@/hooks/useSkillsStrings/useSkillsStrings";
 import { useSkillsCardsScrollAnimation } from "@/hooks/useSkillsCardsScrollAnimation/useSkillsCardsScrollAnimation";
 import "@/styles/main/main.scss";
 
-const HERO_TITLE_MAIN = "Middle Python Backend Developer";
+const HERO_TITLE_MAIN = "Python Developer";
 const HERO_TITLE_ACCENT = " — AI/LLM Integrations";
 const HERO_HINT_TEXT = "Пообщайтесь с нейросетью по резюме или отправьте оффер — откройте чат и напишите.";
 const SCRAMBLE_CHARS = "漢字カナひらがなアイウエオ甲乙丙丁ΨΣЖЯ01#@&%$";
@@ -212,13 +212,13 @@ export function MainPage() {
                   </span>
                   <div>
                     <h3 className="sCard__title">Approach & Experience</h3>
-                    <p className="sCard__desc">Middle Python Backend Developer · AI/LLM · production systems</p>
+                    <p className="sCard__desc">Python Developer · AI/LLM · production systems</p>
                   </div>
                 </div>
 
                 <div className="sCard__body prose">
                   <p>
-                    Я — Middle Python Backend Developer, 22 года, в разработке с 19 лет, коммерческий опыт около 3 лет. Специализируюсь на backend-разработке, AI/LLM-интеграциях и сложной продуктовой бизнес-логике: API, realtime-сценарии, фоновые пайплайны, платежные механики и production-инфраструктура. Работаю со стеком Python, FastAPI, Django/DRF, PostgreSQL, MongoDB, Redis, SQLAlchemy, asyncpg, asyncio, aiohttp, gRPC, WebSocket, Celery, Docker, Kubernetes, Nginx и Linux; интегрировал OpenAI API, LangGraph, Telegram Bot API, YooKassa и внешние сервисы. Использую AI-редакторы кода — Cursor, Claude Code, GitHub Copilot и Codex — для ускорения проектирования, прототипирования, рефакторинга и написания кода, при этом понимаю ограничения AI-генерации и дорабатываю решения вручную.
+                    Я — Python Developer, 22 года, в разработке с 19 лет, коммерческий опыт около 3 лет. Специализируюсь на backend-разработке, AI/LLM-интеграциях и сложной продуктовой бизнес-логике: API, realtime-сценарии, фоновые пайплайны, платежные механики и production-инфраструктура. Работаю со стеком Python, FastAPI, Django/DRF, PostgreSQL, MongoDB, Redis, SQLAlchemy, asyncpg, asyncio, aiohttp, gRPC, WebSocket, Celery, Docker, Kubernetes, Nginx и Linux; интегрировал OpenAI API, LangGraph, Telegram Bot API, YooKassa и внешние сервисы. Использую AI-редакторы кода — Cursor, Claude Code, GitHub Copilot и Codex — для ускорения проектирования, прототипирования, рефакторинга и написания кода, при этом понимаю ограничения AI-генерации и дорабатываю решения вручную.
                   </p>
                 </div>
               </article>
@@ -232,7 +232,7 @@ export function MainPage() {
                   </span>
                   <div>
                     <h3 className="sCard__title">Work Experience</h3>
-                    <p className="sCard__desc">StrokovAI (стартап) · Python Backend / Fullstack Developer (Middle) · апрель 2023 — сейчас</p>
+                    <p className="sCard__desc">StrokovAI (стартап) · Python Developer · апрель 2023 — сейчас</p>
                   </div>
                 </div>
 
