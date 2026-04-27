@@ -239,7 +239,7 @@ export function MainPage() {
                 <div className="sCard__body prose">
                   <p>
                     Разрабатываю backend-сервисы, AI-функциональность и продуктовую бизнес-логику для веб-приложений,
-                    Telegram-сервисов и AI-продуктов в команде из 3 человек. Участвую в обсуждении архитектуры и задач,
+                    Telegram-сервисов и AI-продуктов в команде из 6 человек. Участвую в обсуждении архитектуры и задач,
                     собираю и анализирую требования от заказчика, декомпозирую работу и делегирую задачи внутри команды.
                   </p>
                 </div>
@@ -267,25 +267,24 @@ export function MainPage() {
                   <div>
                     <h4 className="sExperience__title">Задачи и зона ответственности</h4>
                     <ul className="sList">
-                      <li>Разрабатывал production-ready backend на FastAPI и Django, реализовывал REST API, gRPC-сервисы и интеграции</li>
-                      <li>Участвовал в проектировании сервисов, обсуждении архитектуры и выборе технических решений с командой</li>
-                      <li>Собирал и анализировал требования от заказчика, уточнял бизнес-логику и переводил задачи в техническую реализацию</li>
-                      <li>Декомпозировал задачи, распределял и делегировал часть работы внутри команды</li>
-                      <li>Оптимизировал БД и backend: индексы, bulk-операции, сырые SQL, устранение N+1, транзакции, pooling</li>
-                      <li>Реализовывал retry/timeout/rate-limit/state management, realtime-сценарии и worker-based pipeline на Celery</li>
-                      <li>Интегрировал OpenAI API/Assistants/Realtime/Responses, LangGraph, Telegram Bot API, YooKassa</li>
-                      <li>Настраивал инфраструктуру: Docker, Kubernetes, Nginx, Linux, SSL/TLS; тесты на pytest и поддержка production</li>
+                      <li>Разрабатывал backend на FastAPI и Django, реализовывал REST API, gRPC-сервисы и интеграции с внешними системами</li>
+                      <li>Работал с PostgreSQL, MongoDB, Redis, SQLAlchemy, asyncpg, psycopg2</li>
+                      <li>Оптимизировал БД и backend: индексы, bulk-операции, сырые SQL-запросы, устранение N+1, транзакции</li>
+                      <li>Реализовывал retry logic, timeout handling, rate limiting и state management</li>
+                      <li>Работал с WebSocket, streaming, realtime-сценариями, WebRTC и AI/LLM-интеграциями</li>
+                      <li>Интегрировал OpenAI API, Assistants API, Realtime API, Responses API, LangGraph, Telegram Bot API, YooKassa</li>
+                      <li>Настраивал Docker, Kubernetes, Nginx, Linux, SSL/TLS; писал тесты на pytest, занимался рефакторингом и поддержкой сервисов</li>
+                      <li>Реализовывал фоновые пайплайны обработки через Celery с помощью фоновых воркеров</li>
                     </ul>
                   </div>
 
                   <div>
                     <h4 className="sExperience__title">Результат</h4>
                     <ul className="sList">
-                      <li>Реализовал production-ready backend для AI- и веб-продуктов</li>
-                      <li>Снизил задержки и улучшил производительность backend-сервисов и БД</li>
+                      <li>Проектировал и реализовывал end-to-end коммерческие AI-driven веб-продукты</li>
+                      <li>Оптимизировал, рефакторил и улучшал производительность backend-архитектуры</li>
                       <li>Участвовал в проработке требований, архитектуры и распределении задач внутри команды</li>
-                      <li>Развивал сложные пользовательские сценарии с AI, платежами, состояниями и интеграциями</li>
-                      <li>Поддерживал и масштабировал production-сервисы с упором на надежность, производительность и UX</li>
+                      <li>Разрабатывал сложные пользовательские сценарии с AI, платежами, состояниями и интеграциями</li>
                     </ul>
                   </div>
                 </div>
@@ -317,19 +316,11 @@ export function MainPage() {
                   <li className="chip">Django / DRF</li>
                   <li className="chip">Celery</li>
                   <li className="chip">REST API</li>
-                  <li className="chip">WebSocket streaming</li>
-                  <li className="chip">asyncio</li>
                   <li className="chip">gRPC</li>
-                  <li className="chip">Apache Kafka</li>
-                  <li className="chip">Microservices</li>
-                  <li className="chip">SQL</li>
                   <li className="chip">PostgreSQL</li>
                   <li className="chip">Redis</li>
-                  <li className="chip">NoSQL</li>
                   <li className="chip">MongoDB</li>
                   <li className="chip">SQLAlchemy</li>
-                  <li className="chip">CI/CD</li>
-                  <li className="chip">aiohttp</li>
                 </ul>
 
                 <div className="sDivider"></div>
@@ -359,12 +350,10 @@ export function MainPage() {
                 </div>
 
                 <ul className="chips">
-                  <li className="chip">WebSockets</li>
+                  <li className="chip">WebSocket</li>
                   <li className="chip">SSE</li>
-                  <li className="chip">Streaming responses</li>
                   <li className="chip">Realtime API</li>
-                  <li className="chip">Event-driven</li>
-                  <li className="chip">Loading/Error/Empty</li>
+                  <li className="chip">Streaming</li>
                 </ul>
 
                 <div className="sDivider"></div>
@@ -396,10 +385,6 @@ export function MainPage() {
                   <li className="chip">Nginx</li>
                   <li className="chip">SSL/TLS</li>
                   <li className="chip">CI/CD</li>
-                  <li className="chip">Playwright → PDF</li>
-                  <li className="chip">Jinja2</li>
-                  <li className="chip">Планировщики</li>
-                  <li className="chip">Timezone-aware</li>
                   <li className="chip">pytest</li>
                 </ul>
 
@@ -427,15 +412,12 @@ export function MainPage() {
                 </div>
 
                 <ul className="chips">
-                  <li className="chip">LLM API</li>
+                  <li className="chip">OpenAI API</li>
                   <li className="chip">LangGraph</li>
-                  <li className="chip">AI agent tools</li>
-                  <li className="chip">Prompt engineering</li>
-                  <li className="chip">Streaming LLM</li>
                   <li className="chip">Assistants API</li>
                   <li className="chip">Realtime API</li>
+                  <li className="chip">Responses API</li>
                   <li className="chip">Whisper / TTS</li>
-                  <li className="chip">tiktoken</li>
                 </ul>
 
                 <div className="sDivider"></div>
@@ -465,7 +447,6 @@ export function MainPage() {
                   <li className="chip">React</li>
                   <li className="chip">TypeScript</li>
                   <li className="chip">Vite</li>
-                  <li className="chip">WebSocket in UI</li>
                   <li className="chip">SASS</li>
                 </ul>
 

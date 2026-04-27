@@ -17,23 +17,9 @@
       padding: 0;
     }
     .top {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 12px;
+      display: block;
       align-items: start;
       margin-bottom: 14px;
-    }
-    .top-photo {
-      width: 100%;
-      height: 120px;
-      overflow: hidden;
-      border: 1px solid #d8d8d8;
-    }
-    .top-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
     }
     .name {
       margin: 0;
@@ -150,11 +136,6 @@
 <body>
   <div class="page">
     <section class="top">
-      <div class="top-photo">
-        {% if resume_photo_uri %}
-        <img src="{{ resume_photo_uri }}" alt="Фото Дремина Александра Сергеевича" />
-        {% endif %}
-      </div>
       <div>
         <h1 class="name">Дремин Александр Сергеевич</h1>
         <p class="top-meta">Мужчина, 22 года, родился 28 августа 2003</p>
@@ -205,27 +186,30 @@
         </div>
 
         <p class="experience-lead">
-          Разрабатываю backend-сервисы, AI-функциональность и продуктовую бизнес-логику для веб-приложений, Telegram-сервисов и AI-продуктов в команде из 3 человек. Участвую в обсуждении архитектуры и задач, собираю и анализирую требования от заказчика, декомпозирую работу, распределяю и делегирую задачи внутри команды.
+          Разрабатываю backend-сервисы, AI-функциональность и продуктовую бизнес-логику для веб-приложений и Telegram-сервисов в команде из 6 человек. Участвовал в обсуждении архитектуры, собирал и анализировал требования от заказчика, декомпозировал работу и делегировал задачи внутри команды.
         </p>
 
         <div class="exp-grid">
           <div class="exp-col">
             <h4>Зона ответственности</h4>
             <ul class="bul">
-              <li>Production-ready backend на FastAPI/Django, REST API, gRPC, интеграции с внешними системами.</li>
-              <li>Работа с PostgreSQL, MongoDB, Redis, SQLAlchemy, asyncpg, psycopg2; оптимизация SQL и DB-layer.</li>
-              <li>Retry/timeout/rate-limit/state management, WebSocket/streaming/realtime, WebRTC, Celery-пайплайны.</li>
-              <li>Интеграции: OpenAI API (Assistants/Realtime/Responses), LangGraph, Telegram Bot API, YooKassa.</li>
-              <li>Инфраструктура и стабильность: Docker, Kubernetes, Nginx, Linux, SSL/TLS, pytest, refactoring/prod support.</li>
+              <li>Разрабатывал backend на FastAPI и Django, реализовывал REST API, gRPC-сервисы и интеграции с внешними системами.</li>
+              <li>Работал с PostgreSQL, MongoDB, Redis, SQLAlchemy, asyncpg, psycopg2.</li>
+              <li>Оптимизировал БД и backend: индексы, bulk-операции, сырые SQL-запросы, устранение N+1, транзакции.</li>
+              <li>Реализовывал retry logic, timeout handling, rate limiting, state management.</li>
+              <li>Работал с WebSocket, streaming, realtime-сценариями, WebRTC и AI/LLM-интеграциями.</li>
+              <li>Интегрировал OpenAI API, Assistants API, Realtime API, Responses API, LangGraph, Telegram Bot API, YooKassa.</li>
+              <li>Настраивал Docker, Kubernetes, Nginx, Linux, SSL/TLS; писал тесты на pytest, занимался рефакторингом и поддержкой сервисов.</li>
+              <li>Реализовывал фоновые пайплайны обработки через Celery с помощью фоновых воркеров.</li>
             </ul>
           </div>
           <div class="exp-col">
             <h4>Результат</h4>
             <ul class="bul">
-              <li>Реализовал production-ready backend для AI- и web-продуктов.</li>
-              <li>Снизил latency и улучшил производительность сервисов и БД.</li>
-              <li>Участвовал в проработке требований, архитектуры и распределении задач.</li>
-              <li>Развивал сложные пользовательские сценарии с AI, платежами и интеграциями.</li>
+              <li>Проектировал и реализовывал end-to-end коммерческие AI-driven веб-продукты.</li>
+              <li>Оптимизировал, рефакторил и улучшал производительность backend архитектуры.</li>
+              <li>Участвовал в проработке требований, архитектуры и распределении задач внутри команды.</li>
+              <li>Разрабатывал сложные пользовательские сценарии с AI, платежами, состояниями и интеграциями.</li>
             </ul>
           </div>
         </div>
@@ -285,10 +269,11 @@
 
           <ul class="bul">
             <li>Разрабатывал backend, AI-логику уроков, realtime-механику, интеграции, монетизацию и пользовательские сценарии.</li>
-            <li>Совместно с коллегой проектировал ключевые механики платформы и доводил их до production-ready состояния.</li>
+            <li>Совместно с коллегами проектировал ключевые механики платформы и доводил их до production-ready состояния.</li>
             <li>Участвовал в обсуждении задач с заказчиком и реализации требований по учебным сценариям и экзаменам.</li>
-            <li>Реализовывал голосовые сценарии, AI-оценку, PDF-отчеты по урокам и механику итогового экзамена.</li>
-            <li>В основном реализовал двухпоточный AI-flow и сократил ожидание генерации заданий с 1–2 минут до нескольких секунд.</li>
+            <li>Работал с Django, PostgreSQL, Redis, WebSocket, WebRTC, React, TypeScript, OpenAI Assistants API, Realtime API, YooKassa.</li>
+            <li>Реализовал двухпоточный AI-поток: диалог в основном ассистенте и фоновая генерация задач без блокировки чата.</li>
+            <li>Улучшил UX продукта за счет переработки backend- и AI-архитектуры.</li>
           </ul>
 
           <div class="chips">
@@ -306,10 +291,10 @@
           </div>
 
           <ul class="bul">
-            <li>Разрабатывал backend-логику AI-продукта, роли пользователей, стриминг ответов, платежи, биллинг и интеграции.</li>
+            <li>Разрабатывал backend-логику AI-продукта, роли пользователей, стриминг ответов, платежи, подписки, личный кабинет, логику уроков и тестов, AI-чат с TTS/STT.</li>
             <li>Участвовал в обсуждении требований, распределении задач и реализации продуктовых сценариев в команде.</li>
             <li>Работал с Django, DRF, PostgreSQL, Redis, Channels, SSE, OpenAI API, YooKassa и Telegram.</li>
-            <li>Участвовал в развитии коммерческого EdTech-продукта с нагрузкой до ~1000 пользователей.</li>
+            <li>Участвовал в развитии коммерческого EdTech-продукта с нагрузкой до ~1000 пользователей одновременно.</li>
             <li>Работал над сервисом, о котором писали CNews, Hi-Tech Mail и 3DNews.</li>
           </ul>
 
@@ -321,17 +306,18 @@
         <article class="proj">
           <div class="proj-top">
             <div>
-              <p class="proj-name">Luna / Луна Знает — астрологический AI-помощник</p>
+              <p class="proj-name">Luna — Telegram AI-сервис (разработанный лично)</p>
               <p class="meta"><b>Стек:</b> FastAPI, Assistants API, Redis, Playwright, Jinja2, Telegram Payments, ЮKassa, WebApp</p>
             </div>
             <a class="proj-link" href="https://t.me/Luna_knowbot">t.me/Luna_knowbot</a>
           </div>
           <ul class="bul">
             <li>Самостоятельно с нуля разработал коммерческий AI-сервис в формате Telegram-бота.</li>
-            <li>Спроектировал backend-архитектуру, stage-based flow, подписку, оплаты, WebApp, scheduler и пользовательские состояния.</li>
+            <li>Спроектировал backend-архитектуру, поэтапную воронку через статусы, подписку, оплаты, WebApp, планировщики и пользовательские состояния.</li>
             <li>Работал с FastAPI, Redis, Telegram Bot API, Telegram Payments, YooKassa, OpenAI Assistants API, Whisper, TTS, Playwright, asyncio, pytest.</li>
-            <li>Довел проект до production-ready состояния и реализовал рабочую платежную и подписочную логику.</li>
-            <li>Собрал backend-flow с голосовыми сценариями, очередью покупок и timezone-aware логикой.</li>
+            <li>Довел проект до полностью готового и рабочего состояния.</li>
+            <li>Реализовал рабочую платежную и подписочную логику с продлениями, возобновлениями и оформлением подписок.</li>
+            <li>Собрал backend-поток с голосовыми сценариями, очередью покупок и timezone-aware логикой.</li>
           </ul>
         </article>
 
@@ -377,11 +363,10 @@
     <h2 class="section-title">Навыки</h2>
     <p class="plain-p">Русский — родной, Английский — B1.</p>
     <div class="chips">
-      <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Django / DRF</span><span class="chip">SQLAlchemy</span><span class="chip">asyncpg</span>
-      <span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span><span class="chip">NoSQL</span><span class="chip">SQL</span><span class="chip">asyncio</span><span class="chip">aiohttp</span>
-      <span class="chip">REST API</span><span class="chip">gRPC</span><span class="chip">Protocol Buffers</span><span class="chip">WebSocket</span><span class="chip">WebRTC</span><span class="chip">Celery</span><span class="chip">Apache Kafka</span>
-      <span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Nginx</span><span class="chip">Linux</span><span class="chip">CI/CD</span><span class="chip">pytest</span><span class="chip">Playwright</span><span class="chip">Jinja2</span>
-      <span class="chip">OpenAI API</span><span class="chip">Assistants API</span><span class="chip">Realtime API</span><span class="chip">Responses API</span><span class="chip">LangGraph</span><span class="chip">Telegram Bot API</span><span class="chip">YooKassa</span><span class="chip">TypeScript</span><span class="chip">Git</span>
+      <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Django / DRF</span><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span>
+      <span class="chip">Redis</span><span class="chip">SQLAlchemy</span><span class="chip">REST API</span><span class="chip">gRPC</span><span class="chip">WebSocket</span>
+      <span class="chip">WebRTC</span><span class="chip">Celery</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Nginx</span>
+      <span class="chip">Linux</span><span class="chip">OpenAI API</span><span class="chip">LangGraph</span><span class="chip">Telegram Bot API</span><span class="chip">YooKassa</span>
     </div>
 
     <div class="footer">

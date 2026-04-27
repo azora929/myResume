@@ -172,7 +172,7 @@ function YespeakSlide() {
               <span className="pIcon" aria-hidden="true">{monitorIcon}</span>
               <div>
                 <h3 className="pCard__title">Продукт</h3>
-                <p className="pCard__desc">Мой вклад: разрабатывал backend, AI-логику уроков, realtime-механику, интеграции и монетизацию для production-ready EdTech-платформы.</p>
+                <p className="pCard__desc">Мой вклад: разрабатывал backend, AI-логику уроков, realtime-механику, интеграции, монетизацию и пользовательские сценарии.</p>
               </div>
             </div>
             <div className="pMedia">
@@ -193,7 +193,7 @@ function YespeakSlide() {
               <p><b>Стек:</b> Django 5, Channels, WebSocket, WebRTC, PostgreSQL, Redis, Assistants API + Realtime API, React 18, TypeScript, Vite, YooKassa</p>
               <p><b>Фокус моего вклада:</b> устойчивый backend, стриминг‑UX, двухпоточный AI-flow (диалог + фоновая генерация задач), голосовые и экзаменационные сценарии.</p>
               <p>
-                Совместно с коллегой проектировал ключевые механики платформы, участвовал в обсуждении задач с заказчиком и доводил учебные сценарии до production-ready состояния.
+                Совместно с коллегами проектировал ключевые механики платформы, участвовал в обсуждении задач с заказчиком и доводил учебные сценарии до production-ready состояния.
               </p>
             </div>
           </article>
@@ -208,12 +208,10 @@ function YespeakSlide() {
             </div>
             <div className="pCard__body">
               <ul className="pList pList--cols">
-                <li>Лично почти полностью реализовал двухпоточный AI-flow: отдельный поток диалога + отдельный поток генерации JSON-задач для UI</li>
-                <li>Интегрировал Assistants API и Realtime API, реализовал кастомные tools и lifecycle взаимодействия</li>
-                <li>Сократил время ожидания задач с 1–2 минут до нескольких секунд за счёт переработки backend/AI-архитектуры</li>
-                <li>Реализовал realtime-механику (WebSocket/WebRTC), голосовые сценарии, AI-оценку и PDF-отчеты по урокам</li>
-                <li>Участвовал в реализации монетизации через YooKassa: доступы, баланс, проверки прав на урок</li>
-                <li>Улучшил UX продукта за счет переработки backend- и AI-архитектуры и стабильной стыковки backend, AI и frontend</li>
+                <li>Реализовал двухпоточный AI-flow: основной ассистент ведет диалог, а генерация задач идет в отдельном фоне</li>
+                <li>Сделал генерацию задач незаметной для пользователя и без блокировки чата в момент составления задания</li>
+                <li>Интегрировал Assistants API и Realtime API, реализовал tools и lifecycle взаимодействия</li>
+                <li>Улучшил UX продукта за счет переработки backend- и AI-архитектуры</li>
               </ul>
             </div>
           </article>
@@ -259,7 +257,7 @@ function IiprepodSlide() {
               <span className="pIcon" aria-hidden="true">{monitorIcon}</span>
               <div>
                 <h3 className="pCard__title">Продукт</h3>
-                <p className="pCard__desc">Мой вклад: backend-логика AI-продукта, роли пользователей, стриминг ответов, платежи и продуктовые интеграции.</p>
+                <p className="pCard__desc">Мой вклад: backend-логика AI-продукта, роли, стриминг ответов, платежи, подписки, личный кабинет, уроки и тесты.</p>
               </div>
             </div>
             <div className="pMedia">
@@ -277,9 +275,9 @@ function IiprepodSlide() {
             </div>
             <div className="pCard__body">
               <ul className="pList">
-                <li>Лично разрабатывал backend-логику продукта: роли, сессии, доступы и основные пользовательские сценарии</li>
-                <li>Реализовывал AI-часть и стриминг ответов (SSE), включая рабочие учебные сценарии внутри платформы</li>
-                <li>Участвовал в биллинге: баланс, токен-логика, интеграция YooKassa и обработка webhooks</li>
+                <li>Разрабатывал backend-логику продукта: роли пользователей, AI-чат, логику уроков и тестов</li>
+                <li>Реализовывал стриминг ответов (SSE), TTS/STT-сценарии и рабочие учебные сценарии внутри платформы</li>
+                <li>Участвовал в платежах и подписках: YooKassa/webhooks, баланс и продуктовые ограничения</li>
                 <li>Участвовал в обсуждении требований, распределении задач и реализации продуктовых сценариев в команде</li>
                 <li>Интегрировал внешние каналы: SMS (Exolve), Telegram-связку и голосовые сервисы (VoiceKit/SpeechKit)</li>
                 <li>Работал над устойчивостью продовых flow с лимитами, пробными доступами и контролем состояний</li>
@@ -297,10 +295,8 @@ function IiprepodSlide() {
             </div>
             <div className="pCard__body">
               <ul className="pList pList--cols">
-                <li>Лично развивал backend под реальные продуктовые нагрузки и командные итерации в коммерческой разработке</li>
-                <li>Работал с Django/DRF/Channels/PostgreSQL и продовыми ограничениями на пиках до ~1000 пользователей</li>
-                <li>Закрывал интеграции AI, платежей и коммуникаций (SSE, YooKassa, SMS, Telegram, TTS)</li>
-                <li>Участвовал в развитии коммерческого EdTech-продукта в связке backend + AI + биллинг</li>
+                <li>Участвовал в развитии коммерческого EdTech-продукта с нагрузкой до ~1000 пользователей одновременно</li>
+                <li>Развивал backend и интеграции в связке AI + биллинг + пользовательские сценарии</li>
                 <li>~300–400 ₽ за урок; публикации:{" "}
                   <a href="https://www.cnews.ru/news/line/2025-01-28_v_rossii_zapustili_innovatsionnuyu" target="_blank" rel="noopener noreferrer">CNews</a>,{" "}
                   <a href="https://hi-tech.mail.ru/news/122609-v-rossii-sozdali-iskusstvennyj-intellekt-s-myshleniem-rebenka/" target="_blank" rel="noopener noreferrer">Hi‑Tech Mail.ru</a>,{" "}
@@ -329,7 +325,7 @@ function LunaSlide() {
               <PIcon name="moon" />
             </div>
             <div>
-              <p className="pSlide__kicker">Луна Знает</p>
+              <p className="pSlide__kicker">Luna</p>
               <a className="pSlide__link" href="https://t.me/Luna_knowbot" target="_blank" rel="noopener noreferrer">
                 t.me/Luna_knowbot
               </a>
@@ -352,7 +348,7 @@ function LunaSlide() {
               <span className="pIcon" aria-hidden="true">{monitorIcon}</span>
               <div>
                 <h3 className="pCard__title">Продукт</h3>
-                <p className="pCard__desc">Мой вклад: самостоятельно с нуля разработал коммерческий Telegram AI-сервис и довел до production-ready состояния.</p>
+                <p className="pCard__desc">Мой вклад: самостоятельно с нуля разработал коммерческий AI-сервис в формате Telegram-бота.</p>
               </div>
             </div>
             <div className="pMedia">
@@ -371,8 +367,7 @@ function LunaSlide() {
             <div className="pCard__body">
               <ul className="pList">
                 <li>Лично с нуля спроектировал архитектуру и самостоятельно реализовал backend всего продукта</li>
-                <li>Построил stage-based user flow, динамические tools/prompt, миграцию истории и кэш контекста в Redis</li>
-                <li>Спроектировал подписку, оплаты, WebApp, scheduler и пользовательские состояния</li>
+                <li>Спроектировал backend-архитектуру, поэтапную воронку через статусы, подписку, оплаты, WebApp и планировщики</li>
                 <li>Сделал WebApp-магазин, интеграции Telegram Payments и YooKassa, рабочие сценарии монетизации</li>
                 <li>Подключил голосовые сценарии (Whisper/TTS) и связал их с продуктовой логикой без разрывов UX</li>
               </ul>
@@ -391,8 +386,9 @@ function LunaSlide() {
               <ul className="pList pList--cols">
                 <li>Лично реализовал AI-слой на Assistants API с кастомными tools и асинхронной сервисной логикой</li>
                 <li>Собрал pipeline генерации PDF-отчётов (Jinja2 + Playwright + расчётные модули)</li>
-                <li>Реализовал рабочую платежную и подписочную логику, очередь покупок и атомарное сохранение отчётов</li>
-                <li>Собрал backend-flow с голосовыми сценариями и timezone-aware логикой для длинных пользовательских цепочек</li>
+                <li>Довел проект до полностью готового и рабочего состояния</li>
+                <li>Реализовал рабочую платежную и подписочную логику с продлениями, возобновлениями и оформлением подписок</li>
+                <li>Собрал backend-поток с голосовыми сценариями, очередью покупок и timezone-aware логикой</li>
               </ul>
             </div>
           </article>
