@@ -218,7 +218,7 @@ export function MainPage() {
 
                 <div className="sCard__body prose">
                   <p>
-                    Я — Middle Python Backend Developer, 22 года, в разработке с 19 лет, коммерческий опыт около 3 лет. Специализируюсь на backend-разработке, AI/LLM-интеграциях и сложной продуктовой бизнес-логике: API, realtime-сценарии, фоновые пайплайны, платежные механики и production-инфраструктура. Работаю со стеком Python, FastAPI, Django/DRF, PostgreSQL, MongoDB, Redis, SQLAlchemy, asyncpg, asyncio, aiohttp, gRPC, WebSocket, Celery, Docker, Kubernetes, Nginx и Linux; интегрировал OpenAI API, LangGraph, Telegram Bot API, YooKassa и внешние сервисы. Есть опыт fullstack-разработки, но основной фокус — backend, надежность сервисов, производительность и сложные пользовательские сценарии.
+                    Я — Middle Python Backend Developer, 22 года, в разработке с 19 лет, коммерческий опыт около 3 лет. Специализируюсь на backend-разработке, AI/LLM-интеграциях и сложной продуктовой бизнес-логике: API, realtime-сценарии, фоновые пайплайны, платежные механики и production-инфраструктура. Работаю со стеком Python, FastAPI, Django/DRF, PostgreSQL, MongoDB, Redis, SQLAlchemy, asyncpg, asyncio, aiohttp, gRPC, WebSocket, Celery, Docker, Kubernetes, Nginx и Linux; интегрировал OpenAI API, LangGraph, Telegram Bot API, YooKassa и внешние сервисы. Использую AI-редакторы кода — Cursor, Claude Code, GitHub Copilot и Codex — для ускорения проектирования, прототипирования, рефакторинга и написания кода, при этом понимаю ограничения AI-генерации и дорабатываю решения вручную.
                   </p>
                 </div>
               </article>
@@ -241,6 +241,7 @@ export function MainPage() {
                     Разрабатываю backend-сервисы, AI-функциональность и продуктовую бизнес-логику для веб-приложений,
                     Telegram-сервисов и AI-продуктов в команде из 6 человек. Участвую в обсуждении архитектуры и задач,
                     собираю и анализирую требования от заказчика, декомпозирую работу и делегирую задачи внутри команды.
+                    Использую AI-редакторы кода для ускоренной разработки: Cursor, Claude Code, GitHub Copilot и Codex.
                   </p>
                 </div>
 
@@ -418,6 +419,8 @@ export function MainPage() {
                   <li className="chip">Realtime API</li>
                   <li className="chip">Responses API</li>
                   <li className="chip">Whisper / TTS</li>
+                  <li className="chip">Cursor</li>
+                  <li className="chip">Claude Code</li>
                 </ul>
 
                 <div className="sDivider"></div>
@@ -427,6 +430,7 @@ export function MainPage() {
                   <li>Оркестрация AI-пайплайнов и сценариев с LangGraph для управляемого agent-flow</li>
                   <li>Динамические промпты и набор tools по этапу пользователя; conversational AI</li>
                   <li>Realtime API, Whisper, TTS (VoiceKit, SpeechKit); учёт токенов, кэш контекста в Redis</li>
+                  <li>Использую AI-редакторы кода в ежедневной разработке: Cursor, Claude Code, GitHub Copilot</li>
                 </ul>
               </article>
               </div>
