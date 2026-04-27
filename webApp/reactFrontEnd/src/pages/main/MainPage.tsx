@@ -218,7 +218,7 @@ export function MainPage() {
 
                 <div className="sCard__body prose">
                   <p>
-                    Я — Python Developer, 22 года, в разработке с 19 лет, коммерческий опыт около 3 лет. Специализируюсь на backend-разработке, AI/LLM-интеграциях и сложной продуктовой бизнес-логике: API, realtime-сценарии, фоновые пайплайны, платежные механики и production-инфраструктура. Работаю со стеком Python, FastAPI, Django/DRF, PostgreSQL, MongoDB, Redis, SQLAlchemy, asyncpg, asyncio, aiohttp, gRPC, WebSocket, Celery, Docker, Kubernetes, Nginx и Linux; интегрировал OpenAI API, LangGraph, Telegram Bot API, YooKassa и внешние сервисы. Использую AI-редакторы кода — Cursor, Claude Code, GitHub Copilot и Codex — для ускорения проектирования, прототипирования, рефакторинга и написания кода, при этом понимаю ограничения AI-генерации и дорабатываю решения вручную.
+                    Я — Python Developer, 23 года, работаю в IT с 20 лет, коммерческий опыт 3+ лет. Специализируюсь на backend-разработке, AI/LLM-интеграциях и сложной продуктовой бизнес-логике: API, realtime-сценарии, фоновые пайплайны, платежные механики и production-инфраструктура. Работаю со стеком Python, FastAPI, Django/DRF, PostgreSQL, MongoDB, Redis, SQLAlchemy, asyncpg, asyncio, aiohttp, gRPC, WebSocket, Celery, Docker, Kubernetes, Nginx и Linux; интегрировал OpenAI API, LangGraph, Telegram Bot API, YooKassa и внешние сервисы. Использую AI-редакторы кода — Cursor, Claude Code, GitHub Copilot и Codex — для ускорения проектирования, прототипирования, рефакторинга и написания кода, при этом понимаю ограничения AI-генерации и дорабатываю решения вручную.
                   </p>
                 </div>
               </article>
