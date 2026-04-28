@@ -238,9 +238,8 @@ export function MainPage() {
 
                 <div className="sCard__body prose">
                   <p>
-                    Разрабатываю backend-сервисы, AI-функциональность и продуктовую бизнес-логику для веб-приложений,
-                    Telegram-сервисов и AI-продуктов в команде из 6 человек. Участвую в обсуждении архитектуры и задач,
-                    собираю и анализирую требования от заказчика, декомпозирую работу и делегирую задачи внутри команды.
+                    Разрабатываю backend-сервисы, AI-функциональность и продуктовую бизнес-логику для веб-приложений и Telegram-сервисов в команде из 6 человек.
+                    Собирал и анализировал требования от заказчика, участвовал в проектировании архитектуры, декомпозировал задачи и координировал часть работы внутри команды.
                     Использую AI-редакторы кода для ускоренной разработки: Cursor, Claude Code, GitHub Copilot и Codex.
                   </p>
                 </div>
@@ -275,17 +274,17 @@ export function MainPage() {
                       <li>Работал с WebSocket, streaming, realtime-сценариями, WebRTC и AI/LLM-интеграциями</li>
                       <li>Интегрировал OpenAI API, Assistants API, Realtime API, Responses API, LangGraph, Telegram Bot API, YooKassa</li>
                       <li>Настраивал Docker, Kubernetes, Nginx, Linux, SSL/TLS; писал тесты на pytest, занимался рефакторингом и поддержкой сервисов</li>
-                      <li>Реализовывал фоновые пайплайны обработки через Celery с помощью фоновых воркеров</li>
+                      <li>Реализовывал фоновые пайплайны обработки через Celery и фоновые воркеры</li>
                     </ul>
                   </div>
 
                   <div>
                     <h4 className="sExperience__title">Результат</h4>
                     <ul className="sList">
-                      <li>Проектировал и реализовывал end-to-end коммерческие AI-driven веб-продукты</li>
-                      <li>Оптимизировал, рефакторил и улучшал производительность backend-архитектуры</li>
+                      <li>Проектировал и выводил в production коммерческие AI- и веб-продукты</li>
+                      <li>Улучшал производительность backend-сервисов и БД за счет оптимизации запросов и рефакторинга</li>
+                      <li>Реализовывал сложные пользовательские сценарии с AI, платежами, состояниями и интеграциями</li>
                       <li>Участвовал в проработке требований, архитектуры и распределении задач внутри команды</li>
-                      <li>Разрабатывал сложные пользовательские сценарии с AI, платежами, состояниями и интеграциями</li>
                     </ul>
                   </div>
                 </div>
@@ -496,10 +495,10 @@ export function MainPage() {
                   </div>
                 </div>
                 <ul className="sList">
-                  <li><strong>EvoSpeak / Yespeak:</strong> двухпоточный AI-flow, ускорение генерации задач с минут до секунд</li>
-                  <li><strong>Luna:</strong> Telegram AI-сервис с подпиской, платежами, voice-flow и production-ready backend</li>
+                  <li><strong>EvoSpeak / Yespeak:</strong> двухпоточный AI-flow, ускорение генерации заданий с 1-2 минут до нескольких секунд</li>
+                  <li><strong>Luna:</strong> Telegram AI-сервис, доведенный до production-ready состояния с подписками, оплатами и устойчивым backend-flow</li>
                   <li><strong>DJSet Analytic:</strong> worker-пайплайн (Celery/Redis/MongoDB), AI-постобработка и DOCX-экспорт</li>
-                  <li><strong>ИИ Препод:</strong> backend EdTech-платформы с AI-тьютором и нагрузкой до ~1000 пользователей</li>
+                  <li><strong>ИИ Препод:</strong> backend EdTech-платформы с AI-тьютором, TTS/STT и нагрузкой до ~1000 пользователей</li>
                 </ul>
               </article>
               </div>
